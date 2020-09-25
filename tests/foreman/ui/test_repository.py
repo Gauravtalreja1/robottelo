@@ -325,7 +325,6 @@ def test_positive_discover_repo_via_new_product(session, module_org):
         assert repo_name in session.repository.search(product_name, repo_name)[0]['Name']
 
 
-@pytest.mark.stubbed
 @tier2
 @upgrade
 def test_positive_discover_module_stream_repo_via_existing_product(session, module_org):
@@ -339,6 +338,24 @@ def test_positive_discover_module_stream_repo_via_existing_product(session, modu
 
     :BZ: 1676642
     """
+    repo_name = gen_string('alpha')
+    repo_label = gen_string('alpha')
+    product = entities.Product(organization=module_org).create()
+    with session:
+        session.organization.select(org_name=module_org.name)
+        session.product.discover_repo(
+            {
+                'repo_type': 'Yum Repositories',
+                'url': CUSTOM_MODULE_STREAM_REPO_2,
+                'discovered_repos.repos': "/",
+                'create_repo.product_type': 'Existing Product',
+                'create_repo.product_content.product_name': product.name,
+                'create_repo.create_repos_table': [
+                    {"Repository Name": repo_name, "Repository Label": repo_label}
+                ],
+            }
+        )
+        assert repo_name in session.repository.search(product.name, repo_name)[0]['Name']
 
 
 @tier2
