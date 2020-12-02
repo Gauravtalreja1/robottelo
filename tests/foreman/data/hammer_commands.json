@@ -296,7 +296,7 @@
               "value": "SUBSCRIPTIONS"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --subscriptions     \"id=<string>\\,quantity=<numeric>, ... \"",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"id=<string>\\,quantity=<numeric>, ... \"",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -1734,7 +1734,7 @@
                   "value": "PAGE"
                 },
                 {
-                  "help": "Number of results per page to return",
+                  "help": "Number of results per page to return, 'all' to return all results",
                   "name": "per-page",
                   "shortname": null,
                   "value": "PER_PAGE"
@@ -2399,7 +2399,7 @@
                   "value": "PAGE"
                 },
                 {
-                  "help": "Number of results per page to return",
+                  "help": "Number of results per page to return, 'all' to return all results",
                   "name": "per-page",
                   "shortname": null,
                   "value": "PER_PAGE"
@@ -3005,7 +3005,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -3404,7 +3404,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -3558,7 +3558,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -3570,7 +3570,7 @@
               "value": "SEARCH"
             },
             {
-              "help": "Print help -------------|-----|---------|----- | ALL | DEFAULT | THIN -------------|-----|---------|----- | x   | x       | x | x   | x       | | x   | x       | | x   | x       | | x   | x       | type   | x   | x       | record | x   | x       | UUID | x   |         | -------------|-----|---------|----- string integer text string string string string integer string string string string integer string integer string string string string string string string string string datetime Values: role, ptable, provisioning_template, user, filter, subnet, hostgroup, katello/repository, smart_proxy, katello/host/content_facet, katello/host/subscription_facet, remote_execution_feature, usergroup, katello/content_view, katello/kt_environment, architecture, bookmark, compute_profile, config_group, domain, environment, host_class, http_proxy, image, key_pair, medium, model, personal_access_token, report_template, puppetclass, realm, ssh_key, job_template, job_invocation, ansible_role, discovery_rule, katello/activation_key, katello/gpg_key, katello/host_collection, katello/product, katello/sync_plan, foreman_virt_who_configure/config, foreman_openscap/policy, foreman_openscap/scap_content, foreman_openscap/tailoring_file, lookup_value, hostgroup_class, auth_source, compute_resource, host, interface, location, organization, os, override_value, parameter, partition_table, setting, smart_class_parameter string string",
+              "help": "Print help -------------|-----|---------|----- | ALL | DEFAULT | THIN -------------|-----|---------|----- | x   | x       | x | x   | x       | | x   | x       | | x   | x       | | x   | x       | type   | x   | x       | record | x   | x       | UUID | x   |         | -------------|-----|---------|----- string integer text string string string string integer string string string string integer string integer string string string string string string string string string datetime Values: role, ptable, provisioning_template, user, filter, subnet, hostgroup, katello/repository, smart_proxy, katello/host/content_facet, katello/hostgroup/content_facet, katello/host/subscription_facet, remote_execution_feature, usergroup, katello/content_view, katello/kt_environment, architecture, bookmark, compute_profile, config_group, domain, environment, host_class, http_proxy, image, key_pair, medium, model, personal_access_token, report_template, puppetclass, realm, ssh_key, discovery_rule, job_template, job_invocation, ansible_role, katello/activation_key, katello/gpg_key, katello/host_collection, katello/product, katello/sync_plan, foreman_virt_who_configure/config, foreman_openscap/policy, foreman_openscap/scap_content, foreman_openscap/tailoring_file, lookup_value, hostgroup_class, auth_source, compute_resource, host, interface, location, organization, os, override_value, parameter, partition_table, setting, smart_class_parameter string string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -3637,13 +3637,13 @@
                   "help": "Openidc provider URL which issues authentication code (two factor only)",
                   "name": "oidc-authorization-endpoint",
                   "shortname": "a",
-                  "value": "OPENIDC-AUTHORIZATION-ENDPOINT"
+                  "value": "OPENIDC_AUTHORIZATION_ENDPOINT"
                 },
                 {
                   "help": "Client id used in the Openidc provider",
                   "name": "oidc-client-id",
                   "shortname": "c",
-                  "value": "OPENIDC-CLIENT-ID"
+                  "value": "OPENIDC_CLIENT_ID"
                 },
                 {
                   "help": "Authenticate with two factor",
@@ -3667,13 +3667,13 @@
                   "help": "Redirect URI for the authentication code grant flow",
                   "name": "oidc-redirect-uri",
                   "shortname": "r",
-                  "value": "OPENIDC-REDIRECT-URI"
+                  "value": "OPENIDC_REDIRECT_URI"
                 },
                 {
                   "help": "Openidc provider URL which issues access token",
                   "name": "oidc-token-endpoint",
                   "shortname": "t",
-                  "value": "OPENIDC-TOKEN-ENDPOINT"
+                  "value": "OPENIDC_TOKEN_ENDPOINT"
                 },
                 {
                   "help": "Username to access the remote system",
@@ -3864,7 +3864,7 @@
                   "value": "PAGE"
                 },
                 {
-                  "help": "Number of results per page to return",
+                  "help": "Number of results per page to return, 'all' to return all results",
                   "name": "per-page",
                   "shortname": null,
                   "value": "PER_PAGE"
@@ -4381,7 +4381,7 @@
                   "value": "PAGE"
                 },
                 {
-                  "help": "Number of results per page to return",
+                  "help": "Number of results per page to return, 'all' to return all results",
                   "name": "per-page",
                   "shortname": null,
                   "value": "PER_PAGE"
@@ -4667,7 +4667,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -4961,7 +4961,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -6166,7 +6166,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -6618,7 +6618,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -6958,7 +6958,7 @@
                   "value": "VOLUME"
                 },
                 {
-                  "help": "Print help NOTE: Bold attributes are required. EC2: --volume: --interface: --compute-attributes: availability_zone flavor_id groups security_group_ids managed_ip GCE: --volume: size_gb             Volume size in GB, integer value --interface: --compute-attributes: machine_type network associate_external_ip Libvirt: --volume: pool_name                    One of available storage pools capacity                     String value, e.g. 10G allocation Initial allocation, e.g. 0G format_type                  Possible values: raw, qcow2 --interface: compute_type                            Possible values: bridge, network compute_bridge                          Name of interface according to type compute_model                           Possible values: virtio, rtl8139, ne2k_pci, pcnet, e1000 compute_network Libvirt instance network, e.g. default --compute-attributes: cpus                Number of CPUs memory              String, amount of memory, value in bytes cpu_mode            Possible values: default, host-model, host-passthrough OpenStack: --volume: --interface: --compute-attributes: availability_zone boot_from_volume flavor_ref image_ref tenant_id security_groups network oVirt: --volume: size_gb             Volume size in GB, integer value storage_domain      ID or name of storage domain bootable            Boolean, set 1 for bootable, only one volume can be bootable preallocate         Boolean, set 1 to preallocate wipe_after_delete   Boolean, set 1 to wipe disk after delete interface           Disk interface name, must be ide, virto or virto_scsi --interface: compute_name        Compute name, e.g. eth0 compute_network     Select one of available networks for a cluster, must be an ID or a name compute_interface   Interface type --compute-attributes: cluster             ID or name of cluster to use template            Hardware profile to use cores               Integer value, number of cores sockets             Integer value, number of sockets memory              Amount of memory, integer value in bytes display_type        Possible values: VNC, SPICE keyboard_layout     Possible values: ar, de-ch, es, fo, fr-ca, hu, ja, mk, no, pt-br, sv, da, en-gb, et, fr, fr-ch, is, lt, nl, pl, ru, th, de, en-us, fi, fr-be, hr, it, lv, nl-be, pt, sl, tr. Not usable if display type is SPICE. Rackspace: --volume: --interface: --compute-attributes: flavor_id VMware: --volume: name storage_pod         Storage Pod ID from VMware datastore           Datastore ID from VMware mode                persistent/independent_persistent/independent_nonpersistent size_gb             Integer number, volume size in GB thin                true/false eager_zero          true/false controller_key      Associated SCSI controller key --interface: compute_type        Type of the network adapter, for example one of: VirtualVmxnet3 VirtualE1000 See documentation center for your version of vSphere to find more details about available adapter types: https://www.vmware.com/support/pubs/ compute_network     Network ID or Network Name from VMware --compute-attributes: cluster              Cluster ID from VMware corespersocket       Number of cores per socket (applicable to hardware versions < 10 only) cpus                 CPU count memory_mb            Integer number, amount of memory in MB path                 Path to folder resource_pool        Resource Pool ID from VMware firmware             automatic/bios/efi guest_id             Guest OS ID form VMware hardware_version     Hardware version ID from VMware memoryHotAddEnabled  Must be a 1 or 0, lets you add memory resources while the machine is on cpuHotAddEnabled     Must be a 1 or 0, lets you add CPU resources while the machine is on add_cdrom            Must be a 1 or 0, Add a CD-ROM drive to the virtual machine annotation           Annotation Notes scsi_controllers     List with SCSI controllers definitions type - ID of the controller from VMware key  - Key of the controller (e.g. 1000) AzureRM: --volume: disk_size_gb        Volume Size in GB (integer value) data_disk_caching   Data Disk Caching (None, ReadOnly, ReadWrite) --interface: compute_network     Select one of available Azure Subnets, must be an ID compute_public_ip   Public IP (None, Static, Dynamic) compute_private_ip  Static Private IP (expressed as true or false) --compute-attributes: resource_group      Existing Azure Resource Group of user vm_size             VM Size, eg. Standard_A0 etc. username            The Admin username password            The Admin password platform            OS type eg. Linux ssh_key_data        SSH key for passwordless authentication os_disk_caching     OS disk caching premium_os_disk     Premium OS Disk, Boolean as 0 or 1 script_command      Custom Script Command script_uris         Comma seperated file URIs",
+                  "help": "Print help NOTE: Bold attributes are required. EC2: --volume: --interface: --compute-attributes: availability_zone flavor_id groups security_group_ids managed_ip GCE: --volume: size_gb             Volume size in GB, integer value --interface: --compute-attributes: machine_type network associate_external_ip Libvirt: --volume: pool_name                    One of available storage pools capacity                     String value, e.g. 10G allocation Initial allocation, e.g. 0G format_type                  Possible values: raw, qcow2 --interface: compute_type                            Possible values: bridge, network compute_bridge                          Name of interface according to type compute_model                           Possible values: virtio, rtl8139, ne2k_pci, pcnet, e1000 compute_network Libvirt instance network, e.g. default --compute-attributes: cpus                Number of CPUs memory              String, amount of memory, value in bytes cpu_mode            Possible values: default, host-model, host-passthrough OpenStack: --volume: --interface: --compute-attributes: availability_zone boot_from_volume flavor_ref image_ref tenant_id security_groups network oVirt: --volume: size_gb             Volume size in GB, integer value storage_domain      ID or name of storage domain bootable            Boolean, set 1 for bootable, only one volume can be bootable preallocate         Boolean, set 1 to preallocate wipe_after_delete   Boolean, set 1 to wipe disk after delete interface           Disk interface name, must be ide, virto or virto_scsi --interface: compute_name        Compute name, e.g. eth0 compute_network     Select one of available networks for a cluster, must be an ID or a name compute_interface   Interface type --compute-attributes: cluster             ID or name of cluster to use template            Hardware profile to use cores               Integer value, number of cores sockets             Integer value, number of sockets memory              Amount of memory, integer value in bytes ha                  Boolean, set 1 to high availability display_type        Possible values: VNC, SPICE keyboard_layout     Possible values: ar, de-ch, es, fo, fr-ca, hu, ja, mk, no, pt-br, sv, da, en-gb, et, fr, fr-ch, is, lt, nl, pl, ru, th, de, en-us, fi, fr-be, hr, it, lv, nl-be, pt, sl, tr. Not usable if display type is SPICE. Rackspace: --volume: --interface: --compute-attributes: flavor_id VMware: --volume: name storage_pod         Storage Pod ID from VMware datastore           Datastore ID from VMware mode                persistent/independent_persistent/independent_nonpersistent size_gb             Integer number, volume size in GB thin                true/false eager_zero          true/false controller_key      Associated SCSI controller key --interface: compute_type        Type of the network adapter, for example one of: VirtualVmxnet3 VirtualE1000 See documentation center for your version of vSphere to find more details about available adapter types: https://www.vmware.com/support/pubs/ compute_network     Network ID or Network Name from VMware --compute-attributes: cluster              Cluster ID from VMware corespersocket       Number of cores per socket (applicable to hardware versions < 10 only) cpus                 CPU count memory_mb            Integer number, amount of memory in MB path                 Path to folder resource_pool        Resource Pool ID from VMware firmware             automatic/bios/efi guest_id             Guest OS ID form VMware hardware_version     Hardware version ID from VMware memoryHotAddEnabled  Must be a 1 or 0, lets you add memory resources while the machine is on cpuHotAddEnabled     Must be a 1 or 0, lets you add CPU resources while the machine is on add_cdrom            Must be a 1 or 0, Add a CD-ROM drive to the virtual machine annotation           Annotation Notes scsi_controllers     List with SCSI controllers definitions type - ID of the controller from VMware key  - Key of the controller (e.g. 1000) AzureRM: --volume: disk_size_gb        Volume Size in GB (integer value) data_disk_caching   Data Disk Caching (None, ReadOnly, ReadWrite) --interface: compute_network     Select one of available Azure Subnets, must be an ID compute_public_ip   Public IP (None, Static, Dynamic) compute_private_ip  Static Private IP (expressed as true or false) --compute-attributes: resource_group      Existing Azure Resource Group of user vm_size             VM Size, eg. Standard_A0 etc. username            The Admin username password            The Admin password platform            OS type eg. Linux ssh_key_data        SSH key for passwordless authentication os_disk_caching     OS disk caching premium_os_disk     Premium OS Disk, Boolean as 0 or 1 script_command      Custom Script Command script_uris         Comma seperated file URIs",
                   "name": "help",
                   "shortname": "h",
                   "value": null
@@ -7207,7 +7207,7 @@
                   "value": "VOLUME"
                 },
                 {
-                  "help": "Print help NOTE: Bold attributes are required. EC2: --volume: --interface: --compute-attributes: availability_zone flavor_id groups security_group_ids managed_ip GCE: --volume: size_gb             Volume size in GB, integer value --interface: --compute-attributes: machine_type network associate_external_ip Libvirt: --volume: pool_name                    One of available storage pools capacity                     String value, e.g. 10G allocation Initial allocation, e.g. 0G format_type                  Possible values: raw, qcow2 --interface: compute_type                            Possible values: bridge, network compute_bridge                          Name of interface according to type compute_model                           Possible values: virtio, rtl8139, ne2k_pci, pcnet, e1000 compute_network Libvirt instance network, e.g. default --compute-attributes: cpus                Number of CPUs memory              String, amount of memory, value in bytes cpu_mode            Possible values: default, host-model, host-passthrough OpenStack: --volume: --interface: --compute-attributes: availability_zone boot_from_volume flavor_ref image_ref tenant_id security_groups network oVirt: --volume: size_gb             Volume size in GB, integer value storage_domain      ID or name of storage domain bootable            Boolean, set 1 for bootable, only one volume can be bootable preallocate         Boolean, set 1 to preallocate wipe_after_delete   Boolean, set 1 to wipe disk after delete interface           Disk interface name, must be ide, virto or virto_scsi --interface: compute_name        Compute name, e.g. eth0 compute_network     Select one of available networks for a cluster, must be an ID or a name compute_interface   Interface type --compute-attributes: cluster             ID or name of cluster to use template            Hardware profile to use cores               Integer value, number of cores sockets             Integer value, number of sockets memory              Amount of memory, integer value in bytes display_type        Possible values: VNC, SPICE keyboard_layout     Possible values: ar, de-ch, es, fo, fr-ca, hu, ja, mk, no, pt-br, sv, da, en-gb, et, fr, fr-ch, is, lt, nl, pl, ru, th, de, en-us, fi, fr-be, hr, it, lv, nl-be, pt, sl, tr. Not usable if display type is SPICE. Rackspace: --volume: --interface: --compute-attributes: flavor_id VMware: --volume: name storage_pod         Storage Pod ID from VMware datastore           Datastore ID from VMware mode                persistent/independent_persistent/independent_nonpersistent size_gb             Integer number, volume size in GB thin                true/false eager_zero          true/false controller_key      Associated SCSI controller key --interface: compute_type        Type of the network adapter, for example one of: VirtualVmxnet3 VirtualE1000 See documentation center for your version of vSphere to find more details about available adapter types: https://www.vmware.com/support/pubs/ compute_network     Network ID or Network Name from VMware --compute-attributes: cluster              Cluster ID from VMware corespersocket       Number of cores per socket (applicable to hardware versions < 10 only) cpus                 CPU count memory_mb            Integer number, amount of memory in MB path                 Path to folder resource_pool        Resource Pool ID from VMware firmware             automatic/bios/efi guest_id             Guest OS ID form VMware hardware_version     Hardware version ID from VMware memoryHotAddEnabled  Must be a 1 or 0, lets you add memory resources while the machine is on cpuHotAddEnabled     Must be a 1 or 0, lets you add CPU resources while the machine is on add_cdrom            Must be a 1 or 0, Add a CD-ROM drive to the virtual machine annotation           Annotation Notes scsi_controllers     List with SCSI controllers definitions type - ID of the controller from VMware key  - Key of the controller (e.g. 1000) AzureRM: --volume: disk_size_gb        Volume Size in GB (integer value) data_disk_caching   Data Disk Caching (None, ReadOnly, ReadWrite) --interface: compute_network     Select one of available Azure Subnets, must be an ID compute_public_ip   Public IP (None, Static, Dynamic) compute_private_ip  Static Private IP (expressed as true or false) --compute-attributes: resource_group      Existing Azure Resource Group of user vm_size             VM Size, eg. Standard_A0 etc. username            The Admin username password            The Admin password platform            OS type eg. Linux ssh_key_data        SSH key for passwordless authentication os_disk_caching     OS disk caching premium_os_disk     Premium OS Disk, Boolean as 0 or 1 script_command      Custom Script Command script_uris         Comma seperated file URIs",
+                  "help": "Print help NOTE: Bold attributes are required. EC2: --volume: --interface: --compute-attributes: availability_zone flavor_id groups security_group_ids managed_ip GCE: --volume: size_gb             Volume size in GB, integer value --interface: --compute-attributes: machine_type network associate_external_ip Libvirt: --volume: pool_name                    One of available storage pools capacity                     String value, e.g. 10G allocation Initial allocation, e.g. 0G format_type                  Possible values: raw, qcow2 --interface: compute_type                            Possible values: bridge, network compute_bridge                          Name of interface according to type compute_model                           Possible values: virtio, rtl8139, ne2k_pci, pcnet, e1000 compute_network Libvirt instance network, e.g. default --compute-attributes: cpus                Number of CPUs memory              String, amount of memory, value in bytes cpu_mode            Possible values: default, host-model, host-passthrough OpenStack: --volume: --interface: --compute-attributes: availability_zone boot_from_volume flavor_ref image_ref tenant_id security_groups network oVirt: --volume: size_gb             Volume size in GB, integer value storage_domain      ID or name of storage domain bootable            Boolean, set 1 for bootable, only one volume can be bootable preallocate         Boolean, set 1 to preallocate wipe_after_delete   Boolean, set 1 to wipe disk after delete interface           Disk interface name, must be ide, virto or virto_scsi --interface: compute_name        Compute name, e.g. eth0 compute_network     Select one of available networks for a cluster, must be an ID or a name compute_interface   Interface type --compute-attributes: cluster             ID or name of cluster to use template            Hardware profile to use cores               Integer value, number of cores sockets             Integer value, number of sockets memory              Amount of memory, integer value in bytes ha                  Boolean, set 1 to high availability display_type        Possible values: VNC, SPICE keyboard_layout     Possible values: ar, de-ch, es, fo, fr-ca, hu, ja, mk, no, pt-br, sv, da, en-gb, et, fr, fr-ch, is, lt, nl, pl, ru, th, de, en-us, fi, fr-be, hr, it, lv, nl-be, pt, sl, tr. Not usable if display type is SPICE. Rackspace: --volume: --interface: --compute-attributes: flavor_id VMware: --volume: name storage_pod         Storage Pod ID from VMware datastore           Datastore ID from VMware mode                persistent/independent_persistent/independent_nonpersistent size_gb             Integer number, volume size in GB thin                true/false eager_zero          true/false controller_key      Associated SCSI controller key --interface: compute_type        Type of the network adapter, for example one of: VirtualVmxnet3 VirtualE1000 See documentation center for your version of vSphere to find more details about available adapter types: https://www.vmware.com/support/pubs/ compute_network     Network ID or Network Name from VMware --compute-attributes: cluster              Cluster ID from VMware corespersocket       Number of cores per socket (applicable to hardware versions < 10 only) cpus                 CPU count memory_mb            Integer number, amount of memory in MB path                 Path to folder resource_pool        Resource Pool ID from VMware firmware             automatic/bios/efi guest_id             Guest OS ID form VMware hardware_version     Hardware version ID from VMware memoryHotAddEnabled  Must be a 1 or 0, lets you add memory resources while the machine is on cpuHotAddEnabled     Must be a 1 or 0, lets you add CPU resources while the machine is on add_cdrom            Must be a 1 or 0, Add a CD-ROM drive to the virtual machine annotation           Annotation Notes scsi_controllers     List with SCSI controllers definitions type - ID of the controller from VMware key  - Key of the controller (e.g. 1000) AzureRM: --volume: disk_size_gb        Volume Size in GB (integer value) data_disk_caching   Data Disk Caching (None, ReadOnly, ReadWrite) --interface: compute_network     Select one of available Azure Subnets, must be an ID compute_public_ip   Public IP (None, Static, Dynamic) compute_private_ip  Static Private IP (expressed as true or false) --compute-attributes: resource_group      Existing Azure Resource Group of user vm_size             VM Size, eg. Standard_A0 etc. username            The Admin username password            The Admin password platform            OS type eg. Linux ssh_key_data        SSH key for passwordless authentication os_disk_caching     OS disk caching premium_os_disk     Premium OS Disk, Boolean as 0 or 1 script_command      Custom Script Command script_uris         Comma seperated file URIs",
                   "name": "help",
                   "shortname": "h",
                   "value": null
@@ -8381,7 +8381,7 @@
                   "value": "PAGE"
                 },
                 {
-                  "help": "Number of results per page to return",
+                  "help": "Number of results per page to return, 'all' to return all results",
                   "name": "per-page",
                   "shortname": null,
                   "value": "PER_PAGE"
@@ -8723,7 +8723,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -9444,10 +9444,10 @@
                   "value": null
                 },
                 {
-                  "help": "VM-ID                           Virtual machine id, for gce use virtual machine name",
+                  "help": "Virtual machine id, for gce use virtual machine name",
                   "name": "vm-id",
                   "shortname": null,
-                  "value": null
+                  "value": "VM-ID"
                 },
                 {
                   "help": "Print help",
@@ -9517,10 +9517,10 @@
                   "value": null
                 },
                 {
-                  "help": "VM-ID                           Virtual machine id, for gce use virtual machine name",
+                  "help": "Virtual machine id, for gce use virtual machine name",
                   "name": "vm-id",
                   "shortname": null,
-                  "value": null
+                  "value": "VM-ID"
                 },
                 {
                   "help": "Print help -------|-----|---------|----- | ALL | DEFAULT | THIN -------|-----|---------|----- | x   | x       | x | x   | x       | x -------|-----|---------|-----",
@@ -9584,10 +9584,10 @@
                   "value": null
                 },
                 {
-                  "help": "VM-ID                           Virtual machine id, for gce use virtual machine name",
+                  "help": "Virtual machine id, for gce use virtual machine name",
                   "name": "vm-id",
                   "shortname": null,
-                  "value": null
+                  "value": "VM-ID"
                 },
                 {
                   "help": "Print help",
@@ -10002,7 +10002,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -10290,7 +10290,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -10313,7 +10313,7 @@
       ]
     },
     {
-      "description": "Manipulate content credentials (i.e. GPG Keys)'                                           'on the server",
+      "description": "Manipulate content credentials on the server",
       "name": "content-credentials",
       "options": [
         {
@@ -10720,12 +10720,6 @@
           "description": "Add a content view version to a composite view",
           "name": "add-version",
           "options": [
-            {
-              "help": "Content view name to search by",
-              "name": "content-view",
-              "shortname": null,
-              "value": "CONTENT_VIEW_NAME"
-            },
             {
               "help": "Content view numeric identifier to search by",
               "name": "content-view-id",
@@ -12506,7 +12500,7 @@
               "value": "WITHOUT"
             },
             {
-              "help": "Print help ----------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------|-----|---------|----- View ID | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | Published  | x   | x       | IDs  | x   | x       | ----------------|-----|---------|----- Values: true, false string string integer",
+              "help": "Print help ----------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------|-----|---------|----- View ID | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | Published  | x   | x       | IDs  | x   | x       | ----------------|-----|---------|----- boolean string string integer",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -12579,7 +12573,7 @@
               "value": "REPOS_UNITS"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --repos-units       \"label=<string>\\,rpm_filenames=<array>, ... \"",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"label=<string>\\,rpm_filenames=<array>, ... \"",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -12904,12 +12898,6 @@
               "value": "VERSION_IDS"
             },
             {
-              "help": "Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
-              "name": "content-view-versions",
-              "shortname": null,
-              "value": "CONTENT_VIEW_VERSION_VERSIONS"
-            },
-            {
               "help": "(--environment-ids is deprecated: Use --lifecycle-environment-ids instead) Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
               "name": "environment-ids",
               "shortname": null,
@@ -12944,12 +12932,6 @@
               "name": "lifecycle-environment-ids",
               "shortname": null,
               "value": "LIFECYCLE_ENVIRONMENT_IDS"
-            },
-            {
-              "help": "Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
-              "name": "lifecycle-environments",
-              "shortname": null,
-              "value": "LIFECYCLE_ENVIRONMENT_NAMES"
             },
             {
               "help": "Content view name to search by",
@@ -13430,6 +13412,12 @@
               "subcommands": []
             },
             {
+              "description": "View content view export histories",
+              "name": "export-histories",
+              "options": [],
+              "subcommands": []
+            },
+            {
               "description": "Export a content view (legacy method)",
               "name": "export-legacy",
               "options": [
@@ -13464,7 +13452,7 @@
                   "value": "ENVIRONMENT_ID"
                 },
                 {
-                  "help": "Export to ISO format One of true/false, yes/no, 1/0.",
+                  "help": "Export to ISO format. One of true/false, yes/no, 1/0.",
                   "name": "export-to-iso",
                   "shortname": null,
                   "value": "EXPORT_TO_ISO"
@@ -13476,7 +13464,7 @@
                   "value": "ID"
                 },
                 {
-                  "help": "Maximum size of each ISO in MB",
+                  "help": "Maximum size of each ISO in MB. Relevant only for Pulp 2 repositories",
                   "name": "iso-mb-size",
                   "shortname": null,
                   "value": "ISO_MB_SIZE"
@@ -13518,7 +13506,7 @@
                   "value": null
                 },
                 {
-                  "help": "Optional date of last export (ex: 2010-01-01T12:00:00Z)",
+                  "help": "Optional date of last export (ex: 2010-01-01T12:00:00Z). Relevant only for Pulp 2 repositories",
                   "name": "since",
                   "shortname": null,
                   "value": "SINCE"
@@ -14198,6 +14186,262 @@
       ]
     },
     {
+      "description": "Manipulate deb packages",
+      "name": "deb-package",
+      "options": [
+        {
+          "help": "Print help",
+          "name": "help",
+          "shortname": "h",
+          "value": null
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Show a deb",
+          "name": "info",
+          "options": [
+            {
+              "help": "Show specified fields or predefined field sets only. (See below) Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "fields",
+              "shortname": null,
+              "value": "FIELDS"
+            },
+            {
+              "help": "A deb identifier",
+              "name": "id",
+              "shortname": null,
+              "value": "ID"
+            },
+            {
+              "help": "Name to search by",
+              "name": "name",
+              "shortname": null,
+              "value": "NAME"
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Label/Id can be used",
+              "name": "organization",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Label/Id can be used",
+              "name": "organization-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Label/Id can be used",
+              "name": "organization-title",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Label/Id can be used",
+              "name": "organization-label",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current repository context for the request. Name/Id can be used",
+              "name": "repository",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current repository context for the request. Name/Id can be used",
+              "name": "repository-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Print help ----------------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------------|-----|---------|----- | x   | x       | x ID               | x   | x       | | x   | x       | | x   | x       | x | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | Host Count  | x   | x       | Host Count | x   | x       | | x   | x       | ----------------------|-----|---------|-----",
+              "name": "help",
+              "shortname": "h",
+              "value": null
+            }
+          ],
+          "subcommands": []
+        },
+        {
+          "description": "List debs",
+          "name": "list",
+          "options": [
+            {
+              "help": "Set the current content view filter context for the request. Name/Id can be used",
+              "name": "content-view-filter",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current content view filter context for the request. Name/Id can be used",
+              "name": "content-view-filter-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current content view filter rule context for the request. Name/Id can be used",
+              "name": "content-view-filter-rule",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current content view filter rule context for the request. Name/Id can be used",
+              "name": "content-view-filter-rule-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current content view context for the request. Name/Id can be used",
+              "name": "content-view",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current content view context for the request. Name/Id can be used",
+              "name": "content-view-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current content view version context for the request. Version/Id can be used",
+              "name": "content-view-version",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current content view version context for the request. Version/Id can be used",
+              "name": "content-view-version-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Lifecycle environment name to search by (--environment is deprecated: Use --lifecycle-environment instead)",
+              "name": "environment",
+              "shortname": null,
+              "value": "ENVIRONMENT_NAME"
+            },
+            {
+              "help": "(--environment-id is deprecated: Use --lifecycle-environment-id instead)",
+              "name": "environment-id",
+              "shortname": null,
+              "value": "ENVIRONMENT_ID"
+            },
+            {
+              "help": "Show specified fields or predefined field sets only. (See below) Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "fields",
+              "shortname": null,
+              "value": "FIELDS"
+            },
+            {
+              "help": "Whether or not to show all results One of true/false, yes/no, 1/0.",
+              "name": "full-result",
+              "shortname": null,
+              "value": "FULL_RESULT"
+            },
+            {
+              "help": "Ids to filter content by Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "ids",
+              "shortname": null,
+              "value": "IDS"
+            },
+            {
+              "help": "Set the current environment context for the request. Name/Id can be used",
+              "name": "lifecycle-environment",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current environment context for the request. Name/Id can be used",
+              "name": "lifecycle-environment-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Sort field and order, eg. 'Order DESC'",
+              "name": "order",
+              "shortname": null,
+              "value": "ORDER"
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Label/Id can be used",
+              "name": "organization",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Label/Id can be used",
+              "name": "organization-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Label/Id can be used",
+              "name": "organization-title",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Label/Id can be used",
+              "name": "organization-label",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Page number, starting at 1",
+              "name": "page",
+              "shortname": null,
+              "value": "PAGE"
+            },
+            {
+              "help": "Number of results per page to return",
+              "name": "per-page",
+              "shortname": null,
+              "value": "PER_PAGE"
+            },
+            {
+              "help": "Set the current product context for the request. Name/Id can be used",
+              "name": "product",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current product context for the request. Name/Id can be used",
+              "name": "product-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current repository context for the request. Name/Id can be used",
+              "name": "repository",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current repository context for the request. Name/Id can be used",
+              "name": "repository-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Search string",
+              "name": "search",
+              "shortname": null,
+              "value": "SEARCH"
+            },
+            {
+              "help": "Print help ---------|-----|-------- | ALL | DEFAULT ---------|-----|-------- | x   | x | x   | x ---------|-----|--------",
+              "name": "help",
+              "shortname": "h",
+              "value": null
+            }
+          ],
+          "subcommands": []
+        }
+      ]
+    },
+    {
       "description": "Defaults management",
       "name": "defaults",
       "options": [
@@ -14498,7 +14742,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -14885,16 +15129,16 @@
               "value": "OWNER_ID"
             },
             {
+              "help": "Host's owner type Possible value(s): 'User', 'Usergroup'",
+              "name": "owner-type",
+              "shortname": null,
+              "value": "OWNER_TYPE"
+            },
+            {
               "help": "Host parameters Comma-separated list of key=value. JSON is acceptable and preferred way for complex parameters",
               "name": "parameters",
               "shortname": null,
               "value": "PARAMS"
-            },
-            {
-              "help": "Partition table name",
-              "name": "partition-table",
-              "shortname": null,
-              "value": "PARTITION_TABLE_NAME"
             },
             {
               "help": "",
@@ -16507,7 +16751,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -16531,7 +16775,7 @@
               "value": null
             },
             {
-              "help": "Print help -------|-----|---------|----- | ALL | DEFAULT | THIN -------|-----|---------|----- | x   | x       | x | x   | x       | x -------|-----|---------|----- string string integer string string integer text",
+              "help": "Print help -------|-----|---------|----- | ALL | DEFAULT | THIN -------|-----|---------|----- | x   | x       | x | x   | x       | x -------|-----|---------|----- string string integer string string integer string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -17001,7 +17245,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -17104,7 +17348,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -17713,7 +17957,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -17762,12 +18006,6 @@
               "name": "content-view-id",
               "shortname": null,
               "value": null
-            },
-            {
-              "help": "Content View Version number",
-              "name": "content-view-version",
-              "shortname": null,
-              "value": "CONTENT_VIEW_VERSION_VERSION"
             },
             {
               "help": "Content View Version ID",
@@ -17828,12 +18066,6 @@
               "name": "product-id",
               "shortname": null,
               "value": null
-            },
-            {
-              "help": "Repository name to search by",
-              "name": "repository",
-              "shortname": null,
-              "value": "REPOSITORY_NAME"
             },
             {
               "help": "Repository ID",
@@ -18086,7 +18318,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -18457,7 +18689,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -18902,7 +19134,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -19178,7 +19410,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -19915,7 +20147,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -20450,13 +20682,88 @@
               "value": "VOLUME"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --typed-parameters  \"name=<string>\\,value=<string>\\,parameter_type=[string|boolean|integer|real|array|hash|yaml|json]\\,hidden_value=[true|false|1|0], ... \" --installed-products-attributes  \"product_id=<string>\\,product_name=<string>\\,arch=<string>\\,version=<string>, ... \" mac ip Possible values: interface, bmc, bond, bridge name subnet_id domain_id identifier true/false true/false, each managed hosts needs to have one primary interface. true/false true/false virtual=true: tag                 VLAN tag, this attribute has precedence over the subnet VLAN ID. Only for virtual interfaces. attached_to         Identifier of the interface to which this interface belongs, e.g. eth1. type=bond: mode                Possible values: balance-rr, active-backup, balance-xor, broadcast, 802.3ad, balance-tlb, balance-alb attached_devices    Identifiers of slave interfaces, e.g. [eth1,eth2] bond_options type=bmc: provider            always IPMI username password NOTE: Bold attributes are required. EC2: --volume: --interface: --compute-attributes: availability_zone flavor_id groups security_group_ids managed_ip GCE: --volume: size_gb             Volume size in GB, integer value --interface: --compute-attributes: machine_type network associate_external_ip Libvirt: --volume: pool_name                    One of available storage pools capacity                     String value, e.g. 10G allocation Initial allocation, e.g. 0G format_type                  Possible values: raw, qcow2 --interface: compute_type                            Possible values: bridge, network compute_bridge                          Name of interface according to type compute_model                           Possible values: virtio, rtl8139, ne2k_pci, pcnet, e1000 compute_network Libvirt instance network, e.g. default --compute-attributes: cpus                Number of CPUs memory              String, amount of memory, value in bytes cpu_mode            Possible values: default, host-model, host-passthrough start               Boolean (expressed as 0 or 1), whether to start the machine or not OpenStack: --volume: --interface: --compute-attributes: availability_zone boot_from_volume flavor_ref image_ref tenant_id security_groups network oVirt: --volume: size_gb             Volume size in GB, integer value storage_domain      ID or name of storage domain bootable            Boolean, set 1 for bootable, only one volume can be bootable preallocate         Boolean, set 1 to preallocate wipe_after_delete   Boolean, set 1 to wipe disk after delete interface           Disk interface name, must be ide, virto or virto_scsi --interface: compute_name        Compute name, e.g. eth0 compute_network     Select one of available networks for a cluster, must be an ID or a name compute_interface   Interface type --compute-attributes: cluster             ID or name of cluster to use template            Hardware profile to use cores               Integer value, number of cores sockets             Integer value, number of sockets memory              Amount of memory, integer value in bytes display_type        Possible values: VNC, SPICE keyboard_layout     Possible values: ar, de-ch, es, fo, fr-ca, hu, ja, mk, no, pt-br, sv, da, en-gb, et, fr, fr-ch, is, lt, nl, pl, ru, th, de, en-us, fi, fr-be, hr, it, lv, nl-be, pt, sl, tr. Not usable if display type is SPICE. start               Boolean, set 1 to start the vm Rackspace: --volume: --interface: --compute-attributes: flavor_id VMware: --volume: name storage_pod         Storage Pod ID from VMware datastore           Datastore ID from VMware mode                persistent/independent_persistent/independent_nonpersistent size_gb             Integer number, volume size in GB thin                true/false eager_zero          true/false controller_key      Associated SCSI controller key --interface: compute_type        Type of the network adapter, for example one of: VirtualVmxnet3 VirtualE1000 See documentation center for your version of vSphere to find more details about available adapter types: https://www.vmware.com/support/pubs/ compute_network     Network ID or Network Name from VMware --compute-attributes: cluster              Cluster ID from VMware corespersocket       Number of cores per socket (applicable to hardware versions < 10 only) cpus                 CPU count memory_mb            Integer number, amount of memory in MB path                 Path to folder resource_pool        Resource Pool ID from VMware firmware             automatic/bios/efi guest_id             Guest OS ID form VMware hardware_version     Hardware version ID from VMware memoryHotAddEnabled  Must be a 1 or 0, lets you add memory resources while the machine is on cpuHotAddEnabled     Must be a 1 or 0, lets you add CPU resources while the machine is on add_cdrom            Must be a 1 or 0, Add a CD-ROM drive to the virtual machine annotation           Annotation Notes scsi_controllers     List with SCSI controllers definitions type - ID of the controller from VMware key  - Key of the controller (e.g. 1000) start                Must be a 1 or 0, whether to start the machine or not AzureRM: --volume: disk_size_gb        Volume Size in GB (integer value) data_disk_caching   Data Disk Caching (None, ReadOnly, ReadWrite) --interface: compute_network     Select one of available Azure Subnets, must be an ID compute_public_ip   Public IP (None, Static, Dynamic) compute_private_ip  Static Private IP (expressed as true or false) --compute-attributes: resource_group      Existing Azure Resource Group of user vm_size             VM Size, eg. Standard_A0 etc. username            The Admin username password            The Admin password platform            OS type eg. Linux ssh_key_data        SSH key for passwordless authentication os_disk_caching     OS disk caching premium_os_disk     Premium OS Disk, Boolean as 0 or 1 script_command      Custom Script Command script_uris         Comma seperated file URIs",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"name=<string>\\,value=<string>\\,parameter_type=[string|boolean|integer|real|array|hash|yaml|json]\\,hidden_value=[true|false|1|0], ... \" \"product_id=<string>\\,product_name=<string>\\,arch=<string>\\,version=<string>, ... \" mac ip Possible values: interface, bmc, bond, bridge name subnet_id domain_id identifier true/false true/false, each managed hosts needs to have one primary interface. true/false true/false virtual=true: tag                 VLAN tag, this attribute has precedence over the subnet VLAN ID. Only for virtual interfaces. attached_to         Identifier of the interface to which this interface belongs, e.g. eth1. type=bond: mode                Possible values: balance-rr, active-backup, balance-xor, broadcast, 802.3ad, balance-tlb, balance-alb attached_devices    Identifiers of slave interfaces, e.g. [eth1,eth2] bond_options type=bmc: provider            always IPMI username password NOTE: Bold attributes are required. EC2: --volume: --interface: --compute-attributes: availability_zone flavor_id groups security_group_ids managed_ip GCE: --volume: size_gb             Volume size in GB, integer value --interface: --compute-attributes: machine_type network associate_external_ip Libvirt: --volume: pool_name                    One of available storage pools capacity                     String value, e.g. 10G allocation Initial allocation, e.g. 0G format_type                  Possible values: raw, qcow2 --interface: compute_type                            Possible values: bridge, network compute_bridge                          Name of interface according to type compute_model                           Possible values: virtio, rtl8139, ne2k_pci, pcnet, e1000 compute_network Libvirt instance network, e.g. default --compute-attributes: cpus                Number of CPUs memory              String, amount of memory, value in bytes cpu_mode            Possible values: default, host-model, host-passthrough start               Boolean (expressed as 0 or 1), whether to start the machine or not OpenStack: --volume: --interface: --compute-attributes: availability_zone boot_from_volume flavor_ref image_ref tenant_id security_groups network oVirt: --volume: size_gb             Volume size in GB, integer value storage_domain      ID or name of storage domain bootable            Boolean, set 1 for bootable, only one volume can be bootable preallocate         Boolean, set 1 to preallocate wipe_after_delete   Boolean, set 1 to wipe disk after delete interface           Disk interface name, must be ide, virto or virto_scsi --interface: compute_name        Compute name, e.g. eth0 compute_network     Select one of available networks for a cluster, must be an ID or a name compute_interface   Interface type --compute-attributes: cluster             ID or name of cluster to use template            Hardware profile to use cores               Integer value, number of cores sockets             Integer value, number of sockets memory              Amount of memory, integer value in bytes ha                  Boolean, set 1 to high availability display_type        Possible values: VNC, SPICE keyboard_layout     Possible values: ar, de-ch, es, fo, fr-ca, hu, ja, mk, no, pt-br, sv, da, en-gb, et, fr, fr-ch, is, lt, nl, pl, ru, th, de, en-us, fi, fr-be, hr, it, lv, nl-be, pt, sl, tr. Not usable if display type is SPICE. start               Boolean, set 1 to start the vm Rackspace: --volume: --interface: --compute-attributes: flavor_id VMware: --volume: name storage_pod         Storage Pod ID from VMware datastore           Datastore ID from VMware mode                persistent/independent_persistent/independent_nonpersistent size_gb             Integer number, volume size in GB thin                true/false eager_zero          true/false controller_key      Associated SCSI controller key --interface: compute_type        Type of the network adapter, for example one of: VirtualVmxnet3 VirtualE1000 See documentation center for your version of vSphere to find more details about available adapter types: https://www.vmware.com/support/pubs/ compute_network     Network ID or Network Name from VMware --compute-attributes: cluster              Cluster ID from VMware corespersocket       Number of cores per socket (applicable to hardware versions < 10 only) cpus                 CPU count memory_mb            Integer number, amount of memory in MB path                 Path to folder resource_pool        Resource Pool ID from VMware firmware             automatic/bios/efi guest_id             Guest OS ID form VMware hardware_version     Hardware version ID from VMware memoryHotAddEnabled  Must be a 1 or 0, lets you add memory resources while the machine is on cpuHotAddEnabled     Must be a 1 or 0, lets you add CPU resources while the machine is on add_cdrom            Must be a 1 or 0, Add a CD-ROM drive to the virtual machine annotation           Annotation Notes scsi_controllers     List with SCSI controllers definitions type - ID of the controller from VMware key  - Key of the controller (e.g. 1000) start                Must be a 1 or 0, whether to start the machine or not AzureRM: --volume: disk_size_gb        Volume Size in GB (integer value) data_disk_caching   Data Disk Caching (None, ReadOnly, ReadWrite) --interface: compute_network     Select one of available Azure Subnets, must be an ID compute_public_ip   Public IP (None, Static, Dynamic) compute_private_ip  Static Private IP (expressed as true or false) --compute-attributes: resource_group      Existing Azure Resource Group of user vm_size             VM Size, eg. Standard_A0 etc. username            The Admin username password            The Admin password platform            OS type eg. Linux ssh_key_data        SSH key for passwordless authentication os_disk_caching     OS disk caching premium_os_disk     Premium OS Disk, Boolean as 0 or 1 script_command      Custom Script Command script_uris         Comma seperated file URIs",
               "name": "help",
               "shortname": "h",
               "value": null
             }
           ],
           "subcommands": []
+        },
+        {
+          "description": "Manage deb packages on your hosts",
+          "name": "deb-package",
+          "options": [
+            {
+              "help": "Print help",
+              "name": "help",
+              "shortname": "h",
+              "value": null
+            }
+          ],
+          "subcommands": [
+            {
+              "description": "List deb packages installed on the host",
+              "name": "list",
+              "options": [
+                {
+                  "help": "Show specified fields or predefined field sets only. (See below) Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+                  "name": "fields",
+                  "shortname": null,
+                  "value": "FIELDS"
+                },
+                {
+                  "help": "Whether or not to show all results One of true/false, yes/no, 1/0.",
+                  "name": "full-result",
+                  "shortname": null,
+                  "value": "FULL_RESULT"
+                },
+                {
+                  "help": "Set the current host context for the request. Name/Id can be used",
+                  "name": "host",
+                  "shortname": null,
+                  "value": null
+                },
+                {
+                  "help": "Set the current host context for the request. Name/Id can be used",
+                  "name": "host-id",
+                  "shortname": null,
+                  "value": null
+                },
+                {
+                  "help": "Sort field and order, eg. 'Order DESC'",
+                  "name": "order",
+                  "shortname": null,
+                  "value": "ORDER"
+                },
+                {
+                  "help": "Page number, starting at 1",
+                  "name": "page",
+                  "shortname": null,
+                  "value": "PAGE"
+                },
+                {
+                  "help": "Number of results per page to return",
+                  "name": "per-page",
+                  "shortname": null,
+                  "value": "PER_PAGE"
+                },
+                {
+                  "help": "Search string",
+                  "name": "search",
+                  "shortname": null,
+                  "value": "SEARCH"
+                },
+                {
+                  "help": "Print help --------|-----|---------|----- | ALL | DEFAULT | THIN --------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | --------|-----|---------|-----",
+                  "name": "help",
+                  "shortname": "h",
+                  "value": null
+                }
+              ],
+              "subcommands": []
+            }
+          ]
         },
         {
           "description": "Delete a host",
@@ -20995,7 +21302,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -21139,6 +21446,12 @@
                   "name": "domain-id",
                   "shortname": null,
                   "value": null
+                },
+                {
+                  "help": "Should this interface be used for remote execution? One of true/false, yes/no, 1/0.",
+                  "name": "execution",
+                  "shortname": null,
+                  "value": "EXECUTION"
                 },
                 {
                   "help": "Set the current host context for the request. Name/Id can be used",
@@ -21443,7 +21756,7 @@
                   "value": null
                 },
                 {
-                  "help": "Print help ----------------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------------|-----|---------|----- | x   | x       | x | x   | x       | | x   | x       | address           | x   | x       | address            | x   | x       | name              | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | to           | x   | x       | BMC/Username          | x   | x       | BMC/Provider          | x   | x       | Bond/Mode             | x   | x       | Bond/Attached devices | x   | x       | Bond/Bond options     | x   | x       | ----------------------|-----|---------|-----",
+                  "help": "Print help ----------------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------------|-----|---------|----- | x   | x       | x | x   | x       | | x   | x       | address           | x   | x       | address            | x   | x       | name              | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | | x   | x       | to           | x   | x       | BMC/Username          | x   | x       | BMC/Provider          | x   | x       | Bond/Mode             | x   | x       | Bond/Attached devices | x   | x       | Bond/Bond options     | x   | x       | | x   | x       | ----------------------|-----|---------|-----",
                   "name": "help",
                   "shortname": "h",
                   "value": null
@@ -21528,7 +21841,7 @@
                   "value": "PAGE"
                 },
                 {
-                  "help": "Number of results per page to return",
+                  "help": "Number of results per page to return, 'all' to return all results",
                   "name": "per-page",
                   "shortname": null,
                   "value": "PER_PAGE"
@@ -21593,6 +21906,12 @@
                   "name": "domain-id",
                   "shortname": null,
                   "value": null
+                },
+                {
+                  "help": "Should this interface be used for remote execution? One of true/false, yes/no, 1/0.",
+                  "name": "execution",
+                  "shortname": null,
+                  "value": "EXECUTION"
                 },
                 {
                   "help": "Set the current host context for the request. Name/Id can be used",
@@ -21862,7 +22181,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -21892,7 +22211,7 @@
               "value": "THIN"
             },
             {
-              "help": "Print help -----------------------|-----|---------|----- | ALL | DEFAULT | THIN -----------------------|-----|---------|----- | x   | x       | x | x   | x       | x System       | x   | x       | Group             | x   | x       | | x   | x       | | x   | x       | Status          | x   | x       | | x   |         | | x   |         | Information | x   |         | View           | x   | x       | Environment  | x   | x       | | x   |         | | x   |         | | x   |         | Status           | x   | x       | -----------------------|-----|---------|----- string string string Values: mismatched, matched, not_specified string string date string string boolean boot_time Values: true, false string text string integer string string string integer datetime string integer string Values: security_needed, errata_needed, updated, unknown Values: ok, error string Values: ok, warning, error string string string string integer string string Values: true, false string string string datetime string job_invocation.id         string job_invocation.result     Values: cancelled, failed, pending, success datetime datetime string integer string integer string Values: true, false string string string integer string string string integer string string string string integer string string string string string integer string Values: mismatched, matched, not_specified string integer datetime string string text Values: mismatched, matched, not_specified string Values: mismatched, matched, not_specified string status.applied            integer status.enabled            Values: true, false status.failed             integer status.failed_restarts    integer status.interesting        Values: true, false status.pending            integer status.restarted          integer status.skipped            integer string subnet.name               text string subnet6.name              text string string Values: valid, partial, invalid, unknown, disabled, unsubscribed_hypervisor string Values: reboot_needed, process_restart_needed, updated string text Values: mismatched, matched, not_specified user.firstname            string user.lastname             string user.login                string user.mail                 string string usergroup.name            string string",
+              "help": "Print help -----------------------|-----|---------|----- | ALL | DEFAULT | THIN -----------------------|-----|---------|----- | x   | x       | x | x   | x       | x System       | x   | x       | Group             | x   | x       | | x   | x       | | x   | x       | Status          | x   | x       | | x   |         | | x   |         | Information | x   |         | View           | x   | x       | Environment  | x   | x       | | x   |         | | x   |         | | x   |         | Status           | x   | x       | -----------------------|-----|---------|----- string string string Values: mismatched, matched, not_specified string string date string string boolean boot_time Values: true, false string text string integer string string string integer datetime string string integer string Values: security_needed, errata_needed, updated, unknown Values: ok, error string Values: ok, warning, error string string string string integer string string boolean string string integer string datetime string job_invocation.id               string job_invocation.result           Values: cancelled, failed, pending, success datetime datetime string integer string integer string Values: true, false string string string integer string string string integer string string string string integer string string string string string integer string Values: mismatched, matched, not_specified string integer datetime string string text Values: mismatched, matched, not_specified string Values: mismatched, matched, not_specified string status.applied                  integer status.enabled                  Values: true, false status.failed                   integer status.failed_restarts          integer status.interesting              Values: true, false status.pending                  integer status.restarted                integer status.skipped                  integer string subnet.name                     text string subnet6.name                    text string string Values: valid, partial, invalid, unknown, disabled, unsubscribed_hypervisor string Values: reboot_needed, process_restart_needed, updated string text Values: mismatched, matched, not_specified user.firstname                  string user.lastname                   string user.login                      string user.mail                       string string usergroup.name                  string string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -22319,7 +22638,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -22496,7 +22815,7 @@
               "value": "NAME"
             },
             {
-              "help": "Limit rebuild steps, valOnly steps are DHCP, DNS, TFTP, SSH_Nic, SSH_Host Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "help": "Limit rebuild steps, valOnly steps are DHCP, DNS, TFTP, SSH_Nic, SSH_Host, Content_Host_Status Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
               "name": "only",
               "shortname": null,
               "value": "ONLY"
@@ -22599,7 +22918,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -22751,7 +23070,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -23390,6 +23709,43 @@
                 }
               ],
               "subcommands": []
+            },
+            {
+              "description": "Resolve Traces",
+              "name": "resolve",
+              "options": [
+                {
+                  "help": "Do not wait for the task",
+                  "name": "async",
+                  "shortname": null,
+                  "value": null
+                },
+                {
+                  "help": "Set the current host context for the request. Name/Id can be used",
+                  "name": "host",
+                  "shortname": null,
+                  "value": null
+                },
+                {
+                  "help": "Set the current host context for the request. Name/Id can be used",
+                  "name": "host-id",
+                  "shortname": null,
+                  "value": null
+                },
+                {
+                  "help": "Array of Trace Ids Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+                  "name": "trace-ids",
+                  "shortname": null,
+                  "value": "TRACE_IDS"
+                },
+                {
+                  "help": "Print help",
+                  "name": "help",
+                  "shortname": "h",
+                  "value": null
+                }
+              ],
+              "subcommands": []
             }
           ]
         },
@@ -23956,7 +24312,7 @@
               "value": "VOLUME"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --typed-parameters  \"name=<string>\\,value=<string>\\,parameter_type=[string|boolean|integer|real|array|hash|yaml|json]\\,hidden_value=[true|false|1|0], ... \" --installed-products-attributes  \"product_id=<string>\\,product_name=<string>\\,arch=<string>\\,version=<string>, ... \" mac ip Possible values: interface, bmc, bond, bridge name subnet_id domain_id identifier true/false true/false, each managed hosts needs to have one primary interface. true/false true/false virtual=true: tag                 VLAN tag, this attribute has precedence over the subnet VLAN ID. Only for virtual interfaces. attached_to         Identifier of the interface to which this interface belongs, e.g. eth1. type=bond: mode                Possible values: balance-rr, active-backup, balance-xor, broadcast, 802.3ad, balance-tlb, balance-alb attached_devices    Identifiers of slave interfaces, e.g. [eth1,eth2] bond_options type=bmc: provider            always IPMI username password NOTE: Bold attributes are required. EC2: --volume: --interface: --compute-attributes: availability_zone flavor_id groups security_group_ids managed_ip GCE: --volume: size_gb             Volume size in GB, integer value --interface: --compute-attributes: machine_type network associate_external_ip Libvirt: --volume: pool_name                    One of available storage pools capacity                     String value, e.g. 10G allocation Initial allocation, e.g. 0G format_type                  Possible values: raw, qcow2 --interface: compute_type                            Possible values: bridge, network compute_bridge                          Name of interface according to type compute_model                           Possible values: virtio, rtl8139, ne2k_pci, pcnet, e1000 compute_network Libvirt instance network, e.g. default --compute-attributes: cpus                Number of CPUs memory              String, amount of memory, value in bytes cpu_mode            Possible values: default, host-model, host-passthrough start               Boolean (expressed as 0 or 1), whether to start the machine or not OpenStack: --volume: --interface: --compute-attributes: availability_zone boot_from_volume flavor_ref image_ref tenant_id security_groups network oVirt: --volume: size_gb             Volume size in GB, integer value storage_domain      ID or name of storage domain bootable            Boolean, set 1 for bootable, only one volume can be bootable preallocate         Boolean, set 1 to preallocate wipe_after_delete   Boolean, set 1 to wipe disk after delete interface           Disk interface name, must be ide, virto or virto_scsi --interface: compute_name        Compute name, e.g. eth0 compute_network     Select one of available networks for a cluster, must be an ID or a name compute_interface   Interface type --compute-attributes: cluster             ID or name of cluster to use template            Hardware profile to use cores               Integer value, number of cores sockets             Integer value, number of sockets memory              Amount of memory, integer value in bytes display_type        Possible values: VNC, SPICE keyboard_layout     Possible values: ar, de-ch, es, fo, fr-ca, hu, ja, mk, no, pt-br, sv, da, en-gb, et, fr, fr-ch, is, lt, nl, pl, ru, th, de, en-us, fi, fr-be, hr, it, lv, nl-be, pt, sl, tr. Not usable if display type is SPICE. start               Boolean, set 1 to start the vm Rackspace: --volume: --interface: --compute-attributes: flavor_id VMware: --volume: name storage_pod         Storage Pod ID from VMware datastore           Datastore ID from VMware mode                persistent/independent_persistent/independent_nonpersistent size_gb             Integer number, volume size in GB thin                true/false eager_zero          true/false controller_key      Associated SCSI controller key --interface: compute_type        Type of the network adapter, for example one of: VirtualVmxnet3 VirtualE1000 See documentation center for your version of vSphere to find more details about available adapter types: https://www.vmware.com/support/pubs/ compute_network     Network ID or Network Name from VMware --compute-attributes: cluster              Cluster ID from VMware corespersocket       Number of cores per socket (applicable to hardware versions < 10 only) cpus                 CPU count memory_mb            Integer number, amount of memory in MB path                 Path to folder resource_pool        Resource Pool ID from VMware firmware             automatic/bios/efi guest_id             Guest OS ID form VMware hardware_version     Hardware version ID from VMware memoryHotAddEnabled  Must be a 1 or 0, lets you add memory resources while the machine is on cpuHotAddEnabled     Must be a 1 or 0, lets you add CPU resources while the machine is on add_cdrom            Must be a 1 or 0, Add a CD-ROM drive to the virtual machine annotation           Annotation Notes scsi_controllers     List with SCSI controllers definitions type - ID of the controller from VMware key  - Key of the controller (e.g. 1000) start                Must be a 1 or 0, whether to start the machine or not AzureRM: --volume: disk_size_gb        Volume Size in GB (integer value) data_disk_caching   Data Disk Caching (None, ReadOnly, ReadWrite) --interface: compute_network     Select one of available Azure Subnets, must be an ID compute_public_ip   Public IP (None, Static, Dynamic) compute_private_ip  Static Private IP (expressed as true or false) --compute-attributes: resource_group      Existing Azure Resource Group of user vm_size             VM Size, eg. Standard_A0 etc. username            The Admin username password            The Admin password platform            OS type eg. Linux ssh_key_data        SSH key for passwordless authentication os_disk_caching     OS disk caching premium_os_disk     Premium OS Disk, Boolean as 0 or 1 script_command      Custom Script Command script_uris         Comma seperated file URIs",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"name=<string>\\,value=<string>\\,parameter_type=[string|boolean|integer|real|array|hash|yaml|json]\\,hidden_value=[true|false|1|0], ... \" \"product_id=<string>\\,product_name=<string>\\,arch=<string>\\,version=<string>, ... \" mac ip Possible values: interface, bmc, bond, bridge name subnet_id domain_id identifier true/false true/false, each managed hosts needs to have one primary interface. true/false true/false virtual=true: tag                 VLAN tag, this attribute has precedence over the subnet VLAN ID. Only for virtual interfaces. attached_to         Identifier of the interface to which this interface belongs, e.g. eth1. type=bond: mode                Possible values: balance-rr, active-backup, balance-xor, broadcast, 802.3ad, balance-tlb, balance-alb attached_devices    Identifiers of slave interfaces, e.g. [eth1,eth2] bond_options type=bmc: provider            always IPMI username password NOTE: Bold attributes are required. EC2: --volume: --interface: --compute-attributes: availability_zone flavor_id groups security_group_ids managed_ip GCE: --volume: size_gb             Volume size in GB, integer value --interface: --compute-attributes: machine_type network associate_external_ip Libvirt: --volume: pool_name                    One of available storage pools capacity                     String value, e.g. 10G allocation Initial allocation, e.g. 0G format_type                  Possible values: raw, qcow2 --interface: compute_type                            Possible values: bridge, network compute_bridge                          Name of interface according to type compute_model                           Possible values: virtio, rtl8139, ne2k_pci, pcnet, e1000 compute_network Libvirt instance network, e.g. default --compute-attributes: cpus                Number of CPUs memory              String, amount of memory, value in bytes cpu_mode            Possible values: default, host-model, host-passthrough start               Boolean (expressed as 0 or 1), whether to start the machine or not OpenStack: --volume: --interface: --compute-attributes: availability_zone boot_from_volume flavor_ref image_ref tenant_id security_groups network oVirt: --volume: size_gb             Volume size in GB, integer value storage_domain      ID or name of storage domain bootable            Boolean, set 1 for bootable, only one volume can be bootable preallocate         Boolean, set 1 to preallocate wipe_after_delete   Boolean, set 1 to wipe disk after delete interface           Disk interface name, must be ide, virto or virto_scsi --interface: compute_name        Compute name, e.g. eth0 compute_network     Select one of available networks for a cluster, must be an ID or a name compute_interface   Interface type --compute-attributes: cluster             ID or name of cluster to use template            Hardware profile to use cores               Integer value, number of cores sockets             Integer value, number of sockets memory              Amount of memory, integer value in bytes ha                  Boolean, set 1 to high availability display_type        Possible values: VNC, SPICE keyboard_layout     Possible values: ar, de-ch, es, fo, fr-ca, hu, ja, mk, no, pt-br, sv, da, en-gb, et, fr, fr-ch, is, lt, nl, pl, ru, th, de, en-us, fi, fr-be, hr, it, lv, nl-be, pt, sl, tr. Not usable if display type is SPICE. start               Boolean, set 1 to start the vm Rackspace: --volume: --interface: --compute-attributes: flavor_id VMware: --volume: name storage_pod         Storage Pod ID from VMware datastore           Datastore ID from VMware mode                persistent/independent_persistent/independent_nonpersistent size_gb             Integer number, volume size in GB thin                true/false eager_zero          true/false controller_key      Associated SCSI controller key --interface: compute_type        Type of the network adapter, for example one of: VirtualVmxnet3 VirtualE1000 See documentation center for your version of vSphere to find more details about available adapter types: https://www.vmware.com/support/pubs/ compute_network     Network ID or Network Name from VMware --compute-attributes: cluster              Cluster ID from VMware corespersocket       Number of cores per socket (applicable to hardware versions < 10 only) cpus                 CPU count memory_mb            Integer number, amount of memory in MB path                 Path to folder resource_pool        Resource Pool ID from VMware firmware             automatic/bios/efi guest_id             Guest OS ID form VMware hardware_version     Hardware version ID from VMware memoryHotAddEnabled  Must be a 1 or 0, lets you add memory resources while the machine is on cpuHotAddEnabled     Must be a 1 or 0, lets you add CPU resources while the machine is on add_cdrom            Must be a 1 or 0, Add a CD-ROM drive to the virtual machine annotation           Annotation Notes scsi_controllers     List with SCSI controllers definitions type - ID of the controller from VMware key  - Key of the controller (e.g. 1000) start                Must be a 1 or 0, whether to start the machine or not AzureRM: --volume: disk_size_gb        Volume Size in GB (integer value) data_disk_caching   Data Disk Caching (None, ReadOnly, ReadWrite) --interface: compute_network     Select one of available Azure Subnets, must be an ID compute_public_ip   Public IP (None, Static, Dynamic) compute_private_ip  Static Private IP (expressed as true or false) --compute-attributes: resource_group      Existing Azure Resource Group of user vm_size             VM Size, eg. Standard_A0 etc. username            The Admin username password            The Admin password platform            OS type eg. Linux ssh_key_data        SSH key for passwordless authentication os_disk_caching     OS disk caching premium_os_disk     Premium OS Disk, Boolean as 0 or 1 script_command      Custom Script Command script_uris         Comma seperated file URIs",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -24398,7 +24754,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -24416,7 +24772,7 @@
               "value": "THIN"
             },
             {
-              "help": "Print help ------------|-----|---------|----- | ALL | DEFAULT | THIN ------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   |         | | x   |         | | x   |         | ------------|-----|---------|----- string string string Values: mismatched, matched, not_specified string string date string string boolean boot_time Values: true, false string text string integer string string string integer datetime string integer string Values: security_needed, errata_needed, updated, unknown Values: ok, error string Values: ok, warning, error string string string string integer string string Values: true, false string string string datetime string job_invocation.id         string job_invocation.result     Values: cancelled, failed, pending, success datetime datetime string integer string integer string Values: true, false string string string integer string string string integer string string string string integer string string string string string integer string Values: mismatched, matched, not_specified string integer datetime string string text Values: mismatched, matched, not_specified string Values: mismatched, matched, not_specified string status.applied            integer status.enabled            Values: true, false status.failed             integer status.failed_restarts    integer status.interesting        Values: true, false status.pending            integer status.restarted          integer status.skipped            integer string subnet.name               text string subnet6.name              text string string Values: valid, partial, invalid, unknown, disabled, unsubscribed_hypervisor string Values: reboot_needed, process_restart_needed, updated string text Values: mismatched, matched, not_specified user.firstname            string user.lastname             string user.login                string user.mail                 string string usergroup.name            string string",
+              "help": "Print help ------------|-----|---------|----- | ALL | DEFAULT | THIN ------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   |         | | x   |         | | x   |         | ------------|-----|---------|----- string string string Values: mismatched, matched, not_specified string string date string string boolean boot_time Values: true, false string text string integer string string string integer datetime string string integer string Values: security_needed, errata_needed, updated, unknown Values: ok, error string Values: ok, warning, error string string string string integer string string boolean string string integer string datetime string job_invocation.id               string job_invocation.result           Values: cancelled, failed, pending, success datetime datetime string integer string integer string Values: true, false string string string integer string string string integer string string string string integer string string string string string integer string Values: mismatched, matched, not_specified string integer datetime string string text Values: mismatched, matched, not_specified string Values: mismatched, matched, not_specified string status.applied                  integer status.enabled                  Values: true, false status.failed                   integer status.failed_restarts          integer status.interesting              Values: true, false status.pending                  integer status.restarted                integer status.skipped                  integer string subnet.name                     text string subnet6.name                    text string string Values: valid, partial, invalid, unknown, disabled, unsubscribed_hypervisor string Values: reboot_needed, process_restart_needed, updated string text Values: mismatched, matched, not_specified user.firstname                  string user.lastname                   string user.login                      string user.mail                       string string usergroup.name                  string string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -24820,10 +25176,10 @@
                   "value": null
                 },
                 {
-                  "help": "PACKAGE-GROUPS         Comma-separated list of package-groups to install Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+                  "help": "Comma-separated list of package-groups to install Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
                   "name": "package-groups",
                   "shortname": null,
-                  "value": null
+                  "value": "PACKAGE-GROUPS"
                 },
                 {
                   "help": "Print help",
@@ -24875,10 +25231,10 @@
                   "value": null
                 },
                 {
-                  "help": "PACKAGE-GROUPS         Comma-separated list of package-groups to install Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+                  "help": "Comma-separated list of package-groups to install Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
                   "name": "package-groups",
                   "shortname": null,
-                  "value": null
+                  "value": "PACKAGE-GROUPS"
                 },
                 {
                   "help": "Print help",
@@ -24930,10 +25286,10 @@
                   "value": null
                 },
                 {
-                  "help": "PACKAGE-GROUPS         Comma-separated list of package-groups to install Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+                  "help": "Comma-separated list of package-groups to install Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
                   "name": "package-groups",
                   "shortname": null,
-                  "value": null
+                  "value": "PACKAGE-GROUPS"
                 },
                 {
                   "help": "Print help",
@@ -25740,7 +26096,7 @@
               "value": "SUBNET6_ID"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --group-parameters-attributes  \"name=<string>\\,value=<string>\\,parameter_type=[string|boolean|integer|real|array|hash|yaml|json]\\,hidden_value=[true|false|1|0], ... \"",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"name=<string>\\,value=<string>\\,parameter_type=[string|boolean|integer|real|array|hash|yaml|json]\\,hidden_value=[true|false|1|0], ... \"",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -25990,7 +26346,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -26014,7 +26370,7 @@
               "value": "SEARCH"
             },
             {
-              "help": "Print help -------------------|-----|---------|----- | ALL | DEFAULT | THIN -------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | x System   | x   | x       | Environment | x   | x       | | x   | x       | -------------------|-----|---------|----- string string string string string integer string string integer string string string integer string string integer string string string text string string",
+              "help": "Print help -------------------|-----|---------|----- | ALL | DEFAULT | THIN -------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | x System   | x   | x       | Environment | x   | x       | | x   | x       | -------------------|-----|---------|----- string string string string string integer string string integer string string string integer string string integer string string string string string string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -26075,7 +26431,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -26136,7 +26492,7 @@
               "value": "NAME"
             },
             {
-              "help": "Limit rebuild steps, valOnly steps are DHCP, DNS, TFTP, SSH_Nic, SSH_Host Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "help": "Limit rebuild steps, valOnly steps are DHCP, DNS, TFTP, SSH_Nic, SSH_Host, Content_Host_Status Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
               "name": "only",
               "shortname": null,
               "value": "ONLY"
@@ -26251,7 +26607,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -26751,7 +27107,7 @@
               "value": "TITLE"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --group-parameters-attributes  \"name=<string>\\,value=<string>\\,parameter_type=[string|boolean|integer|real|array|hash|yaml|json]\\,hidden_value=[true|false|1|0], ... \"",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"name=<string>\\,value=<string>\\,parameter_type=[string|boolean|integer|real|array|hash|yaml|json]\\,hidden_value=[true|false|1|0], ... \"",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -27069,7 +27425,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -27592,12 +27948,6 @@
               "value": "FIELDS"
             },
             {
-              "help": "Show Job status for the hosts One of true/false, yes/no, 1/0.",
-              "name": "host-status",
-              "shortname": null,
-              "value": "HOST_STATUS"
-            },
-            {
               "help": "",
               "name": "id",
               "shortname": null,
@@ -27616,7 +27966,19 @@
               "value": "ORGANIZATION_ID"
             },
             {
-              "help": "Print help --------------------|-----|-------- | ALL | DEFAULT --------------------|-----|-------- | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x ordering | x   | x Category        | x   | x | x   | x line           | x   | x logic ID  | x   | x | x   | x --------------------|-----|--------",
+              "help": "Show job status for the hosts",
+              "name": "show-host-status",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Show the complete input of the job",
+              "name": "show-inputs",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Print help --------------------|-----|-------- | ALL | DEFAULT --------------------|-----|-------- | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x ordering | x   | x | x   | x Category        | x   | x | x   | x line           | x   | x logic ID  | x   | x | x   | x --------------------|-----|--------",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -27683,7 +28045,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -27695,7 +28057,7 @@
               "value": "SEARCH"
             },
             {
-              "help": "Print help --------------------|-----|-------- | ALL | DEFAULT --------------------|-----|-------- | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x ordering | x   | x --------------------|-----|--------",
+              "help": "Print help --------------------|-----|-------- | ALL | DEFAULT --------------------|-----|-------- | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x | x   | x ordering | x   | x | x   | x --------------------|-----|--------",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -28372,7 +28734,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -29873,7 +30235,7 @@
               "value": "TITLE"
             },
             {
-              "help": "Print help --------------------|-----|---------|----- | ALL | DEFAULT | THIN --------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | Users/              | x   | x       | proxies/      | x   | x       | Subnets/            | x   | x       | resources/  | x   | x       | media/ | x   | x       | Templates/          | x   | x       | Domains/            | x   | x       | Environments/       | x   | x       | Hostgroups/         | x   | x       | Parameters/         | x   | x       | Organizations/      | x   | x       | at          | x   | x       | at          | x   | x       | --------------------|-----|---------|-----",
+              "help": "Print help --------------------|-----|---------|----- | ALL | DEFAULT | THIN --------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | Users/              | x   | x       | proxies/      | x   | x       | Subnets/            | x   | x       | resources/  | x   | x       | media/ | x   | x       | Templates/          | x   | x       | Tables/   | x   | x       | Domains/            | x   | x       | Realms/             | x   | x       | Environments/       | x   | x       | Hostgroups/         | x   | x       | Parameters/         | x   | x       | Organizations/      | x   | x       | at          | x   | x       | at          | x   | x       | --------------------|-----|---------|-----",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -29940,7 +30302,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -30886,7 +31248,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -31271,7 +31633,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -31729,7 +32091,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -31905,12 +32267,6 @@
               "name": "product-id",
               "shortname": null,
               "value": null
-            },
-            {
-              "help": "Repository name to search by",
-              "name": "repository",
-              "shortname": null,
-              "value": "REPOSITORY_NAME"
             },
             {
               "help": "Repository ID",
@@ -32737,12 +33093,6 @@
               "value": null
             },
             {
-              "help": "Organization label to search by",
-              "name": "organization-label",
-              "shortname": null,
-              "value": "ORGANIZATION_LABEL"
-            },
-            {
               "help": "Set the current organization context for the request. Name/Title/Id can be used",
               "name": "organization-title",
               "shortname": null,
@@ -32912,12 +33262,6 @@
               "value": null
             },
             {
-              "help": "Organization label to search by",
-              "name": "organization-label",
-              "shortname": null,
-              "value": "ORGANIZATION_LABEL"
-            },
-            {
               "help": "Set the current organization context for the request. Name/Title/Id can be used",
               "name": "organization-title",
               "shortname": null,
@@ -33034,12 +33378,6 @@
               "value": null
             },
             {
-              "help": "Organization label to search by",
-              "name": "organization-label",
-              "shortname": null,
-              "value": "ORGANIZATION_LABEL"
-            },
-            {
               "help": "Set the current organization context for the request. Name/Title/Id can be used",
               "name": "organization-title",
               "shortname": null,
@@ -33052,7 +33390,7 @@
               "value": "TITLE"
             },
             {
-              "help": "Print help -----------------------|-----|---------|----- | ALL | DEFAULT | THIN -----------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | Users/                 | x   | x       | proxies/         | x   | x       | Subnets/               | x   | x       | resources/     | x   | x       | media/    | x   | x       | Templates/             | x   | x       | Domains/               | x   | x       | Environments/          | x   | x       | Hostgroups/            | x   | x       | Parameters/            | x   | x       | Locations/             | x   | x       | at             | x   | x       | at             | x   | x       | | x   | x       | x | x   | x       | Hat Repository URL | x   | x       | Levels         | x   | x       | -----------------------|-----|---------|-----",
+              "help": "Print help -----------------------|-----|---------|----- | ALL | DEFAULT | THIN -----------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | Users/                 | x   | x       | proxies/         | x   | x       | Subnets/               | x   | x       | resources/     | x   | x       | media/    | x   | x       | Templates/             | x   | x       | Tables/      | x   | x       | Domains/               | x   | x       | Realms/                | x   | x       | Environments/          | x   | x       | Hostgroups/            | x   | x       | Parameters/            | x   | x       | Locations/             | x   | x       | at             | x   | x       | at             | x   | x       | | x   | x       | x | x   | x       | Hat Repository URL | x   | x       | Levels         | x   | x       | -----------------------|-----|---------|-----",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -33111,12 +33449,6 @@
               "name": "organization-id",
               "shortname": null,
               "value": null
-            },
-            {
-              "help": "Organization label to search by",
-              "name": "organization-label",
-              "shortname": null,
-              "value": "ORGANIZATION_LABEL"
             },
             {
               "help": "Set the current organization context for the request. Name/Title/Id can be used",
@@ -33863,12 +34195,6 @@
               "value": null
             },
             {
-              "help": "Organization label to search by",
-              "name": "organization-label",
-              "shortname": null,
-              "value": "ORGANIZATION_LABEL"
-            },
-            {
               "help": "Set the current organization context for the request. Name/Title/Id can be used",
               "name": "organization-title",
               "shortname": null,
@@ -34271,7 +34597,7 @@
               "value": "RELEASE_NAME"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --os-parameters-attributes  \"name=<string>\\,value=<string>, ... \"",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"name=<string>\\,value=<string>, ... \"",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -34570,7 +34896,7 @@
               "value": null
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -34594,7 +34920,7 @@
               "value": "SEARCH"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --os-parameters-attributes  \"name=<string>\\,value=<string>, ... \" -------------|-----|---------|----- | ALL | DEFAULT | THIN -------------|-----|---------|----- | x   | x       | x | x   | x       | x name | x   | x       | | x   | x       | -------------|-----|---------|----- string string string string string string string text string string",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"name=<string>\\,value=<string>, ... \" -------------|-----|---------|----- | ALL | DEFAULT | THIN -------------|-----|---------|----- | x   | x       | x | x   | x       | x name | x   | x       | | x   | x       | -------------|-----|---------|----- string string string string string string string string string string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -34954,7 +35280,7 @@
               "value": "TITLE"
             },
             {
-              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): --os-parameters-attributes  \"name=<string>\\,value=<string>, ... \"",
+              "help": "Print help parameters accept format defined by its schema (bold are required; <> contain acceptable type; [] contain acceptable value): \"name=<string>\\,value=<string>, ... \"",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -36216,7 +36542,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -36833,7 +37159,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -36863,7 +37189,7 @@
               "value": "THIN"
             },
             {
-              "help": "Print help -----------------------|-----|---------|----- | ALL | DEFAULT | THIN -----------------------|-----|---------|----- | x   | x       | x | x   | x       | x System       | x   | x       | Group             | x   | x       | | x   | x       | | x   | x       | Status          | x   | x       | | x   |         | | x   |         | Information | x   |         | View           | x   | x       | Environment  | x   | x       | | x   |         | | x   |         | | x   |         | Status           | x   | x       | -----------------------|-----|---------|----- string string string Values: mismatched, matched, not_specified string string date string string boolean boot_time Values: true, false string text string integer string string string integer datetime string integer string Values: security_needed, errata_needed, updated, unknown Values: ok, error string Values: ok, warning, error string string string string integer string string Values: true, false string string string datetime string job_invocation.id         string job_invocation.result     Values: cancelled, failed, pending, success datetime datetime string integer string integer string Values: true, false string string string integer string string string integer string string string string integer string string string string string integer string Values: mismatched, matched, not_specified string integer datetime string string text Values: mismatched, matched, not_specified string Values: mismatched, matched, not_specified string status.applied            integer status.enabled            Values: true, false status.failed             integer status.failed_restarts    integer status.interesting        Values: true, false status.pending            integer status.restarted          integer status.skipped            integer string subnet.name               text string subnet6.name              text string string Values: valid, partial, invalid, unknown, disabled, unsubscribed_hypervisor string Values: reboot_needed, process_restart_needed, updated string text Values: mismatched, matched, not_specified user.firstname            string user.lastname             string user.login                string user.mail                 string string usergroup.name            string string",
+              "help": "Print help -----------------------|-----|---------|----- | ALL | DEFAULT | THIN -----------------------|-----|---------|----- | x   | x       | x | x   | x       | x System       | x   | x       | Group             | x   | x       | | x   | x       | | x   | x       | Status          | x   | x       | | x   |         | | x   |         | Information | x   |         | View           | x   | x       | Environment  | x   | x       | | x   |         | | x   |         | | x   |         | Status           | x   | x       | -----------------------|-----|---------|----- string string string Values: mismatched, matched, not_specified string string date string string boolean boot_time Values: true, false string text string integer string string string integer datetime string string integer string Values: security_needed, errata_needed, updated, unknown Values: ok, error string Values: ok, warning, error string string string string integer string string boolean string string integer string datetime string job_invocation.id               string job_invocation.result           Values: cancelled, failed, pending, success datetime datetime string integer string integer string Values: true, false string string string integer string string string integer string string string string integer string string string string string integer string Values: mismatched, matched, not_specified string integer datetime string string text Values: mismatched, matched, not_specified string Values: mismatched, matched, not_specified string status.applied                  integer status.enabled                  Values: true, false status.failed                   integer status.failed_restarts          integer status.interesting              Values: true, false status.pending                  integer status.restarted                integer status.skipped                  integer string subnet.name                     text string subnet6.name                    text string string Values: valid, partial, invalid, unknown, disabled, unsubscribed_hypervisor string Values: reboot_needed, process_restart_needed, updated string text Values: mismatched, matched, not_specified user.firstname                  string user.lastname                   string user.login                      string user.mail                       string string usergroup.name                  string string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -36997,7 +37323,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -38797,7 +39123,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -39229,7 +39555,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -39320,7 +39646,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -39650,7 +39976,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -39753,7 +40079,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -40442,7 +40768,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -40653,6 +40979,31 @@
           "subcommands": []
         },
         {
+          "description": "Delete all recuring logics filtered by the arguments",
+          "name": "delete",
+          "options": [
+            {
+              "help": "Only delete cancelled recurring logics",
+              "name": "cancelled",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Only delete finished recurring logics",
+              "name": "finished",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Print help",
+              "name": "help",
+              "shortname": "h",
+              "value": null
+            }
+          ],
+          "subcommands": []
+        },
+        {
           "description": "Show recurring logic details",
           "name": "info",
           "options": [
@@ -40711,7 +41062,7 @@
               "value": null
             },
             {
-              "help": "Print help ----------|-----|-------- | ALL | DEFAULT ----------|-----|-------- | x   | x line | x   | x time  | x   | x | x   | x | x   | x ----------|-----|--------",
+              "help": "Print help ----------------|-----|-------- | ALL | DEFAULT ----------------|-----|-------- | x   | x line       | x   | x | x   | x occurrence | x   | x occurrence | x   | x | x   | x limit | x   | x until    | x   | x | x   | x ----------------|-----|--------",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -40778,7 +41129,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -40790,7 +41141,7 @@
               "value": "SEARCH"
             },
             {
-              "help": "Print help ----------|-----|-------- | ALL | DEFAULT ----------|-----|-------- | x   | x line | x   | x time  | x   | x | x   | x | x   | x ----------|-----|--------",
+              "help": "Print help ----------|-----|-------- | ALL | DEFAULT ----------|-----|-------- | x   | x line | x   | x | x   | x time  | x   | x | x   | x ----------|-----|--------",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -41202,7 +41553,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -41896,7 +42247,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -42274,19 +42625,19 @@
               "value": "CONTENT_TYPE"
             },
             {
-              "help": "Comma separated list of architectures to be synched from deb-archive",
+              "help": "Comma-separated list of architectures to be synced from deb-archive",
               "name": "deb-architectures",
               "shortname": null,
               "value": "DEB_ARCHITECTURES"
             },
             {
-              "help": "Comma separated list of repo components to be synched from deb-archive",
+              "help": "Comma-separated list of repo components to be synced from deb-archive",
               "name": "deb-components",
               "shortname": null,
               "value": "DEB_COMPONENTS"
             },
             {
-              "help": "Comma separated list of releases to be synched from deb-archive",
+              "help": "Comma-separated list of releases to be synced from deb-archive",
               "name": "deb-releases",
               "shortname": null,
               "value": "DEB_RELEASES"
@@ -42298,7 +42649,7 @@
               "value": "DESCRIPTION"
             },
             {
-              "help": "Comma separated list of tags to sync for Container Image repository Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "help": "Comma-separated list of tags to sync for Container Image repository Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
               "name": "docker-tags-whitelist",
               "shortname": null,
               "value": "DOCKER_TAGS_WHITELIST"
@@ -42308,6 +42659,12 @@
               "name": "docker-upstream-name",
               "shortname": null,
               "value": "DOCKER_UPSTREAM_NAME"
+            },
+            {
+              "help": "Used to determine download concurrency of the repository in pulp3. Use Value less than 20. Defaults to 10",
+              "name": "download-concurrency",
+              "shortname": null,
+              "value": "DOWNLOAD_CONCURRENCY"
             },
             {
               "help": "Download policy for yum repos (either 'immediate', 'on_demand', or 'background (deprecated)') Possible value(s): 'immediate', 'on_demand', 'background'",
@@ -42398,6 +42755,12 @@
               "name": "organization-label",
               "shortname": null,
               "value": null
+            },
+            {
+              "help": "Identifies whether the repository should be disabled on a client with a Non-matching OS version. Pass [] to enable regardless of OS version. Maximum length 1; allowed tags are: rhel-6, rhel-7, rhel-8 Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "os-versions",
+              "shortname": null,
+              "value": "OS_VERSIONS"
             },
             {
               "help": "If a custom sync policy is chosen for ostree repositories then a 'depth' value must be provided",
@@ -42691,7 +43054,7 @@
               "value": null
             },
             {
-              "help": "Print help ----------------------------------------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------------------------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | Hat Repository                            | x   | x       | Type                                  | x   | x       | Type                                 | x   | x       | on Sync                                | x   | x       | | x   | x       | Via HTTP                              | x   | x       | At                                  | x   | x       | Path                                 | x   | x       | Policy                               | x   | x       | Upstream Sync Policy                   | x   | x       | Upstream Sync Depth                    | x   | x       | Repository Name                      | x   | x       | Image Tags Filter                   | x   | x       | Repository Name                     | x   | x       | Content Units                       | x   | x       | Proxy/ID                                 | x   | x       | Proxy/Name                               | x   | x       | Proxy/HTTP Proxy Policy                  | x   | x       | Product/ID                                    | x   | x       | Product/Name                                  | x   | x       | Key/ID                                    | x   | x       | Key/Name                                  | x   | x       | Sync/Status                                   | x   | x       | Sync/Last Sync Date                           | x   | x       | | x   | x       | | x   | x       | Counts/Packages                       | x   | x       | Counts/Source RPMS                    | x   | x       | Counts/Package Groups                 | x   | x       | Counts/Errata                         | x   | x       | Counts/Puppet Modules                 | x   | x       | Counts/Container Image Manifest Lists | x   | x       | Counts/Container Image Manifests      | x   | x       | Counts/Container Image Tags           | x   | x       | Counts/OSTree Branches                | x   | x       | Counts/Files                          | x   | x       | Counts/Module Streams                 | x   | x       | ----------------------------------------------|-----|---------|-----",
+              "help": "Print help ----------------------------------------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------------------------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | | x   | x       | Hat Repository                            | x   | x       | Type                                  | x   | x       | Type                                 | x   | x       | on Sync                                | x   | x       | | x   | x       | Via HTTP                              | x   | x       | At                                  | x   | x       | Path                                 | x   | x       | Policy                               | x   | x       | Upstream Sync Policy                   | x   | x       | Upstream Sync Depth                    | x   | x       | Repository Name                      | x   | x       | Image Tags Filter                   | x   | x       | Repository Name                     | x   | x       | Content Units                       | x   | x       | Proxy/ID                                 | x   | x       | Proxy/Name                               | x   | x       | Proxy/HTTP Proxy Policy                  | x   | x       | Product/ID                                    | x   | x       | Product/Name                                  | x   | x       | Key/ID                                    | x   | x       | Key/Name                                  | x   | x       | Sync/Status                                   | x   | x       | Sync/Last Sync Date                           | x   | x       | | x   | x       | | x   | x       | Counts/Packages                       | x   | x       | Counts/Source RPMS                    | x   | x       | Counts/Package Groups                 | x   | x       | Counts/Errata                         | x   | x       | Counts/Puppet Modules                 | x   | x       | Counts/Container Image Manifest Lists | x   | x       | Counts/Container Image Manifests      | x   | x       | Counts/Container Image Tags           | x   | x       | Counts/OSTree Branches                | x   | x       | Counts/Files                          | x   | x       | Counts/Module Streams                 | x   | x       | ----------------------------------------------|-----|---------|-----",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -42774,6 +43137,12 @@
               "name": "description",
               "shortname": null,
               "value": "DESCRIPTION"
+            },
+            {
+              "help": "Limit to only repositories with this download policy Possible value(s): 'immediate', 'on_demand', 'background'",
+              "name": "download-policy",
+              "shortname": null,
+              "value": "DOWNLOAD_POLICY"
             },
             {
               "help": "Lifecycle environment name to search by (--environment is deprecated: Use --lifecycle-environment instead)",
@@ -43115,25 +43484,43 @@
               "value": "CHECKSUM_TYPE"
             },
             {
-              "help": "Comma separated list of architectures to be synched from deb-archive",
+              "help": "Comma-separated list of architectures to be synced from deb-archive",
               "name": "deb-architectures",
               "shortname": null,
               "value": "DEB_ARCHITECTURES"
             },
             {
-              "help": "Comma separated list of repo components to be synched from deb-archive",
+              "help": "Comma-separated list of repo components to be synced from deb-archive",
               "name": "deb-components",
               "shortname": null,
               "value": "DEB_COMPONENTS"
             },
             {
-              "help": "Comma separated list of releases to be synched from deb-archive",
+              "help": "Comma-separated list of releases to be synced from deb-archive",
               "name": "deb-releases",
               "shortname": null,
               "value": "DEB_RELEASES"
             },
             {
-              "help": "Comma separated list of tags to sync for Container Image repository Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "help": "Description of the repository",
+              "name": "description",
+              "shortname": null,
+              "value": "DESCRIPTION"
+            },
+            {
+              "help": "Container Image manifest digest",
+              "name": "docker-digest",
+              "shortname": null,
+              "value": "DIGEST"
+            },
+            {
+              "help": "Container Image tag",
+              "name": "docker-tag",
+              "shortname": null,
+              "value": "TAG"
+            },
+            {
+              "help": "Comma-separated list of tags to sync for Container Image repository Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
               "name": "docker-tags-whitelist",
               "shortname": null,
               "value": "DOCKER_TAGS_WHITELIST"
@@ -43143,6 +43530,12 @@
               "name": "docker-upstream-name",
               "shortname": null,
               "value": "DOCKER_UPSTREAM_NAME"
+            },
+            {
+              "help": "Used to determine download concurrency of the repository in pulp3. Use Value less than 20. Defaults to 10",
+              "name": "download-concurrency",
+              "shortname": null,
+              "value": "DOWNLOAD_CONCURRENCY"
             },
             {
               "help": "Download policy for yum repos (either 'immediate', 'on_demand', or 'background (deprecated)') Possible value(s): 'immediate', 'on_demand', 'background'",
@@ -43233,6 +43626,12 @@
               "name": "organization-label",
               "shortname": null,
               "value": "ORGANIZATION_LABEL"
+            },
+            {
+              "help": "Identifies whether the repository should be disabled on a client with a Non-matching OS version. Pass [] to enable regardless of OS version. Maximum length 1; allowed tags are: rhel-6, rhel-7, rhel-8 Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "os-versions",
+              "shortname": null,
+              "value": "OS_VERSIONS"
             },
             {
               "help": "If a custom sync policy is chosen for ostree repositories then a 'depth' value must be provided",
@@ -44149,7 +44548,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -44295,7 +44694,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -44715,7 +45114,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -45016,6 +45415,61 @@
       ],
       "subcommands": [
         {
+          "description": "Upload scap contents in bulk",
+          "name": "bulk-upload",
+          "options": [
+            {
+              "help": "Directory to upload when using \u201cdirectory\u201d upload type",
+              "name": "directory",
+              "shortname": null,
+              "value": "DIRECTORY"
+            },
+            {
+              "help": "File paths to upload when using \u201cfiles\u201d upload type Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "files",
+              "shortname": null,
+              "value": "FILES"
+            },
+            {
+              "help": "Set the current location context for the request. Name/Id can be used",
+              "name": "location",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current location context for the request. Name/Id can be used",
+              "name": "location-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Id can be used",
+              "name": "organization",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Id can be used",
+              "name": "organization-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Type of the upload Possible value(s): 'files', 'directory', 'default'",
+              "name": "type",
+              "shortname": null,
+              "value": "TYPE"
+            },
+            {
+              "help": "Print help",
+              "name": "help",
+              "shortname": "h",
+              "value": null
+            }
+          ],
+          "subcommands": []
+        },
+        {
           "description": "Create SCAP content",
           "name": "create",
           "options": [
@@ -45245,7 +45699,7 @@
               "value": "TITLE"
             },
             {
-              "help": "Print help ---------------------------------|-----|---------|----- | ALL | DEFAULT | THIN ---------------------------------|-----|---------|----- | x   | x       | x | x   | x       | x at                       | x   | x       | filename                | x   | x       | content profiles/Id         | x   | x       | content profiles/Profile id | x   | x       | content profiles/Title      | x   | x       | Locations/                       | x   | x       | Organizations/                   | x   | x       | ---------------------------------|-----|---------|-----",
+              "help": "Print help ---------------------------------|-----|---------|----- | ALL | DEFAULT | THIN ---------------------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | at                       | x   | x       | filename                | x   | x       | content profiles/Id         | x   | x       | content profiles/Profile id | x   | x       | content profiles/Title      | x   | x       | Locations/                       | x   | x       | Organizations/                   | x   | x       | ---------------------------------|-----|---------|-----",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -45312,7 +45766,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -45324,7 +45778,7 @@
               "value": "SEARCH"
             },
             {
-              "help": "Print help -------|-----|---------|----- | ALL | DEFAULT | THIN -------|-----|---------|----- | x   | x       | x | x   | x       | x -------|-----|---------|----- datetime string string integer string integer string",
+              "help": "Print help -------|-----|---------|----- | ALL | DEFAULT | THIN -------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | -------|-----|---------|----- datetime string string integer string integer string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -45496,7 +45950,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -45530,6 +45984,73 @@
         }
       ],
       "subcommands": [
+        {
+          "description": "Show a setting",
+          "name": "info",
+          "options": [
+            {
+              "help": "Show specified fields or predefined field sets only. (See below) Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "fields",
+              "shortname": null,
+              "value": "FIELDS"
+            },
+            {
+              "help": "",
+              "name": "id",
+              "shortname": null,
+              "value": "ID"
+            },
+            {
+              "help": "Set the current location context for the request. Name/Title/Id can be used",
+              "name": "location",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current location context for the request. Name/Title/Id can be used",
+              "name": "location-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current location context for the request. Name/Title/Id can be used",
+              "name": "location-title",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Setting name",
+              "name": "name",
+              "shortname": null,
+              "value": "NAME"
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Id can be used",
+              "name": "organization",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Id can be used",
+              "name": "organization-id",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current organization context for the request. Name/Title/Id can be used",
+              "name": "organization-title",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Print help --------------|-----|---------|----- | ALL | DEFAULT | THIN --------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | type | x   | x       | | x   | x       | --------------|-----|---------|-----",
+              "name": "help",
+              "shortname": "h",
+              "value": null
+            }
+          ],
+          "subcommands": []
+        },
         {
           "description": "List all settings",
           "name": "list",
@@ -45589,7 +46110,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -45962,6 +46483,12 @@
           "name": "create",
           "options": [
             {
+              "help": "BMC Capsule Id to use within this subnet",
+              "name": "bmc-id",
+              "shortname": null,
+              "value": "BMC_ID"
+            },
+            {
               "help": "Default boot mode for interfaces assigned to this subnet. Possible value(s): 'Static', 'DHCP'",
               "name": "boot-mode",
               "shortname": null,
@@ -46026,6 +46553,12 @@
               "name": "domain-ids",
               "shortname": null,
               "value": null
+            },
+            {
+              "help": "External IPAM group - only relevant when IPAM is set to external",
+              "name": "externalipam-group",
+              "shortname": null,
+              "value": "EXTERNALIPAM_GROUP"
             },
             {
               "help": "External IPAM Capsule Id to use within this subnet",
@@ -46164,6 +46697,12 @@
               "name": "prefix",
               "shortname": null,
               "value": "PREFIX"
+            },
+            {
+              "help": "List of Capsule Ids to be used for remote execution Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "remote-execution-proxy-ids",
+              "shortname": null,
+              "value": "REMOTE_EXECUTION_PROXY_IDS"
             },
             {
               "help": "Set the current template context for the request. Id can be used",
@@ -46361,7 +46900,7 @@
               "value": "SHOW_HIDDEN_PARAMETERS"
             },
             {
-              "help": "Print help -------------------|-----|---------|----- | ALL | DEFAULT | THIN -------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | | x   | x       | Addr       | x   | x       | Prefix     | x   | x       | Mask       | x   | x       | Addr       | x   | x       | DNS        | x   | x       | DNS      | x   | x       | Proxies/DNS  | x   | x       | Proxies/TFTP | x   | x       | Proxies/DHCP | x   | x       | | x   | x       | of IP Range  | x   | x       | of IP Range    | x   | x       | ID            | x   | x       | | x   | x       | Mode          | x   | x       | Domains/           | x   | x       | Locations/         | x   | x       | Organizations/     | x   | x       | Parameters/        | x   | x       | -------------------|-----|---------|-----",
+              "help": "Print help ------------------------------|-----|---------|----- | ALL | DEFAULT | THIN ------------------------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | | x   | x       | Addr                  | x   | x       | Prefix                | x   | x       | Mask                  | x   | x       | Addr                  | x   | x       | DNS                   | x   | x       | DNS                 | x   | x       | Proxies/DNS             | x   | x       | Proxies/TFTP            | x   | x       | Proxies/DHCP            | x   | x       | execution proxies/Id   | x   | x       | execution proxies/Name | x   | x       | | x   | x       | of IP Range             | x   | x       | of IP Range               | x   | x       | ID                       | x   | x       | | x   | x       | Mode                     | x   | x       | Domains/                      | x   | x       | Locations/                    | x   | x       | Organizations/                | x   | x       | Parameters/                   | x   | x       | ------------------------------|-----|---------|-----",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -46440,7 +46979,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -46452,7 +46991,7 @@
               "value": "SEARCH"
             },
             {
-              "help": "Print help ----------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------|-----|---------|----- | x   | x       | x | x   | x       | x Addr    | x   | x       | Prefix  | x   | x       | Mask    | x   | x       | ID         | x   | x       | Mode       | x   | x       | Address | x   | x       | ----------------|-----|---------|----- string string string string string string string integer string integer text string integer string integer text string integer",
+              "help": "Print help ----------------|-----|---------|----- | ALL | DEFAULT | THIN ----------------|-----|---------|----- | x   | x       | x | x   | x       | x Addr    | x   | x       | Prefix  | x   | x       | Mask    | x   | x       | ID         | x   | x       | Mode       | x   | x       | Address | x   | x       | ----------------|-----|---------|----- string string string string string string string integer string integer text string integer string integer string string integer",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -46513,6 +47052,12 @@
           "description": "Update a subnet",
           "name": "update",
           "options": [
+            {
+              "help": "BMC Capsule Id to use within this subnet",
+              "name": "bmc-id",
+              "shortname": null,
+              "value": "BMC_ID"
+            },
             {
               "help": "Default boot mode for interfaces assigned to this subnet. Possible value(s): 'Static', 'DHCP'",
               "name": "boot-mode",
@@ -46578,6 +47123,12 @@
               "name": "domain-ids",
               "shortname": null,
               "value": null
+            },
+            {
+              "help": "External IPAM group - only relevant when IPAM is set to external",
+              "name": "externalipam-group",
+              "shortname": null,
+              "value": "EXTERNALIPAM_GROUP"
             },
             {
               "help": "External IPAM Capsule Id to use within this subnet",
@@ -46728,6 +47279,12 @@
               "name": "prefix",
               "shortname": null,
               "value": "PREFIX"
+            },
+            {
+              "help": "List of Capsule Ids to be used for remote execution Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
+              "name": "remote-execution-proxy-ids",
+              "shortname": null,
+              "value": "REMOTE_EXECUTION_PROXY_IDS"
             },
             {
               "help": "Set the current template context for the request. Id can be used",
@@ -47777,7 +48334,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -47944,12 +48501,6 @@
           "name": "list",
           "options": [
             {
-              "help": "Field to sort the results on",
-              "name": "by",
-              "shortname": null,
-              "value": "BY"
-            },
-            {
               "help": "Show specified fields or predefined field sets only. (See below) Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
               "name": "fields",
               "shortname": null,
@@ -47962,7 +48513,7 @@
               "value": "LOCATION_ID"
             },
             {
-              "help": "Sort field and order, e.g. 'name DESC'",
+              "help": "Sort field and order, eg. \u2018Order DESC\u2019",
               "name": "order",
               "shortname": null,
               "value": "ORDER"
@@ -47980,13 +48531,19 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "UUId of the task",
+              "name": "parent-task-id",
+              "shortname": null,
+              "value": "PARENT_TASK_ID"
+            },
+            {
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
             },
             {
-              "help": "Search string",
+              "help": "Filter results",
               "name": "search",
               "shortname": null,
               "value": "SEARCH"
@@ -49182,7 +49739,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -49505,7 +50062,7 @@
               "value": "REQUIRED"
             },
             {
-              "help": "For values of type search, this is the resource the value searches in Possible value(s): 'AnsibleRole', 'AnsibleVariable', 'Architecture', 'Audit', 'AuthSource', 'Bookmark', 'ComputeProfile', 'ComputeResource', 'ConfigGroup', 'ConfigReport', 'DiscoveryRule', 'Domain', 'Environment', 'ExternalUsergroup', 'FactValue', 'Filter', 'ForemanOpenscap::ArfReport', 'ForemanOpenscap::Policy', 'ForemanOpenscap::ScapContent', 'ForemanOpenscap::TailoringFile', 'ForemanTasks::RecurringLogic', 'ForemanTasks::Task', 'ForemanVirtWhoConfigure::Config', 'Host', 'HostClass', 'Hostgroup', 'HttpProxy', 'Image', 'JobInvocation', 'JobTemplate', 'Katello::ActivationKey', 'Katello::ContentView', 'Katello::GpgKey', 'Katello::HostCollection', 'Katello::KTEnvironment', 'Katello::Product', 'Katello::Subscription', 'Katello::SyncPlan', 'KeyPair', 'Location', 'MailNotification', 'Medium', 'Model', 'Operatingsystem', 'Organization', 'Parameter', 'PersonalAccessToken', 'ProvisioningTemplate', 'Ptable', 'Puppetclass', 'PuppetclassLookupKey', 'Realm', 'RemoteExecutionFeature', 'Report', 'ReportTemplate', 'Role', 'Setting', 'SmartProxy', 'SshKey', 'Subnet', 'Template', 'TemplateInvocation', 'Trend', 'User', 'Usergroup'",
+              "help": "For values of type search, this is the resource the value searches in Possible value(s): 'AnsibleRole', 'AnsibleVariable', 'Architecture', 'Audit', 'AuthSource', 'Bookmark', 'ComputeProfile', 'ComputeResource', 'ConfigGroup', 'ConfigReport', 'DiscoveryRule', 'Domain', 'Environment', 'ExternalUsergroup', 'FactValue', 'Filter', 'ForemanOpenscap::ArfReport', 'ForemanOpenscap::Policy', 'ForemanOpenscap::ScapContent', 'ForemanOpenscap::TailoringFile', 'ForemanTasks::RecurringLogic', 'ForemanTasks::Task', 'ForemanVirtWhoConfigure::Config', 'Host', 'HostClass', 'Hostgroup', 'HttpProxy', 'Image', 'JobInvocation', 'JobTemplate', 'Katello::ActivationKey', 'Katello::ContentView', 'Katello::GpgKey', 'Katello::HostCollection', 'Katello::KTEnvironment', 'Katello::Product', 'Katello::Subscription', 'Katello::SyncPlan', 'KeyPair', 'Location', 'MailNotification', 'Medium', 'Model', 'Operatingsystem', 'Organization', 'Parameter', 'PersonalAccessToken', 'ProvisioningTemplate', 'Ptable', 'Puppetclass', 'PuppetclassLookupKey', 'Realm', 'RemoteExecutionFeature', 'Report', 'ReportTemplate', 'Role', 'Setting', 'SmartProxy', 'SshKey', 'Subnet', 'Template', 'TemplateInvocation', 'User', 'Usergroup'",
               "name": "resource-type",
               "shortname": null,
               "value": "RESOURCE_TYPE"
@@ -49736,7 +50293,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -49881,7 +50438,7 @@
               "value": "REQUIRED"
             },
             {
-              "help": "For values of type search, this is the resource the value searches in Possible value(s): 'AnsibleRole', 'AnsibleVariable', 'Architecture', 'Audit', 'AuthSource', 'Bookmark', 'ComputeProfile', 'ComputeResource', 'ConfigGroup', 'ConfigReport', 'DiscoveryRule', 'Domain', 'Environment', 'ExternalUsergroup', 'FactValue', 'Filter', 'ForemanOpenscap::ArfReport', 'ForemanOpenscap::Policy', 'ForemanOpenscap::ScapContent', 'ForemanOpenscap::TailoringFile', 'ForemanTasks::RecurringLogic', 'ForemanTasks::Task', 'ForemanVirtWhoConfigure::Config', 'Host', 'HostClass', 'Hostgroup', 'HttpProxy', 'Image', 'JobInvocation', 'JobTemplate', 'Katello::ActivationKey', 'Katello::ContentView', 'Katello::GpgKey', 'Katello::HostCollection', 'Katello::KTEnvironment', 'Katello::Product', 'Katello::Subscription', 'Katello::SyncPlan', 'KeyPair', 'Location', 'MailNotification', 'Medium', 'Model', 'Operatingsystem', 'Organization', 'Parameter', 'PersonalAccessToken', 'ProvisioningTemplate', 'Ptable', 'Puppetclass', 'PuppetclassLookupKey', 'Realm', 'RemoteExecutionFeature', 'Report', 'ReportTemplate', 'Role', 'Setting', 'SmartProxy', 'SshKey', 'Subnet', 'Template', 'TemplateInvocation', 'Trend', 'User', 'Usergroup'",
+              "help": "For values of type search, this is the resource the value searches in Possible value(s): 'AnsibleRole', 'AnsibleVariable', 'Architecture', 'Audit', 'AuthSource', 'Bookmark', 'ComputeProfile', 'ComputeResource', 'ConfigGroup', 'ConfigReport', 'DiscoveryRule', 'Domain', 'Environment', 'ExternalUsergroup', 'FactValue', 'Filter', 'ForemanOpenscap::ArfReport', 'ForemanOpenscap::Policy', 'ForemanOpenscap::ScapContent', 'ForemanOpenscap::TailoringFile', 'ForemanTasks::RecurringLogic', 'ForemanTasks::Task', 'ForemanVirtWhoConfigure::Config', 'Host', 'HostClass', 'Hostgroup', 'HttpProxy', 'Image', 'JobInvocation', 'JobTemplate', 'Katello::ActivationKey', 'Katello::ContentView', 'Katello::GpgKey', 'Katello::HostCollection', 'Katello::KTEnvironment', 'Katello::Product', 'Katello::Subscription', 'Katello::SyncPlan', 'KeyPair', 'Location', 'MailNotification', 'Medium', 'Model', 'Operatingsystem', 'Organization', 'Parameter', 'PersonalAccessToken', 'ProvisioningTemplate', 'Ptable', 'Puppetclass', 'PuppetclassLookupKey', 'Realm', 'RemoteExecutionFeature', 'Report', 'ReportTemplate', 'Role', 'Setting', 'SmartProxy', 'SshKey', 'Subnet', 'Template', 'TemplateInvocation', 'User', 'Usergroup'",
               "name": "resource-type",
               "shortname": null,
               "value": "RESOURCE_TYPE"
@@ -49906,270 +50463,6 @@
             },
             {
               "help": "Print help",
-              "name": "help",
-              "shortname": "h",
-              "value": null
-            }
-          ],
-          "subcommands": []
-        }
-      ]
-    },
-    {
-      "description": "Manage trends",
-      "name": "trend",
-      "options": [
-        {
-          "help": "Print help",
-          "name": "help",
-          "shortname": "h",
-          "value": null
-        }
-      ],
-      "subcommands": [
-        {
-          "description": "Create a trend counter",
-          "name": "create",
-          "options": [
-            {
-              "help": "",
-              "name": "fact-name",
-              "shortname": null,
-              "value": "FACT_NAME"
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location-id",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location-title",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "",
-              "name": "name",
-              "shortname": null,
-              "value": "NAME"
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization-id",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization-title",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Possible value(s): 'Environment', 'Operatingsystem', 'Model', 'FactName', 'Hostgroup', 'ComputeResource'",
-              "name": "trendable-type",
-              "shortname": null,
-              "value": "TRENDABLE_TYPE"
-            },
-            {
-              "help": "Print help",
-              "name": "help",
-              "shortname": "h",
-              "value": null
-            }
-          ],
-          "subcommands": []
-        },
-        {
-          "description": "Delete a trend counter",
-          "name": "delete",
-          "options": [
-            {
-              "help": "",
-              "name": "id",
-              "shortname": null,
-              "value": "ID"
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location-id",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location-title",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Name to search by",
-              "name": "name",
-              "shortname": null,
-              "value": "NAME"
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization-id",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization-title",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Print help",
-              "name": "help",
-              "shortname": "h",
-              "value": null
-            }
-          ],
-          "subcommands": []
-        },
-        {
-          "description": "Show a trend",
-          "name": "info",
-          "options": [
-            {
-              "help": "Show specified fields or predefined field sets only. (See below) Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
-              "name": "fields",
-              "shortname": null,
-              "value": "FIELDS"
-            },
-            {
-              "help": "",
-              "name": "id",
-              "shortname": null,
-              "value": "ID"
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location-id",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location-title",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Name to search by",
-              "name": "name",
-              "shortname": null,
-              "value": "NAME"
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization-id",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization-title",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Print help ---------------|-----|---------|----- | ALL | DEFAULT | THIN ---------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | Locations/     | x   | x       | Organizations/ | x   | x       | at     | x   | x       | at     | x   | x       | ---------------|-----|---------|-----",
-              "name": "help",
-              "shortname": "h",
-              "value": null
-            }
-          ],
-          "subcommands": []
-        },
-        {
-          "description": "List of trends counters",
-          "name": "list",
-          "options": [
-            {
-              "help": "Show specified fields or predefined field sets only. (See below) Comma separated list of values. Values containing comma should be quoted or escaped with backslash. JSON is acceptable and preferred way for complex parameters",
-              "name": "fields",
-              "shortname": null,
-              "value": "FIELDS"
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location-id",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current location context for the request. Name/Title/Id can be used",
-              "name": "location-title",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization-id",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Set the current organization context for the request. Name/Title/Id can be used",
-              "name": "organization-title",
-              "shortname": null,
-              "value": null
-            },
-            {
-              "help": "Print help -------|-----|---------|----- | ALL | DEFAULT | THIN -------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | -------|-----|---------|-----",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -50414,7 +50707,7 @@
                   "value": "PAGE"
                 },
                 {
-                  "help": "Number of results per page to return",
+                  "help": "Number of results per page to return, 'all' to return all results",
                   "name": "per-page",
                   "shortname": null,
                   "value": "PER_PAGE"
@@ -50615,6 +50908,12 @@
               "name": "description",
               "shortname": null,
               "value": "DESCRIPTION"
+            },
+            {
+              "help": "One of true/false, yes/no, 1/0.",
+              "name": "disabled",
+              "shortname": null,
+              "value": "DISABLED"
             },
             {
               "help": "",
@@ -50950,7 +51249,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -50986,7 +51285,7 @@
               "value": null
             },
             {
-              "help": "Print help --------------|-----|---------|----- | ALL | DEFAULT | THIN --------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | | x   | x       | | x   | x       | login    | x   | x       | by | x   | x       | --------------|-----|---------|----- Values: true, false string string text string datetime string string integer string string string integer string integer string",
+              "help": "Print help --------------|-----|---------|----- | ALL | DEFAULT | THIN --------------|-----|---------|----- | x   | x       | x | x   | x       | x | x   | x       | | x   | x       | | x   | x       | | x   | x       | login    | x   | x       | by | x   | x       | --------------|-----|---------|----- Values: true, false string string text Values: true, false string datetime string string integer string string string integer string integer string",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -51675,7 +51974,7 @@
                   "value": "PAGE"
                 },
                 {
-                  "help": "Number of results per page to return",
+                  "help": "Number of results per page to return, 'all' to return all results",
                   "name": "per-page",
                   "shortname": null,
                   "value": "PER_PAGE"
@@ -51772,6 +52071,12 @@
               "name": "description",
               "shortname": null,
               "value": "DESCRIPTION"
+            },
+            {
+              "help": "One of true/false, yes/no, 1/0.",
+              "name": "disabled",
+              "shortname": null,
+              "value": "DISABLED"
             },
             {
               "help": "",
@@ -52811,7 +53116,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -52960,7 +53265,7 @@
             },
             {
               "help": "",
-              "name": "id",
+              "name": "user-group--id",
               "shortname": null,
               "value": null
             },
@@ -53100,6 +53405,18 @@
               "value": "MODE"
             },
             {
+              "help": "Set the current http proxy context for the request. Name/Id can be used",
+              "name": "http-proxy",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current http proxy context for the request. Name/Id can be used",
+              "name": "http-proxy-id",
+              "shortname": null,
+              "value": null
+            },
+            {
               "help": "Specifies how the hypervisor will be identified. Possible value(s): 'hostname', 'uuId', 'hwuuId'",
               "name": "hypervisor-id",
               "shortname": null,
@@ -53182,12 +53499,6 @@
               "name": "organization-title",
               "shortname": null,
               "value": null
-            },
-            {
-              "help": "HTTP Proxy that should be used for communication between the server on Which virt-who is running and the hypervisors and virtualization managers.",
-              "name": "proxy",
-              "shortname": null,
-              "value": "PROXY"
             },
             {
               "help": "Satellite server FQDN",
@@ -53458,7 +53769,7 @@
               "value": null
             },
             {
-              "help": "Print help ----------------------------------------|-----|-------- | ALL | DEFAULT ----------------------------------------|-----|-------- information/Id                  | x   | x information/Name                | x   | x information/Hypervisor type     | x   | x information/Hypervisor server   | x   | x information/Hypervisor username | x   | x information/Status              | x   | x Schedule/Interval                       | x   | x Schedule/Last Report At                 | x   | x Connection/Satellite server             | x   | x Connection/Hypervisor ID                | x   | x Connection/Filtering                    | x   | x Connection/Excluded hosts               | x   | x Connection/Filtered hosts               | x   | x Connection/Filter host parents          | x   | x Connection/Exclude host parents         | x   | x Connection/Debug mode                   | x   | x Connection/HTTP proxy                   | x   | x Connection/Ignore proxy                 | x   | x Locations/                              | x   | x Organizations/                          | x   | x ----------------------------------------|-----|--------",
+              "help": "Print help ----------------------------------------|-----|-------- | ALL | DEFAULT ----------------------------------------|-----|-------- information/Id                  | x   | x information/Name                | x   | x information/Hypervisor type     | x   | x information/Hypervisor server   | x   | x information/Hypervisor username | x   | x information/Status              | x   | x Schedule/Interval                       | x   | x Schedule/Last Report At                 | x   | x Connection/Satellite server             | x   | x Connection/Hypervisor ID                | x   | x Connection/Filtering                    | x   | x Connection/Excluded hosts               | x   | x Connection/Filtered hosts               | x   | x Connection/Filter host parents          | x   | x Connection/Exclude host parents         | x   | x Connection/Debug mode                   | x   | x Connection/Ignore proxy                 | x   | x Proxy/HTTP proxy ID                | x   | x Proxy/HTTP proxy name              | x   | x Proxy/HTTP proxy URL               | x   | x Locations/                              | x   | x Organizations/                          | x   | x ----------------------------------------|-----|--------",
               "name": "help",
               "shortname": "h",
               "value": null
@@ -53525,7 +53836,7 @@
               "value": "PAGE"
             },
             {
-              "help": "Number of results per page to return",
+              "help": "Number of results per page to return, 'all' to return all results",
               "name": "per-page",
               "shortname": null,
               "value": "PER_PAGE"
@@ -53578,6 +53889,18 @@
               "name": "filtering-mode",
               "shortname": null,
               "value": "MODE"
+            },
+            {
+              "help": "Set the current http proxy context for the request. Name/Id can be used",
+              "name": "http-proxy",
+              "shortname": null,
+              "value": null
+            },
+            {
+              "help": "Set the current http proxy context for the request. Name/Id can be used",
+              "name": "http-proxy-id",
+              "shortname": null,
+              "value": null
             },
             {
               "help": "Specifies how the hypervisor will be identified. Possible value(s): 'hostname', 'uuId', 'hwuuId'",
@@ -53674,12 +53997,6 @@
               "name": "organization-title",
               "shortname": null,
               "value": null
-            },
-            {
-              "help": "HTTP Proxy that should be used for communication between the server on Which virt-who is running and the hypervisors and virtualization managers.",
-              "name": "proxy",
-              "shortname": null,
-              "value": "PROXY"
             },
             {
               "help": "Satellite server FQDN",
