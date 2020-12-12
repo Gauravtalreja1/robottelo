@@ -114,12 +114,34 @@ class HammerCommandsTestCase(CLITestCase):
                 expected_subcommands = {
                     subcommand['name'] for subcommand in expected['subcommands']
                 }
-            if is_open('BZ:1666687'):
-                cmds = ['hammer report-template create', 'hammer report-template update']
-                if command in cmds:
-                    command_options.add('interactive')
-                if 'hammer virt-who-config fetch' in command:
-                    command_options.add('output')
+
+            if is_open('BZ:1872783'):
+                if 'hammer content-view add-version' in command:
+                    command_options.add('content-view')
+                if 'hammer content-view remove' in command:
+                    command_options.add('content-view-versions')
+                    command_options.add('lifecycle-environments')
+                if 'hammer discovery provision' in command:
+                    command_options.add('partition-table')
+                if 'hammer file info' in command:
+                    command_options.add('content-view-version')
+                    command_options.add('repository')
+                if 'hammer module-stream info' in command:
+                    command_options.add('repository')
+                if 'hammer organization create' in command:
+                    command_options.add('organization-label')
+                if 'hammer organization delete' in command:
+                    command_options.add('organization-label')
+                if 'hammer organization info' in command:
+                    command_options.add('organization-label')
+                if 'hammer organization list' in command:
+                    command_options.add('organization-label')
+                if 'hammer organization update' in command:
+                    command_options.add('organization-label')
+                if 'hammer user-group update' in command:
+                    command_options.add('id')
+                    command_options.remove('user-group--id')
+
             added_options = tuple(command_options - expected_options)
             removed_options = tuple(expected_options - command_options)
             added_subcommands = tuple(command_subcommands - expected_subcommands)
