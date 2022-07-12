@@ -4,7 +4,8 @@ from broker import Broker
 
 from robottelo import constants
 from robottelo.config import settings
-from robottelo.hosts import Satellite
+from robottelo.helpers import file_downloader
+from robottelo.hosts import Satellite, Capsule
 
 
 @pytest.fixture(scope='module')
@@ -16,6 +17,18 @@ def sat_maintain(satellite_factory):
         yield sat
         sat.teardown()
         Broker(hosts=[sat]).checkin()
+
+
+@pytest.fixture(scope='module')
+def cap_maintain(module_capsule_host):
+    module_capsule_host.capsule_setup(sat_host=sat_maintain)
+    yield module_capsule_host
+
+
+@pytest.fixture(scope='module')
+def infra_host(request, sat_maintain, cap_maintain):
+    infra_hosts = {'satellite': sat_maintain, 'capsule': cap_maintain}
+    yield infra_hosts[request.param]
 
 
 @pytest.fixture(scope="function")

@@ -45,9 +45,10 @@ NOPREV_MSG = "ERROR: option '--incremental': Previous backup " "directory does n
 assert_msg = "Some required backup files are missing"
 
 
+@pytest.mark.capsule
 @pytest.mark.parametrize('backup_type', ['online', 'offline'])
 def test_positive_backup_preserve_directory(
-    sat_maintain, setup_backup_tests, module_synced_repos, backup_type
+    infra_host, setup_backup_tests, module_synced_repos, backup_type
 ):
     """Take a backup, ensure that '--preserve-directory' option works
 
@@ -63,9 +64,9 @@ def test_positive_backup_preserve_directory(
         2. expected files are stored in the provided dir
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
-    sat_maintain.execute(f'mkdir {subdir} && chown postgres:postgres {subdir}')
+    infra_host.execute(f'mkdir {subdir} && chown postgres:postgres {subdir}')
 
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type=backup_type,
         options={'assumeyes': True, 'plaintext': True, 'preserve-directory': True},
@@ -75,10 +76,10 @@ def test_positive_backup_preserve_directory(
     assert 'FAIL' not in result.stdout
 
     # Check for expected files
-    files = sat_maintain.execute(f'ls -a {subdir}').stdout.split('\n')
+    files = infra_host.execute(f'ls -a {subdir}').stdout.split('\n')
     files = [i for i in files if not re.compile(r'^\.*$').search(i)]
 
-    if sat_maintain.is_remote_db():
+    if infra_host.is_remote_db():
         expected_files = BASIC_FILES | REMOTE_SAT_FILES
     else:
         expected_files = (
@@ -89,9 +90,10 @@ def test_positive_backup_preserve_directory(
     assert set(files).issuperset(expected_files | CONTENT_FILES), assert_msg
 
 
+@pytest.mark.capsule
 @pytest.mark.parametrize('backup_type', ['online', 'offline'])
 def test_positive_backup_split_pulp_tar(
-    sat_maintain, setup_backup_tests, module_synced_repos, backup_type
+    infra_host, setup_backup_tests, module_synced_repos, backup_type
 ):
     """Take a backup, ensure that '--split-pulp-tar' option works
 
@@ -112,7 +114,7 @@ def test_positive_backup_split_pulp_tar(
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
     set_size = 100
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type=backup_type,
         options={'assumeyes': True, 'plaintext': True, 'split-pulp-tar': f'{set_size}k'},
@@ -123,10 +125,10 @@ def test_positive_backup_split_pulp_tar(
 
     # Check for expected files
     backup_dir = re.findall(fr'{subdir}\/satellite-backup-.*-[0-5][0-9]', result.stdout)[0]
-    files = sat_maintain.execute(f'ls -a {backup_dir}').stdout.split('\n')
+    files = infra_host.execute(f'ls -a {backup_dir}').stdout.split('\n')
     files = [i for i in files if not re.compile(r'^\.*$').search(i)]
 
-    if sat_maintain.is_remote_db():
+    if infra_host.is_remote_db():
         expected_files = BASIC_FILES | REMOTE_SAT_FILES
     else:
         expected_files = (
@@ -137,14 +139,15 @@ def test_positive_backup_split_pulp_tar(
     assert set(files).issuperset(expected_files | CONTENT_FILES), assert_msg
 
     # Check the split works
-    result = sat_maintain.execute(f'du {backup_dir}/pulp_data.tar')
+    result = infra_host.execute(f'du {backup_dir}/pulp_data.tar')
     pulp_tar_size = int(result.stdout.split('\t')[0])
     assert pulp_tar_size <= set_size
 
 
+@pytest.mark.capsule
 @pytest.mark.parametrize('backup_type', ['online', 'offline'])
 def test_positive_backup_caspule_features(
-    sat_maintain, setup_backup_tests, module_synced_repos, backup_type
+    infra_host, setup_backup_tests, module_synced_repos, backup_type
 ):
     """Take a backup with capsule features as dns, tftp, dhcp, openscap
 
@@ -160,7 +163,7 @@ def test_positive_backup_caspule_features(
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
     features = 'dns,tftp,dhcp,openscap'
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type=backup_type,
         options={'assumeyes': True, 'plaintext': True, 'features': features},
@@ -171,10 +174,10 @@ def test_positive_backup_caspule_features(
 
     # Check for expected files
     backup_dir = re.findall(fr'{subdir}\/satellite-backup-.*-[0-5][0-9]', result.stdout)[0]
-    files = sat_maintain.execute(f'ls -a {backup_dir}').stdout.split('\n')
+    files = infra_host.execute(f'ls -a {backup_dir}').stdout.split('\n')
     files = [i for i in files if not re.compile(r'^\.*$').search(i)]
 
-    if sat_maintain.is_remote_db():
+    if infra_host.is_remote_db():
         expected_files = BASIC_FILES | REMOTE_SAT_FILES
     else:
         expected_files = (
@@ -185,8 +188,9 @@ def test_positive_backup_caspule_features(
     assert set(files).issuperset(expected_files | CONTENT_FILES), assert_msg
 
 
+@pytest.mark.capsule
 @pytest.mark.parametrize('backup_type', ['online', 'offline'])
-def test_positive_backup_all(sat_maintain, setup_backup_tests, module_synced_repos, backup_type):
+def test_positive_backup_all(infra_host, setup_backup_tests, module_synced_repos, backup_type):
     """Take a backup with all options provided
 
     :id: bbaf251f-7764-4b7d-b79b-f5f48f5d3b9e
@@ -199,8 +203,8 @@ def test_positive_backup_all(sat_maintain, setup_backup_tests, module_synced_rep
         1. both backups succeed
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
-    sat_maintain.execute(f'mkdir -m 0777 {subdir}')
-    result = sat_maintain.cli.Backup.run_backup(
+    infra_host.execute(f'mkdir -m 0777 {subdir}')
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type=backup_type,
         options={'assumeyes': True, 'plaintext': True},
@@ -211,7 +215,7 @@ def test_positive_backup_all(sat_maintain, setup_backup_tests, module_synced_rep
 
     init_backup_dir = re.findall(fr'{subdir}\/satellite-backup-.*-[0-5][0-9]', result.stdout)[0]
 
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type=backup_type,
         options={
@@ -230,7 +234,8 @@ def test_positive_backup_all(sat_maintain, setup_backup_tests, module_synced_rep
     assert 'FAIL' not in result.stdout
 
 
-def test_positive_backup_offline_logical(sat_maintain, setup_backup_tests, module_synced_repos):
+@pytest.mark.capsule
+def test_positive_backup_offline_logical(infra_host, setup_backup_tests, module_synced_repos):
     """Take an offline backup with '--include-db-dumps' option provided
 
     :id: dafac83f-75e1-455e-b77f-15fed4eed884
@@ -244,7 +249,7 @@ def test_positive_backup_offline_logical(sat_maintain, setup_backup_tests, modul
         2. files for both, offline and online, backup type are created
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type='offline',
         options={'assumeyes': True, 'plaintext': True, 'include-db-dumps': True},
@@ -255,18 +260,19 @@ def test_positive_backup_offline_logical(sat_maintain, setup_backup_tests, modul
 
     # Check for expected files
     backup_dir = re.findall(fr'{subdir}\/satellite-backup-.*-[0-5][0-9]', result.stdout)[0]
-    files = sat_maintain.execute(f'ls -a {backup_dir}').stdout.split('\n')
+    files = infra_host.execute(f'ls -a {backup_dir}').stdout.split('\n')
     files = [i for i in files if not re.compile(r'^\.*$').search(i)]
 
-    if sat_maintain.is_remote_db():
+    if infra_host.is_remote_db():
         expected_files = BASIC_FILES | REMOTE_SAT_FILES
     else:
         expected_files = BASIC_FILES | OFFLINE_FILES | ONLINE_SAT_FILES
     assert set(files).issuperset(expected_files | CONTENT_FILES), assert_msg
 
 
+@pytest.mark.capsule
 @pytest.mark.parametrize('backup_type', ['online', 'offline'])
-def test_negative_backup_nodir(sat_maintain, setup_backup_tests, module_synced_repos, backup_type):
+def test_negative_backup_nodir(infra_host, setup_backup_tests, module_synced_repos, backup_type):
     """Try to take a backup not providing a backup path
 
     :id: f55ff776-d08e-4317-b7a2-073cad91ce59
@@ -277,7 +283,7 @@ def test_negative_backup_nodir(sat_maintain, setup_backup_tests, module_synced_r
     :expectedresult:
         1. should fail with appropriate error message
     """
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir='',
         backup_type='offline',
         options={'assumeyes': True, 'plaintext': True},
@@ -287,8 +293,9 @@ def test_negative_backup_nodir(sat_maintain, setup_backup_tests, module_synced_r
     assert NODIR_MSG in str(result.stderr)
 
 
+@pytest.mark.capsule
 @pytest.mark.parametrize('backup_type', ['online', 'offline'])
-def test_negative_backup_incremental_nodir(sat_maintain, setup_backup_tests, backup_type):
+def test_negative_backup_incremental_nodir(infra_host, setup_backup_tests, backup_type):
     """Try to take an incremental backup providing non-existing path to the previous backup
     (expected after --incremental option)
 
@@ -301,7 +308,7 @@ def test_negative_backup_incremental_nodir(sat_maintain, setup_backup_tests, bac
         1. should fail with appropriate error message
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir='',
         backup_type=backup_type,
         options={'assumeyes': True, 'plaintext': True, 'incremental': subdir},
@@ -309,7 +316,6 @@ def test_negative_backup_incremental_nodir(sat_maintain, setup_backup_tests, bac
     logger.info(result.stdout)
     assert result.status != 0
     assert NOPREV_MSG in str(result.stderr)
-
 
 def test_negative_backup_maintenance_mode(sat_maintain, setup_backup_tests):
     """Try to take a backup which would fail and verify maintenance-mode isn't running/ON
@@ -342,7 +348,8 @@ def test_negative_backup_maintenance_mode(sat_maintain, setup_backup_tests):
     assert 'Nftables table: absent' in result.stdout
 
 
-def test_negative_restore_nodir(sat_maintain, setup_backup_tests):
+@pytest.mark.capsule
+def test_negative_restore_nodir(infra_host, setup_backup_tests):
     """Try to run restore with no source dir provided
 
     :id: dadc4e32-c0b8-427f-a449-4ae66fe09268
@@ -353,7 +360,7 @@ def test_negative_restore_nodir(sat_maintain, setup_backup_tests):
     :expectedresult:
         1. should fail with appropriate error message
     """
-    result = sat_maintain.cli.Restore.run(
+    result = infra_host.cli.Restore.run(
         backup_dir='',
         options={'assumeyes': True, 'plaintext': True},
     )
@@ -362,7 +369,8 @@ def test_negative_restore_nodir(sat_maintain, setup_backup_tests):
     assert NODIR_MSG in str(result.stderr)
 
 
-def test_negative_restore_baddir(sat_maintain, setup_backup_tests):
+@pytest.mark.capsule
+def test_negative_restore_baddir(infra_host, setup_backup_tests):
     """Try to run restore with non-existing source dir provided
 
     :id: 65ccc0d0-ca43-4877-9b29-50037e378ca5
@@ -374,7 +382,7 @@ def test_negative_restore_baddir(sat_maintain, setup_backup_tests):
         1. should fail with appropriate error message
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
-    result = sat_maintain.cli.Restore.run(
+    result = infra_host.cli.Restore.run(
         backup_dir=subdir,
         options={'assumeyes': True, 'plaintext': True},
     )
@@ -383,10 +391,11 @@ def test_negative_restore_baddir(sat_maintain, setup_backup_tests):
     assert BADDIR_MSG in str(result.stdout)
 
 
+@pytest.mark.capsule
 @pytest.mark.parametrize('skip_pulp', [False, True], ids=['include_pulp', 'skip_pulp'])
 @pytest.mark.parametrize('backup_type', ['online', 'offline'])
 def test_positive_backup_restore(
-    sat_maintain,
+    infra_host,
     setup_backup_tests,
     module_synced_repos,
     backup_type,
@@ -411,7 +420,7 @@ def test_positive_backup_restore(
         5. content is present after restore
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type=backup_type,
         options={'assumeyes': True, 'plaintext': True, 'skip-pulp-content': skip_pulp},
@@ -422,10 +431,10 @@ def test_positive_backup_restore(
 
     # Check for expected files
     backup_dir = re.findall(fr'{subdir}\/satellite-backup-.*-[0-5][0-9]', result.stdout)[0]
-    files = sat_maintain.execute(f'ls -a {backup_dir}').stdout.split('\n')
+    files = infra_host.execute(f'ls -a {backup_dir}').stdout.split('\n')
     files = [i for i in files if not re.compile(r'^\.*$').search(i)]
 
-    if sat_maintain.is_remote_db():
+    if infra_host.is_remote_db():
         expected_files = BASIC_FILES | REMOTE_SAT_FILES
     else:
         expected_files = (
@@ -440,8 +449,8 @@ def test_positive_backup_restore(
 
     # Run restore
     if not skip_pulp:
-        sat_maintain.execute('rm -rf /var/lib/pulp/media/artifact')
-    result = sat_maintain.cli.Restore.run(
+        infra_host.execute('rm -rf /var/lib/pulp/media/artifact')
+    result = infra_host.cli.Restore.run(
         backup_dir=backup_dir,
         options={'assumeyes': True, 'plaintext': True},
     )
@@ -451,30 +460,31 @@ def test_positive_backup_restore(
     assert 'FAIL' not in result.stdout
 
     # Check the system health after restore
-    result = sat_maintain.cli.Health.check(
+    result = infra_host.cli.Health.check(
         options={'whitelist': 'foreman-tasks-not-paused', 'assumeyes': True, 'plaintext': True}
     )
     logger.info(result.stdout)
     assert result.status == 0
 
     # Check that content is present after restore
-    repo = sat_maintain.api.Repository().search(
+    repo = infra_host.api.Repository().search(
         query={'search': f'''name="{module_synced_repos['custom'].name}"'''}
     )[0]
     assert repo.id == module_synced_repos['custom'].id
 
-    rh_repo = sat_maintain.api.Repository().search(
+    rh_repo = infra_host.api.Repository().search(
         query={'search': f'''name="{module_synced_repos['rh'].name}"'''}
     )[0]
     assert rh_repo.id == module_synced_repos['rh'].id
 
     if not skip_pulp:
-        assert int(sat_maintain.run('find /var/lib/pulp/media/artifact -type f | wc -l').stdout) > 0
+        assert int(infra_host.run('find /var/lib/pulp/media/artifact -type f | wc -l').stdout) > 0
 
 
+@pytest.mark.capsule
 @pytest.mark.parametrize('backup_type', ['online', 'offline'])
 def test_positive_backup_restore_incremental(
-    sat_maintain, setup_backup_tests, module_synced_repos, backup_type
+    infra_host, setup_backup_tests, module_synced_repos, backup_type
 ):
     """Incremental backup/restore end-to-end test.
 
@@ -499,7 +509,7 @@ def test_positive_backup_restore_incremental(
         6. content is present after restore
     """
     subdir = f'{BACKUP_DIR}backup-{gen_string("alpha")}'
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type=backup_type,
         options={'assumeyes': True, 'plaintext': True},
@@ -511,14 +521,14 @@ def test_positive_backup_restore_incremental(
     init_backup_dir = re.findall(fr'{subdir}\/satellite-backup-.*-[0-5][0-9]', result.stdout)[0]
 
     # create additional content
-    secondary_repo = sat_maintain.api.Repository(
+    secondary_repo = infra_host.api.Repository(
         url=settings.repos.yum_3.url, product=module_synced_repos['custom'].product
     ).create()
     secondary_repo.sync()
     secondary_repo = secondary_repo.read()
 
     # take incremental backup
-    result = sat_maintain.cli.Backup.run_backup(
+    result = infra_host.cli.Backup.run_backup(
         backup_dir=subdir,
         backup_type=backup_type,
         options={'assumeyes': True, 'plaintext': True, 'incremental': init_backup_dir},
@@ -529,10 +539,10 @@ def test_positive_backup_restore_incremental(
 
     # check for expected files
     inc_backup_dir = re.findall(fr'{subdir}\/satellite-backup-.*-[0-5][0-9]', result.stdout)[0]
-    files = sat_maintain.execute(f'ls -a {inc_backup_dir}').stdout.split('\n')
+    files = infra_host.execute(f'ls -a {inc_backup_dir}').stdout.split('\n')
     files = [i for i in files if not re.compile(r'^\.*$').search(i)]
 
-    if sat_maintain.is_remote_db():
+    if infra_host.is_remote_db():
         expected_files = BASIC_FILES | REMOTE_SAT_FILES
     else:
         expected_files = (
@@ -543,7 +553,7 @@ def test_positive_backup_restore_incremental(
     assert set(files).issuperset(expected_files | CONTENT_FILES), assert_msg
 
     # restore initial backup and check system health
-    result = sat_maintain.cli.Restore.run(
+    result = infra_host.cli.Restore.run(
         backup_dir=init_backup_dir,
         options={'assumeyes': True, 'plaintext': True},
     )
@@ -551,18 +561,18 @@ def test_positive_backup_restore_incremental(
     assert result.status == 0
     assert 'FAIL' not in result.stdout
 
-    result = sat_maintain.cli.Health.check(
+    result = infra_host.cli.Health.check(
         options={'whitelist': 'foreman-tasks-not-paused', 'assumeyes': True, 'plaintext': True}
     )
     logger.info(result.stdout)
     assert result.status == 0
 
     # check that the additional content is missing at this point
-    result = sat_maintain.api.Repository().search(query={'search': f'name="{secondary_repo.name}"'})
+    result = infra_host.api.Repository().search(query={'search': f'name="{secondary_repo.name}"'})
     assert len(result) == 0
 
     # restore incremental backup and check system health
-    result = sat_maintain.cli.Restore.run(
+    result = infra_host.cli.Restore.run(
         backup_dir=inc_backup_dir,
         options={'assumeyes': True, 'plaintext': True},
     )
@@ -570,24 +580,25 @@ def test_positive_backup_restore_incremental(
     assert result.status == 0
     assert 'FAIL' not in result.stdout
 
-    result = sat_maintain.cli.Health.check(
+    result = infra_host.cli.Health.check(
         options={'whitelist': 'foreman-tasks-not-paused', 'assumeyes': True, 'plaintext': True}
     )
     logger.info(result.stdout)
     assert result.status == 0
 
     # check the initial and additional content was restored
-    repo = sat_maintain.api.Repository().search(
+    repo = infra_host.api.Repository().search(
         query={'search': f'name="{module_synced_repos["custom"].name}"'}
     )[0]
     assert repo.id == module_synced_repos["custom"].id
 
-    repo = sat_maintain.api.Repository().search(  # noqa
+    repo = infra_host.api.Repository().search(  # noqa
         query={'search': f'name="{secondary_repo.name}"'}
     )[0]
     assert repo.id == secondary_repo.id
 
 
+@pytest.mark.capsule
 @pytest.mark.stubbed
 def test_positive_backup_restore_snapshot():
     """Take the snapshot backup of a server, restore it, check for content

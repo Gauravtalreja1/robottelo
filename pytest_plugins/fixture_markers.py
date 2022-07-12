@@ -16,6 +16,7 @@ TARGET_FIXTURES = [
 def pytest_generate_tests(metafunc):
     content_host_fixture = ''.join([i for i in TARGET_FIXTURES if i in metafunc.fixturenames])
     if content_host_fixture in metafunc.fixturenames:
+        #import ipdb; ipdb.set_trace()
         function_marks = getattr(metafunc.function, 'pytestmark', [])
         no_containers = any('no_containers' == mark.name for mark in function_marks)
         # process eventual rhel_version_list markers
@@ -54,6 +55,19 @@ def pytest_generate_tests(metafunc):
                 indirect=True,
             )
 
+    # satellite-maintain capsule parametrization
+    if 'infra_host' in metafunc.fixturenames:
+        function_marks = getattr(metafunc.function, 'pytestmark', [])
+        # Default fixture to run tests on - sat_maintain
+        hosts = ['satellite']
+        hosts += [i.name for i in function_marks if i.name == 'capsule']
+        #hosts += [i.name for i in function_marks if i.name == 'capsule_only']
+        metafunc.parametrize(
+            'infra_host',
+            hosts,
+            ids=hosts,
+            indirect=True,
+        )
 
 def pytest_configure(config):
     """Register markers related to testimony tokens"""
