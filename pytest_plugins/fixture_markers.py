@@ -53,6 +53,20 @@ def pytest_generate_tests(metafunc):
                 ids=[f'rhel{r["rhel_version"]}' for r in rhel_params],
                 indirect=True,
             )
+    # satellite-maintain capsule parametrization
+    if 'sat_maintain' in metafunc.fixturenames:
+        function_marks = getattr(metafunc.function, 'pytestmark', [])
+        # Default fixture to run tests on - satellite
+        hosts = ['satellite']
+        hosts = ['capsule' if i.name == 'capsule_only' else 'satellite' for i in function_marks]
+        hosts += ['capsule' for i in function_marks if i.name == 'include_capsule']
+        hosts = ['satellite'] if settings.remotedb.server else hosts
+        metafunc.parametrize(
+            'sat_maintain',
+            hosts,
+            ids=hosts,
+            indirect=True,
+        )
 
 
 def pytest_configure(config):
