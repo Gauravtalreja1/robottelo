@@ -44,6 +44,9 @@ jobs:
       - name: Pre Commit Checks
         uses: pre-commit/action@v3.0.0
 
+      - uses: pre-commit-ci/lite-action@v1.0.0
+        if: always()
+
       - name: Collect Tests
         run: |
           pytest --collect-only --disable-pytest-warnings tests/foreman/ tests/robottelo/
