@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      # - name: Disable Annotations
+      #   run: echo "::remove-matcher owner=python::"
+
       - name: Install Dependencies
         run: |
           sudo apt update
