@@ -441,6 +441,7 @@ def test_positive_provision_rhev_with_host_group(
     assert rhv_cr['name'] == cr_name
     domain_name = module_provisioning_sat.domain.name
     subnet_name = module_provisioning_sat.subnet.name
+
     hostgroup = cli.HostGroup.create(
         {
             'name': gen_string('alpha'),
@@ -519,7 +520,20 @@ def test_positive_provision_rhev_with_host_group(
 @pytest.mark.stubbed
 @pytest.mark.tier3
 @pytest.mark.upgrade
-def test_positive_provision_rhev_without_host_group(rhev):
+@pytest.mark.on_premises_provisioning
+@pytest.mark.rhel_ver_match('[^6]')
+def test_positive_provision_rhev_without_host_group(
+    request,
+    module_provisioning_sat,
+    rhev,
+    module_sca_manifest_org,
+    module_location,
+    module_default_org_view,
+    module_provisioning_rhel_content,
+    module_lce_library,
+    default_architecture,
+    default_partitiontable,
+):
     """Provision a host on RHEV compute resource without
     the help of hostgroup.
 
@@ -541,6 +555,90 @@ def test_positive_provision_rhev_without_host_group(rhev):
 
     :CaseLevel: Integration
     """
+    cli = module_provisioning_sat.sat.cli
+    cr_name = gen_string('alpha')
+    org_name = module_sca_manifest_org.name
+    loc_name = module_location.name
+    rhv_cr = cli.ComputeResource.create(
+        {
+            'name': cr_name,
+            'provider': 'Ovirt',
+            'user': rhev.username,
+            'password': rhev.password,
+            'datacenter': rhev.datacenter,
+            'url': rhev.hostname,
+            'ovirt-quota': rhev.quota,
+            'organizations': org_name,
+            'locations': loc_name,
+        }
+    )
+    assert rhv_cr['name'] == cr_name
+    domain_name = module_provisioning_sat.domain.name
+    subnet_name = module_provisioning_sat.subnet.name
+
+    host_name = gen_string('alpha').lower()
+    host = cli.Host.create(
+        {
+            'name': f'{host_name}',
+            'organization': org_name,
+            'location': loc_name,
+            'root-password': settings.provisioning.host_root_password,
+            'pxe-loader': 'PXELinux BIOS',
+            'compute-resource-id': rhv_cr.get('id'),
+            'architecture': default_architecture.name,
+            'domain': domain_name,
+            'subnet': subnet_name,
+            'content-source-id': module_provisioning_sat.domain.dns.id,
+            'content-view-id': module_sca_manifest_org.default_content_view.id,
+            'kickstart-repository-id': module_provisioning_rhel_content.ksrepo.id,
+            'lifecycle-environment-id': module_sca_manifest_org.library.id,
+            'operatingsystem': module_provisioning_rhel_content.os.title,
+            'partition-table': default_partitiontable.name,
+            'ip': None,
+            'mac': None,
+            'compute-attributes': f'cluster={rhev.cluster_id},'
+            'cores=1,'
+            'memory=4294967296,'  # 4 GiB
+            'start=1',
+            'interface': (
+                f'compute_name=nic1, compute_network='
+                f'{settings.rhev.network_prefix}{settings.provisioning.vlan_id}'
+            ),
+            'volume': f'size_gb=20,storage_domain={rhev.storage_domain},bootable=True',
+            'provision-method': 'build',
+        }
+    )
+    # cleanup
+    request.addfinalizer(lambda: cli.Host.delete({'id': host['id']}))
+
+    # checks
+    hostname = f'{host_name}.{domain_name}'
+    assert hostname == host['name']
+    host_info = Host.info({'name': hostname})
+    # Check on RHV, if VM exists
+    assert rhev.rhv_api.does_vm_exist(hostname)
+    # Get the information of created VM
+    rhv_vm = rhev.rhv_api.get_vm(hostname)
+    # Assert of Satellite mac address for VM and Mac of VM created is same
+    assert host_info.get('network').get('mac') == rhv_vm.get_nics()[0].mac.address
+    # Start to run a ping check if network was established on VM
+    # If this fails, there's probably some issue with PXE booting or network setup in automation
+    # TODO run the following check once https://github.com/SatelliteQE/broker/issues/161 is fixed
+    # TODO note: host_provisioning_check has been changed to target_sat.ping_host(host=host_ip)
+    # host_ip = host_info.get('network', {}).get('ipv4-address')
+    # host_provisioning_check(ip_addr=host_ip)
+
+    # Host should do call back to the Satellite reporting
+    # the result of the installation. Wait until Satellite reports that the host is installed.
+    exp_st = 'Pending installation'
+    wait_for(
+        lambda: cli.Host.info({'id': host['id']})['status']['build-status'] != exp_st,
+        # timeout=200,  # no need to wait long, the host was already pingable
+        timeout=4000,  # wait long because the ping check has not been done, TODO
+        delay=10,
+    )
+    host = cli.Host.info({'id': host['id']})
+    assert host['status']['build-status'] == 'Installed'
 
 
 @pytest.mark.on_premises_provisioning
@@ -624,6 +722,7 @@ def test_positive_provision_rhev_image_based_and_disassociate(
     host = None  # to avoid UnboundLocalError in finally block
     rhv_vm = None
     try:
+
         host = cli.Host.create(
             {
                 'name': f'{host_name}',
