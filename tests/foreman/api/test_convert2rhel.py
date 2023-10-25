@@ -114,7 +114,9 @@ def enable_rhel_subscriptions(module_target_sat, module_entitlement_manifest_org
     minor = ""
     if major == '8':
         repo_names = ['rhel8_bos', 'rhel8_aps']
-        minor = version[1:]
+        # Workaround minor version + 1, as we're missing CentOS 8.5 cloud image
+        # https://cloud.centos.org/centos/8/x86_64/images/
+        minor = version[1:] + 1
     else:
         repo_names = ['rhel7']
 
@@ -161,6 +163,13 @@ def centos(
     # updating centos packages on CentOS 8 is necessary for conversion
     major = version.split('.')[0]
     if major == '8':
+        # Workaround: contents for CentOS 8 are archived and moved to vault mirror after it is EOL
+        centos_host.execute(
+            'sudo sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*'
+        )
+        centos_host.execute(
+            'sudo sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g" /etc/yum.repos.d/CentOS-*'
+        )
         centos_host.execute('yum -y update centos-*')
     repo_url = settings.repos.convert2rhel.convert_to_rhel_repo.format(major)
     repo = create_repo(module_target_sat, module_entitlement_manifest_org, repo_url)
