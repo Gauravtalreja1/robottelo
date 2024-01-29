@@ -203,6 +203,12 @@ def module_provisioning_sat(
         domain=[domain.id],
     ).create()
 
+    # Workaround BZ: 2207698
+    sat.execute(
+        'echo ":blacklist_duration_minutes: 2" >> /etc/foreman-proxy/settings.d/dhcp_isc.yml'
+    )
+    assert sat.cli.Service.restart().status == 0
+
     return Box(sat=sat, domain=domain, subnet=subnet, provisioning_type=provisioning_type)
 
 
