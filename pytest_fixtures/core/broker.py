@@ -1,6 +1,5 @@
 from contextlib import contextmanager
 
-from box import Box
 from broker import Broker
 import pytest
 
@@ -56,45 +55,3 @@ def session_target_sat(request, _default_sat, satellite_factory):
 def class_target_sat(request, _default_sat, satellite_factory):
     with _target_sat_imp(request, _default_sat, satellite_factory) as sat:
         yield sat
-
-
-@pytest.fixture(scope='module')
-def module_discovery_sat(
-    module_provisioning_sat,
-    module_sca_manifest_org,
-    module_location,
-):
-    """Creates a Satellite with discovery installed and configured"""
-    sat = module_provisioning_sat.sat
-    # Register to CDN and install discovery image
-    sat.register_to_cdn()
-    sat.execute('yum -y --disableplugin=foreman-protector install foreman-discovery-image')
-    sat.unregister()
-    # Symlink image so it can be uploaded for KEXEC
-    disc_img_path = sat.execute(
-        'find /usr/share/foreman-discovery-image -name "foreman-discovery-image-*.iso"'
-    ).stdout[:-1]
-    disc_img_name = disc_img_path.split("/")[-1]
-    sat.execute(f'ln -s {disc_img_path} /var/www/html/pub/{disc_img_name}')
-    # Change 'Default PXE global template entry'
-    pxe_entry = sat.api.Setting().search(query={'search': 'Default PXE global template entry'})[0]
-    if pxe_entry.value != "discovery":
-        pxe_entry.value = "discovery"
-        pxe_entry.update(['value'])
-    # Build PXE default template to get default PXE file
-    sat.api.ProvisioningTemplate().build_pxe_default()
-
-    # Update discovery taxonomies settings
-    discovery_loc = sat.api.Setting().search(query={'search': 'name=discovery_location'})[0]
-    discovery_loc.value = module_location.name
-    discovery_loc.update(['value'])
-    discovery_org = sat.api.Setting().search(query={'search': 'name=discovery_organization'})[0]
-    discovery_org.value = module_sca_manifest_org.name
-    discovery_org.update(['value'])
-
-    # Enable flag to auto provision discovered hosts via discovery rules
-    discovery_auto = sat.api.Setting().search(query={'search': 'name=discovery_auto'})[0]
-    discovery_auto.value = 'true'
-    discovery_auto.update(['value'])
-
-    return Box(sat=sat, iso=disc_img_name)

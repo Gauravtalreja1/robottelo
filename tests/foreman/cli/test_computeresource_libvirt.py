@@ -100,8 +100,7 @@ def invalid_update_data():
     }
 
 
-@pytest.fixture(scope="module")
-@pytest.mark.skip_if_not_set('libvirt')
+@pytest.fixture(scope='module')
 def libvirt_url():
     return LIBVIRT_RESOURCE_URL % settings.libvirt.libvirt_hostname
 
@@ -428,11 +427,11 @@ def test_positive_update_console_password(libvirt_url, set_console_password, mod
 def test_positive_provision_end_to_end(
     request,
     setting_update,
-    module_libvirt_provisioning_sat,
-    module_sca_manifest_org,
-    module_location,
+    session_libvirt_provisioning_sat,
+    session_sca_manifest_org,
+    session_location,
     provisioning_hostgroup,
-    module_provisioning_rhel_content,
+    session_provisioning_rhel_content,
 ):
     """Provision a host on Libvirt compute resource with the help of hostgroup.
 
@@ -455,26 +454,26 @@ def test_positive_provision_end_to_end(
 
     :customerscenario: true
     """
-    sat = module_libvirt_provisioning_sat.sat
+    sat = session_libvirt_provisioning_sat.sat
     cr_name = gen_string('alpha')
     hostname = gen_string('alpha').lower()
-    os_major_ver = module_provisioning_rhel_content.os.major
+    os_major_ver = session_provisioning_rhel_content.os.major
     cpu_mode = 'host-passthrough' if is_open('BZ:2236693') and os_major_ver == '9' else 'default'
     libvirt_cr = sat.cli.ComputeResource.create(
         {
             'name': cr_name,
             'provider': FOREMAN_PROVIDERS['libvirt'],
             'url': LIBVIRT_URL,
-            'organizations': module_sca_manifest_org.name,
-            'locations': module_location.name,
+            'organizations': session_sca_manifest_org.name,
+            'locations': session_location.name,
         }
     )
     assert libvirt_cr['name'] == cr_name
     host = sat.cli.Host.create(
         {
             'name': hostname,
-            'location': module_location.name,
-            'organization': module_sca_manifest_org.name,
+            'location': session_location.name,
+            'organization': session_sca_manifest_org.name,
             'hostgroup': provisioning_hostgroup.name,
             'compute-resource-id': libvirt_cr['id'],
             'ip': None,
@@ -489,7 +488,7 @@ def test_positive_provision_end_to_end(
     request.addfinalizer(lambda: sat.provisioning_cleanup(host['name'], interface='CLI'))
 
     # checks
-    hostname = f'{hostname}.{module_libvirt_provisioning_sat.domain.name}'
+    hostname = f'{hostname}.{session_libvirt_provisioning_sat.domain.name}'
     assert hostname == host['name']
     host_info = sat.cli.Host.info({'name': hostname})
     # Check on Libvirt, if VM exists

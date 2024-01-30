@@ -125,11 +125,11 @@ def test_positive_provision_end_to_end(
     request,
     session,
     setting_update,
-    module_sca_manifest_org,
-    module_location,
+    session_sca_manifest_org,
+    session_location,
     provisioning_hostgroup,
-    module_libvirt_provisioning_sat,
-    module_provisioning_rhel_content,
+    session_libvirt_provisioning_sat,
+    session_provisioning_rhel_content,
 ):
     """Provision Host on libvirt compute resource, and delete it afterwards
 
@@ -143,23 +143,23 @@ def test_positive_provision_end_to_end(
 
     :parametrized: yes
     """
-    sat = module_libvirt_provisioning_sat.sat
+    sat = session_libvirt_provisioning_sat.sat
     hostname = gen_string('alpha').lower()
-    os_major_ver = module_provisioning_rhel_content.os.major
+    os_major_ver = session_provisioning_rhel_content.os.major
     cpu_mode = 'host-passthrough' if is_open('BZ:2236693') and os_major_ver == '9' else 'default'
     cr = sat.api.LibvirtComputeResource(
         provider=FOREMAN_PROVIDERS['libvirt'],
         url=LIBVIRT_URL,
         display_type='VNC',
-        location=[module_location],
-        organization=[module_sca_manifest_org],
+        location=[session_location],
+        organization=[session_sca_manifest_org],
     ).create()
     with session:
         session.host.create(
             {
                 'host.name': hostname,
-                'host.organization': module_sca_manifest_org.name,
-                'host.location': module_location.name,
+                'host.organization': session_sca_manifest_org.name,
+                'host.location': session_location.name,
                 'host.hostgroup': provisioning_hostgroup.name,
                 'host.inherit_deploy_option': False,
                 'host.deploy': f'{cr.name} (Libvirt)',
@@ -170,7 +170,7 @@ def test_positive_provision_end_to_end(
                 'additional_information.comment': 'Libvirt provision using valid data',
             }
         )
-        name = f'{hostname}.{module_libvirt_provisioning_sat.domain.name}'
+        name = f'{hostname}.{session_libvirt_provisioning_sat.domain.name}'
         assert session.host.search(name)[0]['Name'] == name
 
         # teardown

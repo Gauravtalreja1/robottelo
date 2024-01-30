@@ -17,12 +17,12 @@ pytestmark = [pytest.mark.run_in_one_thread]
 
 @pytest.mark.e2e
 @pytest.mark.on_premises_provisioning
-@pytest.mark.parametrize('module_provisioning_sat', ['discovery'], indirect=True)
+@pytest.mark.parametrize('session_provisioning_sat', ['discovery'], indirect=True)
 @pytest.mark.parametrize('pxe_loader', ['bios', 'uefi'], indirect=True)
 @pytest.mark.rhel_ver_match('7')
 def test_rhel_pxe_discovery_provisioning(
-    module_provisioning_rhel_content,
-    module_discovery_sat,
+    session_provisioning_rhel_content,
+    session_discovery_sat,
     provisioning_host,
     provisioning_hostgroup,
     request,
@@ -45,7 +45,7 @@ def test_rhel_pxe_discovery_provisioning(
 
     :BZ: 1731112
     """
-    sat = module_discovery_sat.sat
+    sat = session_discovery_sat.sat
     provisioning_host.power_control(ensure=False)
     mac = provisioning_host._broker_args['provisioning_nic_mac_addr']
 
@@ -86,13 +86,13 @@ def test_rhel_pxe_discovery_provisioning(
 
 @pytest.mark.e2e
 @pytest.mark.on_premises_provisioning
-@pytest.mark.parametrize('module_provisioning_sat', ['discovery'], indirect=True)
+@pytest.mark.parametrize('session_provisioning_sat', ['discovery'], indirect=True)
 @pytest.mark.parametrize('pxe_loader', ['bios', 'uefi'], indirect=True)
 @pytest.mark.rhel_ver_match('7')
 def test_rhel_pxeless_discovery_provisioning(
-    module_discovery_sat,
+    session_discovery_sat,
     pxeless_discovery_host,
-    module_provisioning_rhel_content,
+    session_provisioning_rhel_content,
     provisioning_hostgroup,
     request,
 ):
@@ -107,7 +107,7 @@ def test_rhel_pxeless_discovery_provisioning(
 
     :CaseImportance: Critical
     """
-    sat = module_discovery_sat.sat
+    sat = session_discovery_sat.sat
     pxeless_discovery_host.power_control(ensure=False)
     mac = pxeless_discovery_host._broker_args['provisioning_nic_mac_addr']
 

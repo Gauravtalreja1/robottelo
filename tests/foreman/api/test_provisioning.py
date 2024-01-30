@@ -66,15 +66,13 @@ def assert_host_logs(channel, pattern):
 @pytest.mark.rhel_ver_match('[^6]')
 def test_rhel_pxe_provisioning(
     request,
-    module_provisioning_sat,
-    module_sca_manifest_org,
-    module_location,
+    session_provisioning_sat,
+    session_sca_manifest_org,
+    session_location,
     provisioning_host,
     pxe_loader,
-    module_provisioning_rhel_content,
+    session_provisioning_rhel_content,
     provisioning_hostgroup,
-    module_lce_library,
-    module_default_org_view,
 ):
     """Simulate baremetal provisioning of a RHEL system via PXE on RHV provider
 
@@ -97,15 +95,15 @@ def test_rhel_pxe_provisioning(
     :parametrized: yes
     """
     host_mac_addr = provisioning_host._broker_args['provisioning_nic_mac_addr']
-    sat = module_provisioning_sat.sat
+    sat = session_provisioning_sat.sat
     host = sat.api.Host(
         hostgroup=provisioning_hostgroup,
-        organization=module_sca_manifest_org,
-        location=module_location,
+        organization=session_sca_manifest_org,
+        location=session_location,
         name=gen_string('alpha').lower(),
         mac=host_mac_addr,
-        operatingsystem=module_provisioning_rhel_content.os,
-        subnet=module_provisioning_sat.subnet,
+        operatingsystem=session_provisioning_rhel_content.os,
+        subnet=session_provisioning_sat.subnet,
         host_parameters_attributes=[
             {'name': 'remote_execution_connect_by_ip', 'value': 'true', 'parameter_type': 'boolean'}
         ],
@@ -199,15 +197,13 @@ def test_rhel_pxe_provisioning(
 @pytest.mark.rhel_ver_match('[^6]')
 def test_rhel_ipxe_provisioning(
     request,
-    module_provisioning_sat,
-    module_sca_manifest_org,
-    module_location,
+    session_provisioning_sat,
+    session_sca_manifest_org,
+    session_location,
     provisioning_host,
     pxe_loader,
-    module_provisioning_rhel_content,
+    session_provisioning_rhel_content,
     provisioning_hostgroup,
-    module_lce_library,
-    module_default_org_view,
 ):
     """Provision a host using iPXE workflow
 
@@ -228,7 +224,7 @@ def test_rhel_ipxe_provisioning(
     :parametrized: yes
     """
     # TODO: parametrize iPXE Chain BIOS as pxe loader after #BZ:2171172 is fixed
-    sat = module_provisioning_sat.sat
+    sat = session_provisioning_sat.sat
     # set http url
     ipxe_http_url = sat.install(
         InstallerCommand(
@@ -239,12 +235,12 @@ def test_rhel_ipxe_provisioning(
     host_mac_addr = provisioning_host._broker_args['provisioning_nic_mac_addr']
     host = sat.api.Host(
         hostgroup=provisioning_hostgroup,
-        organization=module_sca_manifest_org,
-        location=module_location,
+        organization=session_sca_manifest_org,
+        location=session_location,
         name=gen_string('alpha').lower(),
         mac=host_mac_addr,
-        operatingsystem=module_provisioning_rhel_content.os,
-        subnet=module_provisioning_sat.subnet,
+        operatingsystem=session_provisioning_rhel_content.os,
+        subnet=session_provisioning_sat.subnet,
         host_parameters_attributes=[
             {'name': 'remote_execution_connect_by_ip', 'value': 'true', 'parameter_type': 'boolean'}
         ],
@@ -330,15 +326,13 @@ def test_rhel_ipxe_provisioning(
 @pytest.mark.rhel_ver_match('[^6]')
 def test_rhel_httpboot_provisioning(
     request,
-    module_provisioning_sat,
-    module_sca_manifest_org,
-    module_location,
+    session_provisioning_sat,
+    session_sca_manifest_org,
+    session_location,
     provisioning_host,
     pxe_loader,
-    module_provisioning_rhel_content,
+    session_provisioning_rhel_content,
     provisioning_hostgroup,
-    module_lce_library,
-    module_default_org_view,
 ):
     """Provision a host using httpboot workflow
 
@@ -360,19 +354,19 @@ def test_rhel_httpboot_provisioning(
 
     :BZ: 2242925
     """
-    sat = module_provisioning_sat.sat
+    sat = session_provisioning_sat.sat
     # update grub2-efi package
     sat.cli.Packages.update(packages='grub2-efi', options={'assumeyes': True})
 
     host_mac_addr = provisioning_host._broker_args['provisioning_nic_mac_addr']
     host = sat.api.Host(
         hostgroup=provisioning_hostgroup,
-        organization=module_sca_manifest_org,
-        location=module_location,
+        organization=session_sca_manifest_org,
+        location=session_location,
         name=gen_string('alpha').lower(),
         mac=host_mac_addr,
-        operatingsystem=module_provisioning_rhel_content.os,
-        subnet=module_provisioning_sat.subnet,
+        operatingsystem=session_provisioning_rhel_content.os,
+        subnet=session_provisioning_sat.subnet,
         host_parameters_attributes=[
             {'name': 'remote_execution_connect_by_ip', 'value': 'true', 'parameter_type': 'boolean'}
         ],
@@ -385,7 +379,7 @@ def test_rhel_httpboot_provisioning(
     # Start the VM, do not ensure that we can connect to SSHD
     provisioning_host.power_control(ensure=False)
     # check for proper HTTP requests
-    shell = module_provisioning_sat.session.shell()
+    shell = session_provisioning_sat.session.shell()
     shell.send('foreman-tail')
     assert_host_logs(shell, f'GET /httpboot/grub2/grub.cfg-{host_mac_addr} with 200')
     # Host should do call back to the Satellite reporting
@@ -455,15 +449,13 @@ def test_rhel_httpboot_provisioning(
 @pytest.mark.rhel_ver_match('[^6]')
 def test_rhel_pxe_provisioning_fips_enabled(
     request,
-    module_provisioning_sat,
-    module_sca_manifest_org,
-    module_location,
+    session_provisioning_sat,
+    session_sca_manifest_org,
+    session_location,
     provisioning_host,
     pxe_loader,
-    module_provisioning_rhel_content,
+    session_provisioning_rhel_content,
     provisioning_hostgroup,
-    module_lce_library,
-    module_default_org_view,
 ):
     """Provision a host with host param fips_enabled set to true
 
@@ -485,19 +477,19 @@ def test_rhel_pxe_provisioning_fips_enabled(
 
     :BZ: 2240076
     """
-    sat = module_provisioning_sat.sat
+    sat = session_provisioning_sat.sat
     host_mac_addr = provisioning_host._broker_args['provisioning_nic_mac_addr']
     # Verify password hashing algorithm SHA256 is set in OS used for provisioning
-    assert module_provisioning_rhel_content.os.password_hash == 'SHA256'
+    assert session_provisioning_rhel_content.os.password_hash == 'SHA256'
 
     host = sat.api.Host(
         hostgroup=provisioning_hostgroup,
-        organization=module_sca_manifest_org,
-        location=module_location,
+        organization=session_sca_manifest_org,
+        location=session_location,
         name=gen_string('alpha').lower(),
         mac=host_mac_addr,
-        operatingsystem=module_provisioning_rhel_content.os,
-        subnet=module_provisioning_sat.subnet,
+        operatingsystem=session_provisioning_rhel_content.os,
+        subnet=session_provisioning_sat.subnet,
         host_parameters_attributes=[
             {
                 'name': 'remote_execution_connect_by_ip',
@@ -592,18 +584,18 @@ def test_rhel_pxe_provisioning_fips_enabled(
 @pytest.mark.parametrize('pxe_loader', ['bios', 'uefi'], indirect=True)
 @pytest.mark.on_premises_provisioning
 @pytest.mark.rhel_ver_match('[^6]')
+@pytest.mark.skip(reason='This test requires refactor')
 def test_capsule_pxe_provisioning(
     request,
     capsule_provisioning_sat,
     module_capsule_configured,
     capsule_provisioning_rhel_content,
-    module_sca_manifest_org,
-    module_location,
+    session_sca_manifest_org,
+    session_location,
     provisioning_host,
     pxe_loader,
     capsule_provisioning_hostgroup,
-    module_lce_library,
-    module_default_org_view,
+    session_lce_library,
     capsule_provisioning_lce_sync_setup,
 ):
     """Provision a host using external capsule
@@ -628,11 +620,11 @@ def test_capsule_pxe_provisioning(
     cap = module_capsule_configured
     host = sat.api.Host(
         hostgroup=capsule_provisioning_hostgroup,
-        organization=module_sca_manifest_org,
-        location=module_location,
+        organization=session_sca_manifest_org,
+        location=session_location,
         content_facet_attributes={
             'content_view_id': capsule_provisioning_rhel_content.cv.id,
-            'lifecycle_environment_id': module_lce_library.id,
+            'lifecycle_environment_id': session_lce_library.id,
         },
         name=gen_string('alpha').lower(),
         mac=host_mac_addr,

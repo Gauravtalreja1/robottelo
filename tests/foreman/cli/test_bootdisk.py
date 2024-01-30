@@ -22,7 +22,7 @@ from robottelo.constants import HTTPS_MEDIUM_URL
 def test_positive_bootdisk_download_https(
     module_location,
     module_sync_kickstart_content,
-    module_provisioning_capsule,
+    session_provisioning_capsule,
     module_target_sat,
     module_sca_manifest_org,
     module_default_org_view,
@@ -55,7 +55,7 @@ def test_positive_bootdisk_download_https(
         {
             'name': gen_string('alpha'),
             'operatingsystem-ids': module_sync_kickstart_content.os.id,
-            'location-ids': module_provisioning_capsule.id,
+            'location-ids': session_provisioning_capsule.id,
             'organization-ids': module_sca_manifest_org.id,
             'path': HTTPS_MEDIUM_URL,
             'os-family': 'Redhat',

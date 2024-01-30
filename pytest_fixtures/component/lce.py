@@ -39,3 +39,13 @@ def function_lce_library(function_org, target_sat):
         .search(query={'search': f'name={ENVIRONMENT} and organization_id={function_org.id}'})[0]
         .read()
     )
+
+
+@pytest.fixture(scope='session')
+def session_lce_library(session_org, session_target_sat):
+    """Returns the Library lifecycle environment from chosen organization"""
+    return (
+        session_target_sat.api.LifecycleEnvironment()
+        .search(query={'search': f'name={ENVIRONMENT} and organization_id={session_org.id}'})[0]
+        .read()
+    )

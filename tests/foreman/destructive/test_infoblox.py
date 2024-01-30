@@ -116,7 +116,7 @@ def test_plugin_installation(target_sat, command_args, command_opts, rpm_command
 def test_infoblox_end_to_end(
     request,
     module_sync_kickstart_content,
-    module_provisioning_capsule,
+    session_provisioning_capsule,
     module_target_sat,
     module_sca_manifest_org,
     module_location,
@@ -185,7 +185,7 @@ def test_infoblox_end_to_end(
     domain = module_target_sat.api.Domain(
         name=settings.infoblox.domain,
         location=[module_location],
-        dns=module_provisioning_capsule.id,
+        dns=session_provisioning_capsule.id,
         organization=[module_sca_manifest_org],
     ).create()
     subnet = module_target_sat.api.Subnet(
@@ -198,11 +198,11 @@ def test_infoblox_end_to_end(
         to=settings.infoblox.end_range,
         boot_mode='DHCP',
         ipam='DHCP',
-        dhcp=module_provisioning_capsule.id,
-        tftp=module_provisioning_capsule.id,
-        dns=module_provisioning_capsule.id,
-        discovery=module_provisioning_capsule.id,
-        remote_execution_proxy=[module_provisioning_capsule.id],
+        dhcp=session_provisioning_capsule.id,
+        tftp=session_provisioning_capsule.id,
+        dns=session_provisioning_capsule.id,
+        discovery=session_provisioning_capsule.id,
+        remote_execution_proxy=[session_provisioning_capsule.id],
         domain=[domain.id],
     ).create()
     host = module_target_sat.api.Host(
@@ -217,7 +217,7 @@ def test_infoblox_end_to_end(
         root_pass=settings.provisioning.host_root_password,
         ptable=default_partitiontable,
         content_facet_attributes={
-            'content_source_id': module_provisioning_capsule.id,
+            'content_source_id': session_provisioning_capsule.id,
             'content_view_id': module_default_org_view.id,
             'lifecycle_environment_id': module_lce_library.id,
         },

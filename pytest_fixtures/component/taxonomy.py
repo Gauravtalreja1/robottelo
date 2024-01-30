@@ -43,6 +43,11 @@ def module_org(module_target_sat):
     return module_target_sat.api.Organization().create()
 
 
+@pytest.fixture(scope='session')
+def session_org(session_target_sat):
+    return session_target_sat.api.Organization().create()
+
+
 @pytest.fixture(scope='class')
 def class_org(class_target_sat):
     org = class_target_sat.api.Organization().create()
@@ -53,6 +58,11 @@ def class_org(class_target_sat):
 @pytest.fixture(scope='module')
 def module_location(module_target_sat, module_org):
     return module_target_sat.api.Location(organization=[module_org]).create()
+
+
+@pytest.fixture(scope='session')
+def session_location(session_target_sat, session_org):
+    return session_target_sat.api.Location(organization=[session_org]).create()
 
 
 @pytest.fixture(scope='class')
@@ -101,6 +111,13 @@ def module_sca_manifest_org(module_org, module_sca_manifest, module_target_sat):
     """Creates an organization and uploads an SCA mode manifest generated with manifester"""
     module_target_sat.upload_manifest(module_org.id, module_sca_manifest.content)
     return module_org
+
+
+@pytest.fixture(scope='session')
+def session_sca_manifest_org(session_org, session_sca_manifest, session_target_sat):
+    """Creates an organization and uploads an SCA mode manifest generated with manifester"""
+    session_target_sat.upload_manifest(session_org.id, session_sca_manifest.content)
+    return session_org
 
 
 @pytest.fixture(scope='class')

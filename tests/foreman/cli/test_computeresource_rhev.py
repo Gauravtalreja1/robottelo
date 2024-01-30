@@ -376,13 +376,11 @@ def test_negative_add_image_rhev_with_invalid_name(rhev, module_os, module_targe
 def test_positive_provision_rhev_with_host_group(
     request,
     setting_update,
-    module_provisioning_sat,
+    session_provisioning_sat,
     rhev,
-    module_sca_manifest_org,
-    module_location,
-    module_default_org_view,
-    module_provisioning_rhel_content,
-    module_lce_library,
+    session_sca_manifest_org,
+    session_location,
+    session_provisioning_rhel_content,
     default_architecture,
     default_partitiontable,
 ):
@@ -415,10 +413,10 @@ def test_positive_provision_rhev_with_host_group(
 
     :CaseAutomation: Automated
     """
-    sat = module_provisioning_sat.sat
+    sat = session_provisioning_sat.sat
     cr_name = gen_string('alpha')
-    org_name = module_sca_manifest_org.name
-    loc_name = module_location.name
+    org_name = session_sca_manifest_org.name
+    loc_name = session_location.name
     rhv_cr = sat.cli.ComputeResource.create(
         {
             'name': cr_name,
@@ -433,8 +431,8 @@ def test_positive_provision_rhev_with_host_group(
         }
     )
     assert rhv_cr['name'] == cr_name
-    domain_name = module_provisioning_sat.domain.name
-    subnet_name = module_provisioning_sat.subnet.name
+    domain_name = session_provisioning_sat.domain.name
+    subnet_name = session_provisioning_sat.subnet.name
     hostgroup = sat.cli.HostGroup.create(
         {
             'name': gen_string('alpha'),
@@ -443,11 +441,11 @@ def test_positive_provision_rhev_with_host_group(
             'architecture': default_architecture.name,
             'domain': domain_name,
             'subnet': subnet_name,
-            'content-source-id': module_provisioning_sat.domain.dns.id,
-            'content-view-id': module_sca_manifest_org.default_content_view.id,
-            'kickstart-repository-id': module_provisioning_rhel_content.ksrepo.id,
-            'lifecycle-environment-id': module_sca_manifest_org.library.id,
-            'operatingsystem': module_provisioning_rhel_content.os.title,
+            'content-source-id': session_provisioning_sat.domain.dns.id,
+            'content-view-id': session_sca_manifest_org.default_content_view.id,
+            'kickstart-repository-id': session_provisioning_rhel_content.ksrepo.id,
+            'lifecycle-environment-id': session_sca_manifest_org.library.id,
+            'operatingsystem': session_provisioning_rhel_content.os.title,
             'pxe-loader': 'PXELinux BIOS',
             'partition-table': default_partitiontable.name,
             'compute-resource-id': rhv_cr.get('id'),
@@ -541,11 +539,11 @@ def test_positive_provision_rhev_without_host_group(rhev):
 @pytest.mark.parametrize('setting_update', ['destroy_vm_on_host_delete=True'], indirect=True)
 def test_positive_provision_rhev_image_based_and_disassociate(
     request,
-    module_provisioning_sat,
+    session_provisioning_sat,
     rhev,
-    module_org,
-    module_location,
-    module_provisioning_rhel_content,
+    session_sca_manifest_org,
+    session_location,
+    session_provisioning_rhel_content,
     setting_update,
 ):
     """Provision a host on RHEV compute resource using image-based provisioning
@@ -577,9 +575,9 @@ def test_positive_provision_rhev_image_based_and_disassociate(
 
     :CaseAutomation: Automated
     """
-    sat = module_provisioning_sat.sat
-    org_name = module_org.name
-    loc_name = module_location.name
+    sat = session_provisioning_sat.sat
+    org_name = session_sca_manifest_org.name
+    loc_name = session_location.name
     name = gen_string('alpha')
     rhv_cr = sat.cli.ComputeResource.create(
         {
@@ -597,7 +595,7 @@ def test_positive_provision_rhev_image_based_and_disassociate(
     assert rhv_cr['name'] == name
     host_name = gen_string('alpha').lower()
     # use some RHEL (usually latest)
-    os = module_provisioning_rhel_content.os
+    os = session_provisioning_rhel_content.os
     image = sat.cli.ComputeResource.image_create(
         {
             'compute-resource': rhv_cr['name'],
@@ -610,8 +608,8 @@ def test_positive_provision_rhev_image_based_and_disassociate(
             'user-data': 'yes',  # so finish template won't be used
         }
     )
-    domain_name = module_provisioning_sat.domain.name
-    subnet_name = module_provisioning_sat.subnet.name
+    domain_name = session_provisioning_sat.domain.name
+    subnet_name = session_provisioning_sat.subnet.name
     host_name = gen_string('alpha').lower()
     host = None  # to avoid UnboundLocalError in finally block
     rhv_vm = None

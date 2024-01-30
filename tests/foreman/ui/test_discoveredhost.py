@@ -47,16 +47,16 @@ def _is_host_reachable(host, retries=12, iteration_sleep=5, expect_reachable=Tru
 @pytest.mark.tier3
 @pytest.mark.upgrade
 @pytest.mark.on_premises_provisioning
-@pytest.mark.parametrize('module_provisioning_sat', ['discovery'], indirect=True)
+@pytest.mark.parametrize('session_provisioning_sat', ['discovery'], indirect=True)
 @pytest.mark.parametrize('pxe_loader', ['bios', 'uefi'], indirect=True)
 @pytest.mark.rhel_ver_match('9')
 def test_positive_provision_pxe_host(
     request,
     session,
-    module_location,
-    module_org,
-    module_provisioning_rhel_content,
-    module_discovery_sat,
+    session_location,
+    session_org,
+    session_provisioning_rhel_content,
+    session_discovery_sat,
     provisioning_host,
     provisioning_hostgroup,
     pxe_loader,
@@ -77,7 +77,7 @@ def test_positive_provision_pxe_host(
 
     :CaseImportance: High
     """
-    sat = module_discovery_sat.sat
+    sat = session_discovery_sat.sat
     provisioning_host.power_control(ensure=False)
     mac = provisioning_host._broker_args['provisioning_nic_mac_addr']
     wait_for(
@@ -102,8 +102,8 @@ def test_positive_provision_pxe_host(
         session.discoveredhosts.provision(
             discovered_host_name,
             provisioning_hostgroup.name,
-            module_org.name,
-            module_location.name,
+            session_org.name,
+            session_location.name,
         )
         values = session.host.get_details(host_name)
         assert values['properties']['properties_table']['Status'] == 'OK'
@@ -151,16 +151,16 @@ def test_positive_update_name(
 @pytest.mark.tier3
 @pytest.mark.upgrade
 @pytest.mark.on_premises_provisioning
-@pytest.mark.parametrize('module_provisioning_sat', ['discovery'], indirect=True)
+@pytest.mark.parametrize('session_provisioning_sat', ['discovery'], indirect=True)
 @pytest.mark.parametrize('pxe_loader', ['bios', 'uefi'], indirect=True)
 @pytest.mark.rhel_ver_match('9')
 def test_positive_auto_provision_host_with_rule(
     request,
     session,
-    module_org,
-    module_location,
-    module_provisioning_rhel_content,
-    module_discovery_sat,
+    session_org,
+    session_location,
+    session_provisioning_rhel_content,
+    session_discovery_sat,
     pxeless_discovery_host,
     provisioning_hostgroup,
     pxe_loader,
@@ -180,7 +180,7 @@ def test_positive_auto_provision_host_with_rule(
 
     :CaseImportance: High
     """
-    sat = module_discovery_sat.sat
+    sat = session_discovery_sat.sat
     pxeless_discovery_host.power_control(ensure=False)
     mac = pxeless_discovery_host._broker_args['provisioning_nic_mac_addr']
     wait_for(
@@ -205,12 +205,12 @@ def test_positive_auto_provision_host_with_rule(
         max_count=10,
         hostgroup=provisioning_hostgroup,
         search_=f'name = {discovered_host_name}',
-        location=[module_location],
-        organization=[module_org],
+        location=[session_location],
+        organization=[session_org],
     ).create()
     with session:
-        session.organization.select(org_name=module_org.name)
-        session.location.select(loc_name=module_location.name)
+        session.organization.select(org_name=session_org.name)
+        session.location.select(loc_name=session_location.name)
         session.discoveredhosts.apply_action('Auto Provision', [discovered_host_name])
         assert session.host.search(host_name)[0]['Name'] == host_name
         host_values = session.host.get_details(host_name)

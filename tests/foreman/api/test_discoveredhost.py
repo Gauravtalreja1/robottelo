@@ -167,14 +167,14 @@ class TestDiscoveredHost:
     @pytest.mark.upgrade
     @pytest.mark.e2e
     @pytest.mark.on_premises_provisioning
-    @pytest.mark.parametrize('module_provisioning_sat', ['discovery'], indirect=True)
+    @pytest.mark.parametrize('session_provisioning_sat', ['discovery'], indirect=True)
     @pytest.mark.parametrize('pxe_loader', ['bios', 'uefi'], indirect=True)
     @pytest.mark.rhel_ver_list([8, 9])
     @pytest.mark.tier3
     def test_positive_provision_pxe_host(
         self,
-        module_provisioning_rhel_content,
-        module_discovery_sat,
+        session_provisioning_rhel_content,
+        session_discovery_sat,
         provisioning_host,
         provisioning_hostgroup,
         pxe_loader,
@@ -195,7 +195,7 @@ class TestDiscoveredHost:
 
         :CaseImportance: Critical
         """
-        sat = module_discovery_sat.sat
+        sat = session_discovery_sat.sat
         provisioning_host.power_control(ensure=False)
         mac = provisioning_host._broker_args['provisioning_nic_mac_addr']
         wait_for(
@@ -213,22 +213,22 @@ class TestDiscoveredHost:
             host = discovered_host.update(['hostgroup', 'build', 'location', 'organization'])
             host = sat.api.Host().search(query={"search": f'name={host.name}'})[0]
             assert host
-            assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
+            assert_discovered_host_provisioned(shell, session_provisioning_rhel_content.ksrepo)
             sat.provisioning_cleanup(host.name)
         provisioning_host.blank = True
 
     @pytest.mark.upgrade
     @pytest.mark.e2e
     @pytest.mark.on_premises_provisioning
-    @pytest.mark.parametrize('module_provisioning_sat', ['discovery'], indirect=True)
+    @pytest.mark.parametrize('session_provisioning_sat', ['discovery'], indirect=True)
     @pytest.mark.parametrize('pxe_loader', ['bios', 'uefi'], indirect=True)
     @pytest.mark.rhel_ver_list([8, 9])
     @pytest.mark.tier3
     def test_positive_provision_pxe_less_host(
         self,
-        module_discovery_sat,
+        session_discovery_sat,
         pxeless_discovery_host,
-        module_provisioning_rhel_content,
+        session_provisioning_rhel_content,
         provisioning_hostgroup,
     ):
         """Provision a pxe-less discovered hosts
@@ -244,7 +244,7 @@ class TestDiscoveredHost:
 
         :CaseImportance: Critical
         """
-        sat = module_discovery_sat.sat
+        sat = session_discovery_sat.sat
         pxeless_discovery_host.power_control(ensure=False)
         mac = pxeless_discovery_host._broker_args['provisioning_nic_mac_addr']
         wait_for(
@@ -262,7 +262,7 @@ class TestDiscoveredHost:
             host = discovered_host.update(['hostgroup', 'build', 'location', 'organization'])
             host = sat.api.Host().search(query={"search": f'name={host.name}'})[0]
             assert host
-            assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
+            assert_discovered_host_provisioned(shell, session_provisioning_rhel_content.ksrepo)
             sat.provisioning_cleanup(host.name)
         pxeless_discovery_host.blank = True
 
@@ -352,14 +352,13 @@ class TestDiscoveredHost:
         """
 
     @pytest.mark.on_premises_provisioning
-    @pytest.mark.parametrize('module_provisioning_sat', ['discovery'], indirect=True)
+    @pytest.mark.parametrize('session_provisioning_sat', ['discovery'], indirect=True)
     @pytest.mark.parametrize('pxe_loader', ['uefi'], indirect=True)
     @pytest.mark.rhel_ver_match('9')
     @pytest.mark.tier3
     def test_positive_reboot_pxe_host(
         self,
-        module_provisioning_rhel_content,
-        module_discovery_sat,
+        session_discovery_sat,
         provisioning_host,
         provisioning_hostgroup,
         pxe_loader,
@@ -378,7 +377,7 @@ class TestDiscoveredHost:
 
         :CaseImportance: Medium
         """
-        sat = module_discovery_sat.sat
+        sat = session_discovery_sat.sat
         provisioning_host.power_control(ensure=False)
         mac = provisioning_host._broker_args['provisioning_nic_mac_addr']
         wait_for(
@@ -386,7 +385,6 @@ class TestDiscoveredHost:
             timeout=1500,
             delay=20,
         )
-
         discovered_host = sat.api.DiscoveredHost().search(query={'mac': mac})[0]
         discovered_host.hostgroup = provisioning_hostgroup
         discovered_host.location = provisioning_hostgroup.location[0]
@@ -396,15 +394,12 @@ class TestDiscoveredHost:
         assert 'Unable to perform reboot' not in result
 
     @pytest.mark.on_premises_provisioning
-    @pytest.mark.parametrize('module_provisioning_sat', ['discovery'], indirect=True)
-    @pytest.mark.parametrize('pxe_loader', ['bios'], indirect=True)
+    @pytest.mark.parametrize('session_provisioning_sat', ['discovery'], indirect=True)
     @pytest.mark.rhel_ver_match('9')
-    @pytest.mark.parametrize('provision_multiple_hosts', [2])
     @pytest.mark.tier3
     def test_positive_reboot_all_pxe_hosts(
         self,
-        module_provisioning_rhel_content,
-        module_discovery_sat,
+        session_discovery_sat,
         provision_multiple_hosts,
         provisioning_hostgroup,
         pxe_loader,
@@ -423,7 +418,7 @@ class TestDiscoveredHost:
 
         :CaseImportance: Medium
         """
-        sat = module_discovery_sat.sat
+        sat = session_discovery_sat.sat
         for host in provision_multiple_hosts:
             host.power_control(ensure=False)
             mac = host._broker_args['provisioning_nic_mac_addr']

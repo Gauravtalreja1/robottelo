@@ -14,8 +14,8 @@ def module_libvirt_image(module_target_sat, module_cr_libvirt):
     return module_target_sat.api.Image(compute_resource=module_cr_libvirt).create()
 
 
-@pytest.fixture(scope='module')
-def module_libvirt_provisioning_sat(module_provisioning_sat):
+@pytest.fixture(scope='session')
+def session_libvirt_provisioning_sat(session_provisioning_sat):
     # Configure Libvirt CR for provisioning
-    module_provisioning_sat.sat.configure_libvirt_cr()
-    return module_provisioning_sat
+    session_provisioning_sat.sat.configure_libvirt_cr()
+    return session_provisioning_sat

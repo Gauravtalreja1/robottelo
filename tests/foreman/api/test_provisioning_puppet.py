@@ -99,14 +99,13 @@ def test_positive_puppet_bootstrap(
 def test_host_provisioning_with_external_puppetserver(
     request,
     external_puppet_server,
-    module_provisioning_sat,
-    module_sca_manifest_org,
-    module_location,
+    session_provisioning_sat,
+    session_sca_manifest_org,
+    session_location,
     provisioning_host,
-    module_provisioning_rhel_content,
+    session_provisioning_rhel_content,
     provisioning_hostgroup,
-    module_lce_library,
-    module_default_org_view,
+    session_lce_library,
 ):
     """Baremetal provisioning of a RHEL system via PXE with external puppetserver host params
 
@@ -133,19 +132,19 @@ def test_host_provisioning_with_external_puppetserver(
     """
     puppet_env = 'production'
     host_mac_addr = provisioning_host._broker_args['provisioning_nic_mac_addr']
-    sat = module_provisioning_sat.sat
+    sat = session_provisioning_sat.sat
     host = sat.api.Host(
         hostgroup=provisioning_hostgroup,
-        organization=module_sca_manifest_org,
-        location=module_location,
+        organization=session_sca_manifest_org,
+        location=session_location,
         content_facet_attributes={
-            'content_view_id': module_provisioning_rhel_content.cv.id,
-            'lifecycle_environment_id': module_lce_library.id,
+            'content_view_id': session_provisioning_rhel_content.cv.id,
+            'lifecycle_environment_id': session_lce_library.id,
         },
         name=gen_string('alpha').lower(),
         mac=host_mac_addr,
-        operatingsystem=module_provisioning_rhel_content.os,
-        subnet=module_provisioning_sat.subnet,
+        operatingsystem=session_provisioning_rhel_content.os,
+        subnet=session_provisioning_sat.subnet,
         host_parameters_attributes=[
             {'name': 'puppet_server', 'value': f'{external_puppet_server.hostname}'},
             {'name': 'puppet_ca_server', 'value': f'{external_puppet_server.hostname}'},

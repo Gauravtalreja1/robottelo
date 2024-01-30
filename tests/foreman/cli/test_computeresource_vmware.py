@@ -83,12 +83,12 @@ def test_positive_vmware_cr_end_to_end(target_sat, module_org, module_location):
 def test_positive_provision_end_to_end(
     request,
     setting_update,
-    module_provisioning_sat,
-    module_sca_manifest_org,
-    module_location,
+    session_provisioning_sat,
+    session_sca_manifest_org,
+    session_location,
     pxe_loader,
-    module_vmware_cr,
-    module_vmware_hostgroup,
+    session_vmware_cr,
+    vmware_hostgroup,
     provision_method,
 ):
     """Provision a host on vmware compute resource with
@@ -97,7 +97,6 @@ def test_positive_provision_end_to_end(
     :id: ff9963fc-a2a7-4392-aa9a-190d5d1c8357
 
     :steps:
-
         1. Configure provisioning setup.
         2. Create VMware CR
         3. Configure host group setup.
@@ -108,15 +107,15 @@ def test_positive_provision_end_to_end(
 
     :CaseAutomation: Automated
     """
-    sat = module_provisioning_sat.sat
+    sat = session_provisioning_sat.sat
     hostname = gen_string('alpha').lower()
     host = sat.cli.Host.create(
         {
             'name': hostname,
-            'organization': module_sca_manifest_org.name,
-            'location': module_location.name,
-            'hostgroup': module_vmware_hostgroup.name,
-            'compute-resource-id': module_vmware_cr.id,
+            'organization': session_sca_manifest_org.name,
+            'location': session_location.name,
+            'hostgroup': vmware_hostgroup.name,
+            'compute-resource-id': session_vmware_cr.id,
             'ip': None,
             'mac': None,
             'compute-attributes': f'cluster={settings.vmware.cluster},'
@@ -133,7 +132,7 @@ def test_positive_provision_end_to_end(
     # teardown
     request.addfinalizer(lambda: sat.provisioning_cleanup(host['name'], interface='CLI'))
 
-    hostname = f'{hostname}.{module_provisioning_sat.domain.name}'
+    hostname = f'{hostname}.{session_provisioning_sat.domain.name}'
     assert hostname == host['name']
     # check if vm is created on vmware
     vmware = VMWareSystem(
