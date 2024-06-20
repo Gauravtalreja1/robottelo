@@ -387,21 +387,13 @@ def test_positive_provision_rhev_with_host_group(
     default_architecture,
     default_partitiontable,
 ):
-    """Provision a host on RHEV compute resource with
-    the help of hostgroup.
-
-    :Requirement: Computeresource RHV
-
-    :CaseComponent: ComputeResources-RHEV
-
-    :Team: Rocket
+    """Provision a host on RHEV compute resource with the help of hostgroup.
 
     :id: 97908521-3f4d-4207-93a3-23588b5a0a53
 
     :setup: Hostgroup and provisioning setup like domain, subnet etc.
 
     :steps:
-
         1. Create a RHEV compute resource.
         2. Create a host on RHEV compute resource using the Hostgroup
         3. Use compute-attributes parameter to specify key-value parameters
@@ -413,8 +405,6 @@ def test_positive_provision_rhev_with_host_group(
     :BZ: 1777992
 
     :customerscenario: true
-
-    :CaseAutomation: Automated
     """
     sat = module_provisioning_sat.sat
     cr_name = gen_string('alpha')
@@ -479,7 +469,7 @@ def test_positive_provision_rhev_with_host_group(
         }
     )
     # cleanup
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host['name'], interface='CLI'))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host['name'], interface='CLI'))
 
     # checks
     hostname = f'{host_name}.{domain_name}'
@@ -551,12 +541,6 @@ def test_positive_provision_rhev_image_based_and_disassociate(
 ):
     """Provision a host on RHEV compute resource using image-based provisioning
 
-    :Requirement: Computeresource RHV
-
-    :CaseComponent: ComputeResources-RHEV
-
-    :Team: Rocket
-
     :id: ba78858f-5cff-462e-a35d-f5aa4d11db52
 
     :parametrized: yes
@@ -568,15 +552,12 @@ def test_positive_provision_rhev_image_based_and_disassociate(
     :setup: RHEV with a template on it
 
     :steps:
-
         1. Create a RHEV CR
         1. Create an image on that CR
         2. Create a new host using that CR and image
         3. Disassociate the host from the CR
 
     :expectedresults: Host should be provisioned with image, associated to CR, then disassociated
-
-    :CaseAutomation: Automated
     """
     sat = module_provisioning_sat.sat
     org_name = module_org.name
@@ -669,7 +650,7 @@ def test_positive_provision_rhev_image_based_and_disassociate(
     finally:
         # Now, let's just remove the host
         if host is not None:
-            sat.provisioning_cleanup(host['name'], interface='CLI')
+            sat.provisioning_cleanup(hostname=host['name'], interface='CLI')
         # Delete the VM since the disassociated VM won't get deleted
         if rhv_vm is not None:
             rhv_vm.delete()

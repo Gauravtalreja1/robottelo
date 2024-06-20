@@ -95,13 +95,11 @@ def test_positive_provision_end_to_end(
     vmware,
     vmwareclient,
 ):
-    """Provision a host on vmware compute resource with
-    the help of hostgroup.
+    """Provision a host on vmware compute resource with the help of hostgroup.
 
     :id: ff9963fc-a2a7-4392-aa9a-190d5d1c8357
 
     :steps:
-
         1. Configure provisioning setup.
         2. Create VMware CR
         3. Configure host group setup.
@@ -109,8 +107,6 @@ def test_positive_provision_end_to_end(
         5. Verify created host on VMware with wrapanapi
 
     :expectedresults: Host is provisioned succesfully with hostgroup
-
-    :CaseAutomation: Automated
     """
     sat = module_provisioning_sat.sat
     hostname = gen_string('alpha').lower()
@@ -135,7 +131,7 @@ def test_positive_provision_end_to_end(
         }
     )
     # teardown
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host['name'], interface='CLI'))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host['name'], interface='CLI'))
 
     hostname = f'{hostname}.{module_provisioning_sat.domain.name}'
     assert hostname == host['name']
