@@ -114,7 +114,7 @@ def test_rhel_pxe_provisioning(
     ).create(create_missing=False)
     # Clean up the host to free IP leases on Satellite.
     # broker should do that as a part of the teardown, putting here just to make sure.
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host.name))
 
     # Start the VM, do not ensure that we can connect to SSHD
     provisioning_host.power_control(ensure=False)
@@ -253,7 +253,7 @@ def test_rhel_ipxe_provisioning(
     ).create(create_missing=False)
     # Clean up the host to free IP leases on Satellite.
     # broker should do that as a part of the teardown, putting here just to make sure.
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host.name))
 
     # Start the VM, do not ensure that we can connect to SSHD
     provisioning_host.power_control(ensure=False)
@@ -382,13 +382,13 @@ def test_rhel_httpboot_provisioning(
     ).create(create_missing=False)
     # Clean up the host to free IP leases on Satellite.
     # broker should do that as a part of the teardown, putting here just to make sure.
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host.name))
 
     # Start the VM, do not ensure that we can connect to SSHD
     provisioning_host.power_control(ensure=False)
     # check for proper HTTP requests
-    shell = module_provisioning_sat.session.shell()
-    shell.send('foreman-tail')
+    with module_provisioning_sat.session.shell() as shell:
+        shell.send('foreman-tail')
     assert_host_logs(shell, f'GET /httpboot/grub2/grub.cfg-{host_mac_addr} with 200')
     # Host should do call back to the Satellite reporting
     # the result of the installation. Wait until Satellite reports that the host is installed.
@@ -514,7 +514,7 @@ def test_rhel_pxe_provisioning_fips_enabled(
     ).create(create_missing=False)
     # Clean up the host to free IP leases on Satellite.
     # broker should do that as a part of the teardown, putting here just to make sure.
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host.name))
     # Start the VM, do not ensure that we can connect to SSHD
     provisioning_host.power_control(ensure=False)
 
@@ -654,7 +654,7 @@ def test_capsule_pxe_provisioning(
     ).create(create_missing=False)
     # Clean up the host to free IP leases on Satellite.
     # broker should do that as a part of the teardown, putting here just to make sure.
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host.name))
     # Start the VM, do not ensure that we can connect to SSHD
     provisioning_host.power_control(ensure=False)
     # Host should do call back to the Satellite reporting

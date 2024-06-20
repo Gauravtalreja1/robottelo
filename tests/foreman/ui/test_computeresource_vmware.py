@@ -639,7 +639,7 @@ def test_positive_provision_end_to_end(
                 'host.compute_profile': COMPUTE_PROFILE_SMALL,
             }
         )
-        request.addfinalizer(lambda: target_sat.provisioning_cleanup(host_name))
+        request.addfinalizer(lambda: target_sat.provisioning_cleanup(hostname=host_name))
         wait_for(
             lambda: session.host_new.get_host_statuses(host_name)['Build']['Status']
             != 'Pending installation',

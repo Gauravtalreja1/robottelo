@@ -216,7 +216,7 @@ def module_ssh_key_file():
 
 
 @pytest.fixture
-def provisioning_host(module_ssh_key_file, pxe_loader):
+def provisioning_host(module_ssh_key_file, pxe_loader, module_provisioning_sat):
     """Fixture to check out blank VM"""
     vlan_id = settings.provisioning.vlan_id
     cd_iso = (
@@ -233,6 +233,8 @@ def provisioning_host(module_ssh_key_file, pxe_loader):
         auth=module_ssh_key_file,
     ) as prov_host:
         yield prov_host
+        # Restart DHCP
+        assert module_provisioning_sat.sat.execute('systemctl restart dhcpd').status == 0
         # Set host as non-blank to run teardown of the host
         prov_host.blank = getattr(prov_host, 'blank', False)
 

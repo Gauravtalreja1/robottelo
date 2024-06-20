@@ -92,13 +92,11 @@ def test_positive_provision_pxe_host(
     discovered_host.location = provisioning_hostgroup.location[0]
     discovered_host.organization = provisioning_hostgroup.organization[0]
     discovered_host.build = True
-
     discovered_host_name = discovered_host.name
     domain_name = provisioning_hostgroup.domain.read().name
     host_name = f'{discovered_host_name}.{domain_name}'
-
     # Teardown
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host_name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
 
     with sat.ui_session() as session:
         session.organization.select(org_name=module_org.name)
@@ -181,7 +179,7 @@ def test_positive_custom_provision_pxe_host(
     host_name = f'{discovered_host_name}.{domain_name}'
 
     # Teardown
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host_name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
 
     # Change root_passwd in HostGroup, and for customization change it back during provisioning
     root_pwd = gen_string('alpha')
@@ -337,7 +335,7 @@ def test_positive_auto_provision_host_with_rule(
     host_name = f'{discovered_host_name}.{domain_name}'
 
     # Teardown
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host_name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
 
     discovery_rule = sat.api.DiscoveryRule(
         max_count=10,
