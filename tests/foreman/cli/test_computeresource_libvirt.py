@@ -444,7 +444,7 @@ def test_positive_provision_end_to_end(
         }
     )
     # teardown
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host['name'], interface='CLI'))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host['name'], interface='CLI'))
 
     # checks
     hostname = f'{hostname}.{module_libvirt_provisioning_sat.domain.name}'

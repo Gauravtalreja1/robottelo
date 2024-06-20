@@ -155,13 +155,6 @@ def assert_discovered_host_provisioned(channel, ksrepo):
         raise AssertionError(f'Timed out waiting for {pattern} from VM') from err
 
 
-@pytest.fixture
-def discovered_host_cleanup(target_sat):
-    hosts = target_sat.api.DiscoveredHost().search()
-    for host in hosts:
-        host.delete()
-
-
 class TestDiscoveredHost:
     """General Discovered Host tests."""
 
@@ -174,6 +167,7 @@ class TestDiscoveredHost:
     @pytest.mark.tier3
     def test_positive_provision_pxe_host(
         self,
+        request,
         module_provisioning_rhel_content,
         module_discovery_sat,
         provisioning_host,
@@ -209,13 +203,13 @@ class TestDiscoveredHost:
         discovered_host.location = provisioning_hostgroup.location[0]
         discovered_host.organization = provisioning_hostgroup.organization[0]
         discovered_host.build = True
+        request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
         with sat.session.shell() as shell:
             shell.send('foreman-tail')
             host = discovered_host.update(['hostgroup', 'build', 'location', 'organization'])
             host = sat.api.Host().search(query={"search": f'name={host.name}'})[0]
-            assert host
-            assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
-            sat.provisioning_cleanup(host.name)
+        assert host
+        assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
         provisioning_host.blank = True
 
     @pytest.mark.upgrade
@@ -227,6 +221,7 @@ class TestDiscoveredHost:
     @pytest.mark.tier3
     def test_positive_provision_pxe_less_host(
         self,
+        request,
         module_discovery_sat,
         pxeless_discovery_host,
         module_provisioning_rhel_content,
@@ -258,13 +253,13 @@ class TestDiscoveredHost:
         discovered_host.location = provisioning_hostgroup.location[0]
         discovered_host.organization = provisioning_hostgroup.organization[0]
         discovered_host.build = True
+        request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
         with sat.session.shell() as shell:
             shell.send('foreman-tail')
             host = discovered_host.update(['hostgroup', 'build', 'location', 'organization'])
             host = sat.api.Host().search(query={"search": f'name={host.name}'})[0]
-            assert host
-            assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
-            sat.provisioning_cleanup(host.name)
+        assert host
+        assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
         pxeless_discovery_host.blank = True
 
     @pytest.mark.tier3
@@ -359,6 +354,7 @@ class TestDiscoveredHost:
     @pytest.mark.tier3
     def test_positive_reboot_pxe_host(
         self,
+        request,
         module_provisioning_rhel_content,
         module_discovery_sat,
         provisioning_host,
@@ -387,7 +383,7 @@ class TestDiscoveredHost:
             timeout=1500,
             delay=20,
         )
-
+        request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
         discovered_host = sat.api.DiscoveredHost().search(query={'mac': mac})[0]
         discovered_host.hostgroup = provisioning_hostgroup
         discovered_host.location = provisioning_hostgroup.location[0]
@@ -402,6 +398,7 @@ class TestDiscoveredHost:
     @pytest.mark.tier3
     def test_positive_reboot_all_pxe_hosts(
         self,
+        request,
         module_provisioning_rhel_content,
         module_discovery_sat,
         provision_multiple_hosts,
@@ -438,6 +435,8 @@ class TestDiscoveredHost:
             discovered_host.location = provisioning_hostgroup.location[0]
             discovered_host.organization = provisioning_hostgroup.organization[0]
             discovered_host.build = True
+
+            request.addfinalizer(lambda mac=mac: sat.provisioning_cleanup(mac=mac))
         # Until BZ 2264195 is resolved, reboot_all is expected to fail
         result = sat.api.DiscoveredHost().reboot_all()
         assert 'Discovered hosts are rebooting now' in result['success_msg']
