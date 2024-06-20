@@ -24,11 +24,11 @@ pytestmark = [pytest.mark.run_in_one_thread]
 @pytest.mark.parametrize('pxe_loader', ['bios', 'uefi'], indirect=True)
 @pytest.mark.rhel_ver_match('7')
 def test_rhel_pxe_discovery_provisioning(
+    request,
     module_provisioning_rhel_content,
     module_discovery_sat,
     provisioning_host,
     provisioning_hostgroup,
-    request,
 ):
     """Provision a PXE-based discovered host
 
@@ -62,6 +62,8 @@ def test_rhel_pxe_discovery_provisioning(
     discovered_host.location = provisioning_hostgroup.location[0]
     discovered_host.organization = provisioning_hostgroup.organization[0]
     discovered_host.build = True
+    request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
+
     result = sat.cli.DiscoveredHost.provision(
         {
             'id': discovered_host.id,
@@ -73,7 +75,6 @@ def test_rhel_pxe_discovery_provisioning(
 
     assert 'Host created' in result[0]['message']
     host = sat.api.Host().search(query={"search": f'id={discovered_host.id}'})[0]
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
     assert host
 
     wait_for(
@@ -122,6 +123,8 @@ def test_rhel_pxeless_discovery_provisioning(
     discovered_host.location = provisioning_hostgroup.location[0]
     discovered_host.organization = provisioning_hostgroup.organization[0]
     discovered_host.build = True
+    request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
+
     result = sat.cli.DiscoveredHost.provision(
         {
             'id': discovered_host.id,
@@ -132,7 +135,6 @@ def test_rhel_pxeless_discovery_provisioning(
     )
     assert 'Host created' in result[0]['message']
     host = sat.api.Host().search(query={"search": f'id={discovered_host.id}'})[0]
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
     assert host
 
     wait_for(
