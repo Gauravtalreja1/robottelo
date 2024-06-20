@@ -156,7 +156,7 @@ def test_host_provisioning_with_external_puppetserver(
     ).create(create_missing=False)
     # Clean up the host to free IP leases on Satellite.
     # broker should do that as a part of the teardown, putting here just to make sure.
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host.name))
 
     # Start the VM, do not ensure that we can connect to SSHD
     provisioning_host.power_control(ensure=False)

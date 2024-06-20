@@ -360,16 +360,30 @@ class ProvisioningSetup:
             == 0
         )
 
-    def provisioning_cleanup(self, hostname, interface='API'):
-        if interface == 'CLI':
-            if self.cli.Host.exists(search=('name', hostname)):
-                self.cli.Host.delete({'name': hostname})
-            assert not self.cli.Host.exists(search=('name', hostname))
-        else:
-            host = self.api.Host().search(query={'search': f'name="{hostname}"'})
-            if host:
-                host[0].delete()
-            assert not self.api.Host().search(query={'search': f'name={hostname}'})
+    def provisioning_cleanup(self, hostname=None, mac=None, interface='API'):
+        if hostname:
+            if interface == 'CLI':
+                if self.cli.Host.exists(search=('name', hostname)):
+                    self.cli.Host.delete({'name': hostname})
+                assert not self.cli.Host.exists(search=('name', hostname))
+            else:
+                host = self.api.Host().search(query={'search': f'name="{hostname}"'})
+                if host:
+                    host[0].delete()
+                assert not self.api.Host().search(query={'search': f'name={hostname}'})
+        if mac:
+            if interface == 'CLI':
+                if self.cli.DiscoveredHost.exists(search=('mac', mac)):
+                    self.cli.DiscoveredHost.delete({'mac': mac})
+                elif self.cli.Host.exists(search=('mac', mac)):
+                    self.cli.Host.delete({'mac': mac})
+            else:
+                if self.api.DiscoveredHost().search(query={'mac': mac}):
+                    self.api.DiscoveredHost().search(query={'mac': mac})[0].delete()
+                    assert not self.api.DiscoveredHost().search(query={'mac': mac})
+                elif self.api.Host().search(query={'search': f'mac="{mac}"'}):
+                    self.api.Host().search(query={'search': f'mac="{mac}"'})[0].delete()
+                    assert not self.api.Host().search(query={'search': f'mac="{mac}"'})
         # Workaround BZ: 2207698
         assert self.cli.Service.restart().status == 0
 
