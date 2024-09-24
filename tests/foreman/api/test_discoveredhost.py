@@ -208,8 +208,8 @@ class TestDiscoveredHost:
             shell.send('foreman-tail')
             host = discovered_host.update(['hostgroup', 'build', 'location', 'organization'])
             host = sat.api.Host().search(query={"search": f'name={host.name}'})[0]
-        assert host
-        assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
+            assert host
+            assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
         provisioning_host.blank = True
 
     @pytest.mark.upgrade
@@ -258,8 +258,8 @@ class TestDiscoveredHost:
             shell.send('foreman-tail')
             host = discovered_host.update(['hostgroup', 'build', 'location', 'organization'])
             host = sat.api.Host().search(query={"search": f'name={host.name}'})[0]
-        assert host
-        assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
+            assert host
+            assert_discovered_host_provisioned(shell, module_provisioning_rhel_content.ksrepo)
         pxeless_discovery_host.blank = True
 
     @pytest.mark.tier3
@@ -435,8 +435,7 @@ class TestDiscoveredHost:
             discovered_host.location = provisioning_hostgroup.location[0]
             discovered_host.organization = provisioning_hostgroup.organization[0]
             discovered_host.build = True
-
-            request.addfinalizer(lambda mac=mac: sat.provisioning_cleanup(mac=mac))
+            request.addfinalizer(lambda mac=mac: sat.provisioning_cleanup(mac=mac))  # B023
         # Until BZ 2264195 is resolved, reboot_all is expected to fail
         result = sat.api.DiscoveredHost().reboot_all()
         assert 'Discovered hosts are rebooting now' in result['success_msg']

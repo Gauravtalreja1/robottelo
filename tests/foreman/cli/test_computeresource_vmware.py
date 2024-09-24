@@ -213,7 +213,7 @@ def test_positive_image_provision_end_to_end(
         }
     )
     # teardown
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host['name'], interface='CLI'))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host['name'], interface='CLI'))
 
     hostname = f'{hostname}.{module_provisioning_sat.domain.name}'
     assert hostname == host['name']

@@ -114,7 +114,7 @@ def test_positive_provision_end_to_end(
         build=True,
     ).create(create_missing=False)
 
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
+    request.addfinalizer(lambda: sat.provisioning_cleanup(hostname=host.name))
     assert host.name == f'{name}.{module_provisioning_sat.domain.name}'
     # check if vm is created on vmware
     assert vmwareclient.does_vm_exist(host.name) is True
@@ -171,9 +171,9 @@ def test_positive_provision_vmware_pxe_discovery(
     discovered_host.location = provisioning_hostgroup.location[0]
     discovered_host.organization = provisioning_hostgroup.organization[0]
     discovered_host.build = True
+    request.addfinalizer(lambda: sat.provisioning_cleanup(mac=mac))
     host = discovered_host.update(['hostgroup', 'build', 'location', 'organization'])
     host = sat.api.Host().search(query={'search': f'name={host.name}'})[0]
-    request.addfinalizer(lambda: sat.provisioning_cleanup(host.name))
     wait_for(
         lambda: host.read().build_status_label != 'Pending installation',
         timeout=1500,
