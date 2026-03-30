@@ -6,7 +6,7 @@ ruff==0.14.9
 
 # For generating documentation.
 sphinx==9.0.4
-sphinx-autoapi==3.6.1
+sphinx-autoapi==3.8.0
 
 # For 'manage' interactive shell
 manage==0.1.15
